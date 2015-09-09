@@ -1,0 +1,9 @@
+*.tdo
+*.gz
+master.run.xml
+master.thm
+*.toc
+*.out
+master.log
+*.aux
+master.bbl
