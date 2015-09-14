@@ -1,0 +1,12 @@
+*.pdf
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.pdf
+*.run.xml
+*.gz
+*.tdo
+*.thm
+*.toc
