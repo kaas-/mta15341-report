@@ -1,11 +1,11 @@
 *.tdo
 *.gz
-master.run.xml
-master.thm
+*.xml
+*.thm
 *.toc
 *.out
-master.log
+*.log
 *.aux
-master.bbl
+*.bbl
 *.pdf
-master.blg
+*.blg
