@@ -1,28 +1,29 @@
 \chapter{Initial Problem}\label{ch:iniprob}
-Here we will explain our initial ideas and criteria we based our choices on.
+In this section, the initial ideas for this project will be explained, as well as the criteria they were based on.
 
-We have based our initial problem formulation on our semester theme and our chosen project recommendation. Because of this, we wanted our initial problem formulation to be based on computer vision and a augmented board game, with the augmentation being based on computer vision. As we tried to specify what our analysis of the initial problem formulation should cover, we generated several ideas through brainstorming.
+The initial problem formulation is based on the semester theme, visual computing -- human perception, as well our chosen project recommendation, augmented board games. Because of this, we wanted our initial problem formulation to be based on augmenting a board game by use of computer vision. As we tried to specify what our initial problem formulation should cover, we generated several ideas through brainstorming.
 
-Those ideas each had a chosen board game, chosen technology needed for the ideas and a rough project process planning. Furthermore, all the ideas went through some criteria, in order to filter our ideas.
-The criteria were:
+For each idea, we noted down which board game to augment, chosen technology needed, and a rough plan for the process. Furthermore, we decided that all ideas had to fulfil certain criteria, which are as follows:
 \begin{enumerate}
 	\item The idea must implement computer vision, since that is what we will need to fulfil our curriculum.
-	\item The idea must include a existing board game that we have access to. So we do not design our own board game from scratch.
+	\item The idea must include an existing board game that we have access to. We will not design our own board game from scratch.
 	\item The implemented computer vision for the idea must be interactive. This was important for us to remember, in order to stick with the main course of 3rd semester in the curriculum.
-	\item The playtime of the idea's chosen board game must not have an average game time over two hours. This criteria was based on the assumption that if the game's playtime was too long, it would be harder to test it properly.
-	\item The implemented computer vision may not make the board game itself more convoluted than it is. This criteria was added after a discussion, where the study group agreed on that we would not want to make the board games 'harder to play' than they were. ((maybe elaboration of rewording needed here).
+	\item The chosen board game must not have an average game time of over two hours. This criterion was based on the assumption that if the game's playtime is too long, it will be harder to test it properly.
+	\item The implemented computer vision must not make the board game itself more convoluted than it is to begin with. The product should augment the board game, not make it less enjoyable to play, and complicating a game further without adding to it would defeat the purpose of the project.
 \end{enumerate}
 
 ((Here there should be a list over our project ideas. I an not sure of what level of details are needed here, and how much of it should be in the appendix instead of this chapter - also, maybe there should even be a small detailed description of Terra mystica...not written by me))
 
-The chosen project idea were a interactive board for the game Terra Mystica. We believed that such a project would require a projection of the board, while an implementation computer vision should detect physical game pieces on top of the board.
-Our understanding of our chosen project idea lead us to make up an assumption of which things we would need to do in order to make our idea a reality:
+((Emilie note: the following should probably go under ideas. Yes, no, maybe?))
+
+We chose to center our project around an interactive board for the game Terra Mystica. For this game, we can project the board onto a table, while physical game pieces on the board are detected using computer vision. The following tasks need to be done in order to make this product a reality:
+
 \begin{enumerate}
-\item First, we would need to make up the board for the projection. Here we imagined that the board's function and usability (project-wise)would be prioritised over cosmetics. We would then need to make the board a projection.
-\item We then need the implemented computer vision to recognise the hexes that from a projected Terra Mystica board.
-\item After that, the projected board must be able to change the colors of the hexes in it, since that is an essential visual part of the game itself.
+\item First, we need to make the board for the projection. For this, the board's functionality will be prioritised over aesthetics, as the most important factor is that the tiles can be detected through computer vision. We would then need to properly project this board.
+\item We then need the computer vision to recognise the hexagons that make up a Terra Mystica board.
+\item After that, the projected board must be able to change the colours of the hexagons on it, since that is an essential visual part of the game itself.
 \item The computer vision now needs to recognise the game pieces.
-\item Now that the hexes can be recognised and change color while the game pieces also are being recognised, we will need to write/code(??!?) a program that can tie the hex color change to the game piece placement.
+\item After the hexagons can be recognised and change colour while the game pieces also are being recognised, we will need to make the program able to calculate when a certain hexagon should change colour depending on the game pieces.
 \end{enumerate}
 
 \section{Ideas}\label{sec:idea}
