@@ -8,5 +8,6 @@
 *.tdo
 *.thm
 *.toc
-*.bib
-*.pdf
+master.pdf
+master-blx.bib
+master.aux
