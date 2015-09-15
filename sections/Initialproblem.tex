@@ -1,3 +1,4 @@
+%!TEX root = ../master.tex
 \chapter{Initial Problem}\label{ch:iniprob}
 In this section, the initial ideas for this project will be explained, as well as the criteria they were based on.
 
@@ -18,6 +19,10 @@ For each idea, we noted down which board game to augment, chosen technology need
 
 We chose to center our project around an interactive board for the game Terra Mystica. For this game, we can project the board onto a table, while physical game pieces on the board are detected using computer vision. The following tasks need to be done in order to make this product a reality:
 
+
+The chosen project idea were a interactive board for the game Terra Mystica. We believed that such a project would require a projection of the board, while an implementation computer vision should detect physical game pieces on top of the board.
+Our understanding of our chosen project idea lead us to make up an assumption of which things we would need to do in order to make our idea a reality:
+
 \begin{enumerate}
 \item First, we need to make the board for the projection. For this, the board's functionality will be prioritised over aesthetics, as the most important factor is that the tiles can be detected through computer vision. We would then need to properly project this board.
 \item We then need the computer vision to recognise the hexagons that make up a Terra Mystica board.
@@ -27,9 +32,99 @@ We chose to center our project around an interactive board for the game Terra My
 \end{enumerate}
 
 \section{Ideas}\label{sec:idea}
+When starting to generate ideas for the project, we made a structured brainstorm. We wrote the topics "Board games" and "Computer Vision" on a blackboard each. Then we wrote whatever came to mind between the individual group members. This gave the following results: 
+
+\begin{tabular}{l | l}
+Board games & Computer Vision\\
+\hline
+Terra Mystica & React on tokens and gestures\\
+Betrayal & Projection - Interactive\\
+Classical Games & Recognise:\\
+Strategy Games & - Colour\\
+Settlers & - Dice\\
+Card Games & - Etc\\
+Dominion & Maths\\
+Pandemic & \\
+New Risk & \\
+\end{tabular}
+
+Afterwards, we started to look at the two lists, and combine them together under the topic "Fusion". Our brainstorm table then looked like this:
+
+\begin{tabular}{l | l | l}
+Board games & Fusion & Computer vision\\
+\hline
+Terra Mystica & Points & React on tokens and gestures\\
+Betrayal at House on the Hill &  Virtual board & Projections\\
+Classic games & Variation board & Recognise: \\
+Strategy games & Dice rolls & - Colour\\
+Settlers & System of cards & - Dice\\
+Card games & Theme & - Etc\\
+Dominion & Virtual set-up template & Maths\\
+Pandemic \\
+New risk\\
+\end{tabular}
+
+From this brainstorm, we expanded the ideas by taking specific board games, and discussing how those games can be augmented through computer vision.
+
+
+Here are some of the idea plans we made(the rest are in appendix):
+
+\textbf{Virtual board game generator for Betrayal:} 
+
+Technology: Projection (for board), computer vision below (to detect game pieces)
+
+The board game Betrayal’s board is made up of pieces of the map that together randomly makes up the entire map of the house as the game progresses. Since each tile of the house is revealed only when players are discovering a new room, the idea would be to have a virtual version of the game board that selects and places the tiles themselves, so that players do not have to do it. This new virtual board could then expand or elaborate on information from the tiles, making it more obvious what happens in that specific tile.
+\begin{enumerate}
+\item Make graphics for tiles
+\item Recognise projected tiles
+\item Recognise doors on tile
+\item Recognise game piece
+\item Recognise movement of game piece
+\item Find and place new tile correctly (orientation)
+\end{enumerate}
+
+
+\textbf{Interactive board for Terra Mystica} 
+
+Technology: Projection (for board), computer vision above (to detect game pieces)
+
+In Terra Mystica you have to change the tiles on the board to match the race which you currently playing. So make a board which is projected onto the table, which you can interact with in the form of gestures, to change the tiles without having to place a token upon the board.
+\begin{enumerate}
+\item Make board for projection
+\item Recognise individual hexes on board
+\item Change colour of hex
+\item Enable colour change in accordance \item With certain parameters
+\item Recognise game pieces
+\item Tie hex colour change to game piece placement
+\end{enumerate} 
+
+
+\textbf{Trivial Pursuit}
+ 
+Technology: Computer vision (to find the game pieces), Projection (question cards)
+
+Virtual cards with questions on one side and answers show up when you do a specific gesture.
+\begin{enumerate}
+\item Recognise the board
+\item Recognise individual colour “tiles” on the board
+\item Recognise game pieces
+\item Recognise game piece placement 
+\item Give question according to game piece placement
+\item Gesture to get answer/progress further
+\end{enumerate}
+
+
 
 \subsection{Terra Mystica Explained}
 
+Terra Mystica is a strategy board game, for 2-5 players where the winner is the player with the most victory points. 
+
+In the beginning of the game you choose 1 of 14 races that you are going to play. Each race have special abilities, some of which let you gain victory points based on certain conditions, where others give you the ability to expand faster. When all players have chosen a race the first player then places a dwelling and the player to the left then places theirs. When the last player places dwellings they place two, then the player to the right places their second. When it's the starting player again the game begins. You then expand upon the dwellings placed and try to obtain victory points.
+
+Victory points are obtained throughout the game, based on your race and the different objectives. Two objectives are always the same; achieve the highest amount of cohesive hexagons, and have the highest amount in the four different cults. There are also certain objectives each round, which give you victory points. 
+>>>>>>> origin/master
+
 \subsection{Target Group Explained}
 
-\section{Final Problemformulation}\label{sec:finalprob}
+\section{Final Problem Formulation}\label{sec:finalprob}
+
