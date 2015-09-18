@@ -1,131 +1,39 @@
 %!TEX root = ../master.tex
 \chapter{Initial Problem}\label{ch:iniprob}
-In this section, the initial ideas for this project will be explained, as well as the criteria they were based on.
+In this section, the basic criteria for this semester project will be explained. From this, the initial problem will be defined.
 
-The initial problem formulation is based on the semester theme, visual computing -- human perception, as well our chosen project recommendation, augmented board games. Because of this, we wanted our initial problem formulation to be based on augmenting a board game by use of computer vision. As we tried to specify what our initial problem formulation should cover, we generated several ideas through brainstorming.
+The goal of this project is to develop an 'augmented' board game that makes use of computer vision. Based on this, as well as the semester requirements, five basic criteria for the project are defined:
 
-For each idea, we noted down which board game to augment, chosen technology needed, and a rough plan for the process. Furthermore, we decided that all ideas had to fulfil certain criteria, which are as follows:
 \begin{enumerate}
-	\item The idea must implement computer vision, since that is what we will need to fulfil our curriculum.
-	\item The idea must include an existing board game that we have access to. We will not design our own board game from scratch.
-	\item The implemented computer vision for the idea must be interactive. This was important for us to remember, in order to stick with the main course of 3rd semester in the curriculum.
-	\item The chosen board game must not have an average game time of over two hours. This criterion was based on the assumption that if the game's playtime is too long, it will be harder to test it properly.
-	\item The implemented computer vision must not make the board game itself more convoluted than it is to begin with. The product should augment the board game, not make it less enjoyable to play, and complicating a game further without adding to it would defeat the purpose of the project.
+	\item The product of this project must be a media artefact.
+	\item The artefact must implement computer vision in such a way that makes it interactive.
+	\item The artefact must include an existing board game that we have access to.
+	\item The chosen board game must not have an average game time of over two hours.
+	\item The implemented computer vision must not make the act of playing more convoluted.
 \end{enumerate}
 
+The board game chosen for this project is Terra Mystica.
 
+\section{A short introduction to Terra Mystica}
+Terra Mystica is a strategy board game for 2-5 players about territory control and resource management. Each player can choose one of 14 races, each of which has their own playstyle. The board consists of hexes with different kinds of terrain. Players can only build structures on hexes with terrain which matches their race. This terrain can, however, be modified by players if they choose to spend the required resources. Finally, the game involves a Power mechanics; if a player modifies a piece of terrain next to the structures of another player, that player can choose to gain Power at the cost of Victory Points, which can be spent on acquiring resources.  
 
+Victory Points are gained based on objectives, some of which are global (obtainable by each player), while the others are race-specific. The winner is the player that has the most Victory Points at the end of the game.
 
+\section{An interactive board for Terra Mystica}
+This project aims to create an interactive board for Terra Mystica, that uses Computer Vision to detect hand movement and the shapes and colours of specific game pieces. The artefact will then use this information to manipulate the board. This can be for handling terrain changes, and for projecting information such as the amount of Power one player will receive if another player chooses to manipulate a particular piece of terrain. Furthermore, it can handle global objectives automatically at the end of the game.
 
-\section{Ideas}\label{sec:idea}
-When starting to generate ideas for the project, we made a structured brainstorm. We wrote the topics "Board games" and "Computer Vision" on a blackboard each. Then we wrote whatever came to mind between the individual group members. This gave the following results: 
+\section{Problem statement}
+From this, an initial problem statement is defined: 
 
-\begin{tabular}{l | l}
-Board games & Computer Vision\\
-\hline
-Terra Mystica & React on tokens and gestures\\
-Betrayal & Projection - Interactive\\
-Classical Games & Recognise:\\
-Strategy Games & - Colour\\
-Settlers & - Dice\\
-Card Games & - Etc\\
-Dominion & Maths\\
-Pandemic & \\
-New Risk & \\
-\end{tabular}
+\textbf{How can a media artefact that 'augments' Terra Mystica through an implementation of Computer Vision be developed?}
 
-Afterwards, we started to look at the two lists, and combine them together under the topic "Fusion". Our brainstorm table then looked like this:
+To answer this question, researc questions are defined:
 
-\begin{tabular}{l | l | l}
-Board games & Fusion & Computer vision\\
-\hline
-Terra Mystica & Points & React on tokens and gestures\\
-Betrayal at House on the Hill &  Virtual board & Projections\\
-Classic games & Variation board & Recognise: \\
-Strategy games & Dice rolls & - Colour\\
-Settlers & System of cards & - Dice\\
-Card games & Theme & - Etc\\
-Dominion & Virtual set-up template & Maths\\
-Pandemic \\
-New risk\\
-\end{tabular}
+\textbf{How can Computer Vision be used to facilitate user interaction?}
 
-From this brainstorm, we expanded the ideas by taking specific board games, and discussing how those games can be augmented through computer vision.
-
-
-Here are some of the idea plans we made(the rest are in appendix):
-
-\textbf{Virtual game board generator for Betrayal:} 
-
-Technology: Projection for the board either above or below the surface of the game table. Also, there will be needed computer vision in order to create the board, by recognising game pieces and their placements.
-
-The board game Betrayal’s board is made up of pieces of the map that together randomly makes up the entire map of the house as the game progresses. Since each tile of the house is revealed only when players are discovering a new room, the idea would be to have a virtual version of the game board that selects and places the tiles themselves, so that players do not have to do it. This new virtual board could then expand or elaborate on information from the tiles, making it more obvious what happens in that specific tile.
-\begin{enumerate}
-\item Make graphics for tiles
-\item Recognise projected tiles
-\item Recognise doors on tile
-\item Recognise game piece
-\item Recognise movement of game piece
-\item Find and place new tile correctly (orientation)
-\end{enumerate}
-
-
-\textbf{Interactive board for Terra Mystica} 
-
-Technology: Projection (for board), computer vision above (to detect game pieces)
-
-In Terra Mystica you have to change the tiles on the board to match the race which you currently playing. So make a board which is projected onto the table, which you can interact with in the form of gestures, to change the tiles without having to place a token upon the board.
-\begin{enumerate}
-\item Make board for projection
-\item Recognise individual hexes on board
-\item Change colour of hex
-\item Enable colour change in accordance \item With certain parameters
-\item Recognise game pieces
-\item Tie hex colour change to game piece placement
-\end{enumerate} 
-
-
-\textbf{Trivial Pursuit}
- 
-Technology: Computer vision (to find the game pieces), Projection (question cards)
-
-Virtual cards with questions on one side and answers show up when you do a specific gesture.
-\begin{enumerate}
-\item Recognise the board
-\item Recognise individual colour “tiles” on the board
-\item Recognise game pieces
-\item Recognise game piece placement 
-\item Give question according to game piece placement
-\item Gesture to get answer/progress further
-\end{enumerate}
-
-\bigskip
-
-We chose to center our project around an interactive board for the game Terra Mystica. For this game, we can project the board onto a table, while physical game pieces on the board are detected using computer vision. The following tasks need to be done in order to make this product a reality:
-
-
-\begin{enumerate}
-\item First, we need to make the board for the projection. For this, the board's functionality will be prioritised over aesthetics, as the most important factor is that the tiles can be detected through computer vision. We would then need to properly project this board.
-\item We then need the computer vision to recognise the hexagons that make up a Terra Mystica board.
-\item After that, the projected board must be able to change the colours of the hexagons on it, since that is an essential visual part of the game itself.
-\item The computer vision now needs to recognise the game pieces.
-\item After the hexagons can be recognised and change colour while the game pieces also are being recognised, we will need to make the program able to calculate when a certain hexagon should change colour depending on the game pieces.
-\end{enumerate}
-
-
-\subsection{Terra Mystica Explained}
-
-Terra Mystica is a strategy board game, for 2-5 players where the winner is the player with the most victory points. 
-
-In the beginning of the game you choose 1 of 14 races that you are going to play. Each race have special abilities, some of which let you gain victory points based on certain conditions, where others give you the ability to expand faster. When all players have chosen a race the first player then places a dwelling and the player to the left then places theirs. When the last player places dwellings they place two, then the player to the right places their second. When it's the starting player again the game begins. You then expand upon the dwellings placed and try to obtain victory points.
-
-<<<<<<< HEAD
-Victory points are obtained throughout the game, based on your race and the different objectives. Two objectives are always the same; achieve the highest amount of cohesive hexagons, and have the highest amount in the four different cults. There are also certain objectives each round, which give you victory points. 
-=======
-Victory points are obtained throughout the game, based on your race and the different objectives which are placed on the rounds, such as gain two victory points for every dwelling placed. Two objectives are always the same; achieve the highest amount of cohesive hexagons, and have the highest amount in the four different cults, cult progress can be obtained through some race abilities, priests and favour tiles, priests and favour tiles are obtained by building temples. There are also certain objectives each round, which give you victory points. 
->>>>>>> origin/master
+\textbf{How can the software for a virtual board be developed?}
 
 \subsection{Target Group Explained}
-14+
+
 \section{Final Problem Formulation}\label{sec:finalprob}
 
