@@ -22,23 +22,23 @@
 %frontmatter
 \pagestyle{empty} %disable headers and footers
 \pagenumbering{roman} %use roman page numbering in the frontmatter
-\input{sections/frontpage.tex}
-\input{sections/colophon.tex}
-\input{sections/titlepages.tex}
+\include{/frontpage}
+\include{sections/colophon}
+\include{sections/titlepages}
 \cleardoublepage
 \pdfbookmark[0]{Contents}{label:contents}
 \pagestyle{fancy} %enable headers and footers again
 \tableofcontents
-\listoftodos
+%\listoftodos
 %\input{sections/preface.tex}
 \cleardoublepage
 %mainmatter
 \pagenumbering{arabic} %use arabic page numbering in the mainmatter
-\input{sections/introduction.tex}
-\input{sections/Initialproblem.tex}
-\input{sections/conclusion.tex}
+\include{sections/introduction}
+\include{sections/Initialproblem}
+\include{sections/conclusion}
 \printbibliography[heading=bibintoc]
 \label{bib:mybiblio}
 \appendix
-\input{sections/appAname.tex}
+\include{sections/appAname}
 \end{document}
