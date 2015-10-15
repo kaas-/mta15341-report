@@ -4,7 +4,7 @@
 
 @InProceedings{andersen_designing_2004,
   Title                    = {Designing an augmented reality board game with children: the battleboard 3D experience},
-  Author                   = {Andersen, Troels L. and Kristensen, Sune and Nielsen, Bjørn W. and Grønb{\textbackslash}a ek, Kaj},
+  Author                   = {Andersen, Troels L. and Kristensen, Sune and Nielsen, BjÃ¸rn W. and GrÃ¸nbÃ¦k, Kaj},
   Booktitle                = {Proceedings of the 2004 conference on {Interaction} design and children: building a community},
   Year                     = {2004},
   Pages                    = {137--138},
@@ -18,9 +18,9 @@
   Urldate                  = {2015-10-09}
 }
 
-@Book{multi_touch_technologies,
+@Book{multiTT,
   Title                    = {Multitouch Technologies},
-  Author                   = {NUI Group Authors},
+  Author                   = {{NUI Group Authors}},
   Editor                   = {Community Release},
   Year                     = {2009},
 
@@ -28,26 +28,18 @@
   Timestamp                = {2015.10.09}
 }
 
-@Booklet{Madsen2010,
-  Title                    = {Introduktion til {LaTeX}},
-  Author                   = {Lars Madsen},
-  HowPublished             = {\url{http://www.imf.au.dk/system/latex/bog/}},
-  Year                     = {2010}
-}
+@InProceedings{peitz_wizards_2006,
+  Title                    = {Wizard's apprentice gameplay-oriented design of a computer-augmented board game},
+  Author                   = {Peitz, Johan and Björk, Staffan and Jäppinen, Anu},
+  Booktitle                = {Proceedings of the 2006 {ACM} {SIGCHI} international conference on {Advances} in computer entertainment technology},
+  Year                     = {2006},
+  Pages                    = {18},
+  Publisher                = {ACM},
 
-@Book{Mittelbach2005,
-  Title                    = {The LATEX companion},
-  Author                   = {Frank Mittelbach},
-  Publisher                = {Addison-Wesley},
-  Year                     = {2005},
-  Edition                  = {2. ed.}
-}
-
-@Misc{Oetiker2010,
-  Title                    = {The Not So Short A Introduction to {LaTeX2e}},
-
-  Author                   = {Tobias Oetiker},
-  HowPublished             = {\url{http://tobi.oetiker.ch/lshort/lshort.pdf}},
-  Year                     = {2010}
+  File                     = {a79-peitz.pdf:C\:\\Users\\Daniel vilcapaza\\AppData\\Roaming\\Zotero\\Zotero\\Profiles\\960gh25h.default\\zotero\\storage\\KD8RKHJD\\a79-peitz.pdf:application/pdf},
+  Owner                    = {Daniel vilcapaza},
+  Timestamp                = {2015.10.15},
+  Url                      = {http://dl.acm.org/citation.cfm?id=1178845},
+  Urldate                  = {2015-10-15}
 }
 
