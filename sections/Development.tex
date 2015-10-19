@@ -18,5 +18,27 @@ We have assembled a touch board, made with a plexi glass top and IR lamps below.
 The field of view of the camera is 74cm*58cm, and the entire table top is 102cm*120cm. The table is 95cm. 
 a
 
-\section{Technology}
+\section{Image Processing}
+To facilitate user interaction, a software module is needed to analyse a video input and recognize specific features and changes in it over time. There are two main criteria for this software. It needs to:
+\begin{itemize}
+\item Recognize finger touch.
+\item Recognize specific game pieces.
+\end{itemize}
+
+To do this, BLOBs need to be extracted from the video input through segmentation. Since it is difficult to create a uniform surface of reflected IR-light, it might be necessary to apply a filter to the input before segmentation. Furthermore, since this is a video feed rather than a static image, changes in illumination may need to be accounted for as well. This leads to a four-step solution for processing the video input:
+\begin{enumerate}
+\item Prepare video frame for segmentation (Pre-segmentation).
+\item Segment image (Segmentation).
+\item Remove noise from the segmented image (Post-segmentation).
+\item Analyse BLOB(s) (BLOB-analysis).
+\end{enumerate}
+
+\subsection{Segmentation methods}
+There are several methods for segmenting images. Relevant methods are discussed in this section. Since this project deals with video as opposed to static images, a single threshold with a fixed threshold value is not useful. The hardware setup uses Rear Diffused Illumination with infrared light sources, and an  infrared filter on a web camera. This should create an ideal image for segmentation using an automatic global thresholding method. This method makes use of the histogram of an image to identify the most optimal threshold value\citep{Moeslund2012c4}. In an ideal image, the histogram will have two distinct 'mountains' of pixel values, that is to say, there will be two groups of pixels that, within each group, have a similar brightness while at the same time the groups themselves are isolated from each other. In the case of this project, the image produced should have bright spots where the board is touched, on a dark plane which is to be considered the background. The software then needs to identify an optimal threshold value between these two groups. One such method, is to evaluate the Figure~\ref{eq:otsu} for each brightness value in the histogram. The result with the lowest value is then selected.
+\begin{figure}[h]
+	\begin{align}
+	C(T)&=M_1(T)\cdot\sigma_1^2(T)+M_2(T)\cdot\sigma_2^2(T)
+	\end{align}
+	\caption{$M_1(T)$ is is the number of pixels left of $T$ and $M_2(T)$ is the number of pixels to the right. $\sigma_1^2(T)$ and $\sigma_2^2(T)$ is the variance of the pixels to the left and right repsectively \label{eq:otsu} \citep[p. 61]{moeslund_introduction_2012_chapter_5}}
+\end{figure}
 
