@@ -15,12 +15,16 @@ The goal of this project is to develop an 'augmented' board game that makes use 
 The board game chosen for this project is Terra Mystica.
 
 \section{A short introduction to Terra Mystica}
-Terra Mystica is a strategy board game for 2-5 players about territory control and resource management. Each player can choose one of 14 races, each of which has their own playstyle. The board consists of hexes with different kinds of terrain. Players can only build structures on hexes with terrain which matches their race. This terrain can, however, be modified by players if they choose to spend the required resources. Finally, the game involves a Power mechanics; if a player modifies a piece of terrain next to the structures of another player, that player can choose to gain Power at the cost of Victory Points, which can be spent on acquiring resources.  
+Terra Mystica is a strategy board game for 2-5 players about territory control and resource management. Each player can choose one of 14 races, each of which has their own playstyle. The board consists of hexes with different kinds of terrain. Players can only build structures on hexes with terrain which matches their race. This terrain can, however, be modified by players if they choose to spend the required resources. This process of changing the terrain of a tile is referred to as 'terraforming'. Finally, the game involves a Power mechanic; if a player modifies a piece of terrain next to the structures of another player, that player can choose to gain Power at the cost of Victory Points, which can be spent on acquiring resources.  
 
 Victory Points are gained based on objectives, some of which are global (obtainable by each player), while the others are race-specific. The winner is the player that has the most Victory Points at the end of the game.
 
+The game involves many loose pieces for the players to manage (namely when terraforming), and the Power mechanic is often forgotten by the players.
+
 \section{An interactive board for Terra Mystica}
-This project aims to create an interactive board for Terra Mystica, that uses Computer Vision to detect hand contact on the board via a camera below the surface of it. With the hand contact the user should be able to change the hexagon-shaped tiles in the game. The idea is that the board itself is a projection from below, and the board should then be changed due to inputs on the interaction with the board's surface. 
+This project aims to create an interactive board for Terra Mystica, that uses Computer Vision to detect hand contact on the board via a camera below its surface. With the hand contact, the user should be able to change the colour of the hexagon-shaped tiles in the game. The idea is that the board itself is a projection from below, and the board should change according to inputs on the interaction with the board's surface.
+
+The interactive board will eliminate the need for terrain game pieces, since it will manage terraforming digitally for the player. It may also assist the players in remembering the Power mechanic, as well as streamline other elements of the game.
 
 \todo {I am uncertain if the following text has any relevance here or it should be added in the report later. }
 Another feature was thought as a possible expansion of the project's product, would be board's detection of game pieces, which can be used to measure amount of 'power' after game piece placement. This would be done through computer vision detection from above, which must be able to tell difference between kinds of game pieces and ownership of them.
@@ -37,5 +41,4 @@ To answer this question, research questions are defined:
 \textit{How can the software for a virtual board be developed?}
 
 \subsection{Target Group Explained}
-The target group is the age group 14+.
-
+Our target group is people aged 14 and above, as that is the recommended age group for players of the game Terra Mystica.
