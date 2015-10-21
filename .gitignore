@@ -1,11 +1,2 @@
 *.aux
-*.bbl
-*.blg
-*.out
-*.pdf
-*.gz
-*.thm
-*.toc
-master.dvi
-*.tex
 *.aux
