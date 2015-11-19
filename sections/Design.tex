@@ -63,7 +63,7 @@ The following are not required for the minimum implementation, but can be added 
 \item A space keeping track of the cult track, showing how many points each player has with the different cults.
 \end{itemize}
 
-\section{Requirement specifications} \todo {Not sure if this is the right place to have this}
+\section{Requirement specifications}
 The following is the specifications of the usability- and software-based requirements needed in order to to design, build and program the interactive board for Terra Mystica.
 
 \begin{enumerate}
@@ -74,7 +74,7 @@ The following is the specifications of the usability- and software-based require
 	\end{enumerate}
 \item Once the player is selected, the program must be able to detect when a tile is selected for terraforming - that is, when a player places three fingers on the hexagon in question. This tile must then change to the terrain type, that is, the colour, of the last player who was selected.
 	\begin{enumerate}
-	\item This must be successful 75\% of the time.
+	\item This must be successful 75\% of the time. It is crucial that program can tell the difference placing a game piece on the board, and having the player select a tile via the three finger input. Depending on the efficiency of the program’s BLOB extraction, this might cause misunderstandings form the program, which is why the success rate required is reduced, compared to the success rate of the player selection.
 	\end{enumerate}
 \item In case of misplacement of terraforming, the program must be able to detect the use of an undo-button, which should be done with the same input as with the terraforming, but in a different area of interest.
 	\begin{enumerate}
@@ -85,5 +85,10 @@ The following is the specifications of the usability- and software-based require
 	\begin{enumerate}
 	\item A further implementation which is nice to have is to make the actions managed digitally. When an action is used, the player must select the action they wish to use by placing three fingers on it, in the same manner as when terraforming. Doing this should toggle the action on and off. When the action is turned off, a cross should appear on the action area, showing the players that the action can now not be used.
 	\end{enumerate}
-\item The digital board should have a point counter. That is, a border around the board consisting of 100 tiles numbered 1-100. The red border on figure 5.2 shows its placement. This border should not be managed digitally, but the players should be able to move a coloured token representing themselves from tile to tile, visualising how many points they have. The program should ignore the tokens placed on this border, by for example having it outside areas of interest. 
+\item The digital board should have a point counter. That is, a border around the board consisting of 100 tiles numbered 1-100. The red border on figure 5.2 shows its placement. This border should not be managed digitally, but the players should be able to move a coloured token representing themselves from tile to tile, visualising how many points they have. The program should ignore the tokens placed on this border, by for example having it outside areas of interest.
+
+\item The board should show game goals, which is normally shown to the left of the board, just before the point counter, which normally makes up the border of the board. These are goals that either only applies to a single round, or to a whole game. We do not have such a space represented on figure 5.2, but supposedly, those can be placed in some the area where nothing is represented. Just as with the point counter, the goals should not be managed digitally, but just be covered with game pieces when they are not important.
+	\begin{enumerate}
+	\item Another 'nice to have' implementation could be to make the goals digitally covered, which could for example be done by interacting with them, in order to hide then, or reveal them if they were hidden by accident.
+	\end{enumerate}
 \end{enumerate}
