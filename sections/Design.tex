@@ -18,7 +18,7 @@ A possible expansion of the project would be detection of game pieces, which can
 
 After defining the initial design, a lo-fi test was conducted to test whether the areas of interest were large enough, the defined gestures were easy to perform, and if the increased size had any effect on the gameplay. We also wanted a first outside opinion of the game without the terraforming pieces. 
 
-For the lo-fi we had three participants: Nadia, Catja and Sebastian. \todo{Probably need their entire names here} 
+For the lo-fi we had three participants: Two female participants and one male, aged 20-25. 
 They were all familiar with the game Terra Mystica, so they did not need to learn the game first. They only played two rounds, since one of the key points of the test was to learn if the gestures and the areas were appropriate. 
 
 They all had a little bit of trouble remembering to do the terraforming gesture in the beginning, but they were all pretty sure that with a little more playing it would come naturally/it would be fine. They also mentioned that it might be easier to remember to do the start of turn gesture if the non-interactive areas of the board lit up in the colour of the currently selected player. 
@@ -37,14 +37,31 @@ Then they were introduced to the Lo-Fi board, by the primary interviewer who als
 After the game they were asked some questions in a loosely structured group interview. 
 The whole test was filmed.
 
-\subsection{title placeholder} \todo{this title should be changed. the section will be about the gui design and needs/nice to haves}
-hahaha
-
+\section{Board interface}
 \begin{figure}
 \centering
 \includegraphics[width=0.9\textwidth]{sketchGUI}
 \caption{Sketch illustrating the interface}
 \end{figure}
+
+The board interface itself should resemble the Terra Mystica Board to some extent, as shown on figure 5.2. The following elements should be on the board in the minimum implementation:
+\begin{itemize}
+\item A map consisting of hexagonal tiles, varying in colour. By default, they will be arranged like the original game board, but all non-river tiles should be able to change colour.
+\item Four areas (marked by the hand icon on figure 5.2), where the players can indicate through gestures that it is their turn.
+\item Some undo buttons, marked on the sketch in green. These should be interactive, in case a players makes an incorrect action.
+\item A space showing the global power actions which can only be taken once per round by any player. These are marked on the sketch in blue. In the minimum implementation, these are not interactive. However, as a further iteration, they can be made interactive, so that it is visible whether the action has been used or not without using tokens.
+\item A border surrounding the map, shown as a red border on the sketch. In the minimum implementation, this is not interactive, and the points each player has accumulated must be shown using tokens, as in the original game. A further iteration to this could be to instead manage the points digitally, either by touching the point border itself, or adding add/subtract buttons at the edge of the board.
+\item A space where the global goals for this round can be placed. These are managed using game pieces.
+\end{itemize}
+
+The following are not required for the minimum implementation, but can be added if time allows:
+\begin{itemize}
+\item Detection of building placement, allowing the program to see when power should be offered to another player. The interface could then indicate that power needs to be offered, and in an ideal implementation, how much power. This would require shape recognition of the game pieces.
+\item The empty spaces around the edge of the board could be coloured in the currently selected player's colour. This way, it would be visualised whether a player needs to indicate that it is thair turn or not.
+\item A space showing information about the players, such as race, colour, points, power, etc.
+\item An area to place unused building pieces.
+\item A space keeping track of the cult track, showing how many points each player has with the different cults.
+\end{itemize}
 
 \section{Requirement specifications} \todo {Not sure if this is the right place to have this}
 The following is the specifications of the usability- and software-based requirements needed in order to to design, build and program the interactive board for Terra Mystica.
