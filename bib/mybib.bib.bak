@@ -18,10 +18,21 @@
   Urldate                  = {2015-10-09}
 }
 
-@Article{magerkurth_stars-ubiquitous_2003,
+@Misc{Munchkin,
+  Title                    = {Steve Jackson games: Munchkin Level Counter},
+
+  Author                   = {Flotte Emilie},
+  HowPublished             = {http://www.sjgames.com/apps/levelcounter/},
+  Year                     = {2011},
+
+  Url                      = {http://www.sjgames.com/apps/levelcounter/},
+  Urldate                  = {2015-11-20}
+}
+
+@Article{magStars,
   Title                    = {Stars-a ubiquitous computing platform for computer augmented tabletop games},
   Author                   = {Magerkurth, Carsten and Stenzel, Richard and Prante, Thorsten},
-  Journal                  = {Proceedings of Video Track of Ubiquitous Computing (UBICOMP’03)},
+  Journal                  = {Proceedings of Video Track of Ubiquitous Computing (UBICOMP'03)},
   Year                     = {2003},
 
   File                     = {Stars-A ubiquitous Computering platform for computer agumented tabletop games.pdf:C\:\\Users\\Daniel vilcapaza\\AppData\\Roaming\\Zotero\\Zotero\\Profiles\\960gh25h.default\\zotero\\storage\\27DK7PZ5\\Stars-A ubiquitous Computering platform for computer agumented tabletop games.pdf:application/pdf},
