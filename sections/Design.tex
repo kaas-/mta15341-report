@@ -1,6 +1,6 @@
 %!TEX root = ../master.tex
 \chapter{Design}\label{ch:design}
-The following chapter is the designs for Terra Mysticas augmented board's interface and its requirement specification. They are based on the concept idea of the interactive board for Terra Mystica and the lo-fi test of a mock-up version of this concept.
+The following chapter is the designs for Terra Mystica's augmented board's interface and its requirement specification. They are based on the concept idea of the interactive board for Terra Mystica and the lo-fi test of a mock-up version of this concept.
 
 \section{An interactive board for Terra Mystica}
 This project aims to create an interactive board for Terra Mystica, using computer vision to detect hand contact on the board via a camera below its surface. With the hand contact, the user should be able to change the colour of the hexagon-shaped tiles in the game. The idea is that the board itself is a projection from below, and the board should change according to inputs on the table's surface.
@@ -86,8 +86,7 @@ The following is the specifications of the usability- and software-based require
 	\item A further implementation which is nice to have is to make the actions managed digitally. When an action is used, the player must select the action they wish to use by placing three fingers on it, in the same manner as when terraforming. Doing this should toggle the action on and off. When the action is turned off, a cross should appear on the action area, showing the players that the action can now not be used.
 	\end{enumerate}
 \item The digital board should have a point counter. That is, a border around the board consisting of 100 tiles numbered 1-100. The red border on figure 5.2 shows its placement. This border should not be managed digitally, but the players should be able to move a coloured token representing themselves from tile to tile, visualising how many points they have. The program should ignore the tokens placed on this border, by for example having it outside areas of interest.
-
-\item The board should show game goals, which is normally shown to the left of the board, just before the point counter, which normally makes up the border of the board. These are goals that either only applies to a single round, or to a whole game. We do not have such a space represented on figure 5.2, but supposedly, those can be placed in some the area where nothing is represented. Just as with the point counter, the goals should not be managed digitally, but just be covered with game pieces when they are not important.
+\item The board should have a space where the players can place the game pieces that represent the game goals. This space should not be interactive. This space is represented as the red space to the side on figure 5.2. These are goals that either only applies to a single round, or to a whole game. Just as with the point counter, the goals should not be managed digitally, but just be covered with game pieces when they are not important.
 	\begin{enumerate}
 	\item Another 'nice to have' implementation could be to make the goals digitally covered, which could for example be done by interacting with them, in order to hide then, or reveal them if they were hidden by accident.
 	\end{enumerate}
