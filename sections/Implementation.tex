@@ -18,35 +18,36 @@ Choosing such a solution has it's advantages and disadvantages. First of all, th
 \label{Fig:Table} \caption{The touch table}
 \end{figure}
 This section will describe the physical aspect of our product.
-We have assembled a touch board, made with a acrylic glass top and IR lamps below. Underneath the surface of the top is a short-throw projector so we are able to project images on the table. Additionally we have a webcam with an IR filter placed at the very bottom of the table, so we are able to detect, what is happening on the table surface. This is thanks to the reflected IR light, as explained in section \ref{sec:RDI}.
+Our table's surface is made from acrylic glass, and below are four IR lamps, as well as a webcam with and IR filter, and a short-throw projector, which will project images on the table. The webcam and IR lamps are there to facilitate RDI, as explained in section \ref{sec:RDI}. All these elements are placed in a manner that spreads the IR light from the lamps as evenly as possible.
 
 The outer frame of the table is constructed from 3 different lengths of aluminium rods, giving the table a final size of 120 x 102 x 89 cm.
-After the outer frame of the table was assembled, a cloth cover was made for the table. The cover was made to make the inside af the table darker, so a better projection was achieved and to prevent the IR light from damaging peoples eyes. To be able to test the interior, diffusing material was needed on the acrylic glass top. Baking paper was chosen for this job\todo{please describe why.}. The baking paper was attached on the bottom of the acrylic glass top, meaning that the user wouldn't be able to feel the baking paper when they interact with the board. 
-With the exterior finished, it was time for the interior to be constructed. The positions of the electronics were decided and the interior was build, based on what gave the best results. 
+In order to keep outside IR light from disturbing the image as much as possible, a black cloth is covering the table at the sides. The cloth has the additional benefit of making the projection from the short-throw projector clearer. 
 
-During the construction of the table, a few problems were encountered. One of the problem encountered was that the baking paper did not sit tight against the acrylic glass and was slowly falling down. This gave us problems when trying to reflecting IR light from it. The problem was fixed by taping the baking paper to the acrylic glass with duct tape. 
+As diffuser material, baking paper was chosen, as it is easily available. The paper is placed underneath the glass surface, as tight as possible, as placing it on top results in too much light being reflected by the acrylic glass into the webcam. When applying the diffuser, we encountered a problem: If the diffuser is not attached tight enough to the glass, touching the surface does not result in enough IR light being reflected. This was remedied by tightening the baking paper with duct tape.
 
 \section{Image Processing}
-To facilitate user interaction, a software module is needed to analyse a video input and recognize specific features and changes in it over time. There are two main criteria for this software. It needs to:
+To facilitate user interaction, a software module is needed to analyse a video input and recognize specific features and changes in it over time. As described in section \ref{sec:RECSPEC}, there are three main criteria for this software's minimum implementation. It needs to:
 \begin{itemize}
-\item Recognize specific finger touches.
-\item Recognize specific game pieces.
+\item Recognise which gesture is done when selecting player.
+\item Recognise when a tile is selected for terraforming.
+\item Recognise when the undo button has been selected.
 \end{itemize}
 
-To do this, BLOBs need to be extracted from the video input through segmentation. Since it is difficult to create a uniform surface of reflected IR-light, it might be necessary to apply a filter to the input before segmentation. Furthermore, since this is a video feed rather than a static image, changes in illumination may need to be accounted for as well. This leads to a four-step solution for processing the video input:
+\todo{Mark can you do this later maybe?} To do all of these, BLOBs need to be extracted from the video input through segmentation. Since it is difficult to create a uniform surface of reflected IR-light, it might be necessary to apply a filter to the input before segmentation. Furthermore, since this is a video feed rather than a static image, changes in illumination may need to be accounted for as well. This leads to a four-step solution for processing the video input:
 \begin{enumerate}
 \item Prepare video frame for segmentation (Pre-segmentation).
 \item Segment image (Segmentation).
-\item Remove noise from the segmented image (Post-segmentation).
 \item Analyse BLOB(s) (BLOB-analysis).
+\item Conditionally change data depending on the BLOB analysis
 \end{enumerate}
+Point 3 and 4 of the steps, are in a constant loop. Whenever on or more new BLOB(s) is analysed, the program conditionally changes data depending on that analysis. A new BLOB after that causes other changes and so on.
 
 \subsection{Segmentation methods}
-There are several methods for segmenting images. Relevant methods are discussed in this section. Since this project deals with video as opposed to static images, a single threshold with a fixed threshold value is not useful. The hardware setup uses Rear Diffused Illumination with infrared light sources, and an  infrared filter on a web camera. This should create an ideal image for segmentation using an automatic global thresholding method. This method makes use of the histogram of an image to identify the most optimal threshold value\citep{Moeslund2012c4}. In an ideal image, the histogram will have two distinct 'mountains' of pixel values, that is to say, there will be two groups of pixels that, within each group, have a similar brightness while at the same time the groups themselves are isolated from each other. In the case of this project, the image produced should have bright spots where the board is touched, on a dark plane which is to be considered the background. The software then needs to identify an optimal threshold value between these two groups. One such method, is to evaluate the Figure~\ref{eq:otsu} for each brightness value in the histogram. The result with the lowest value is then selected.
+There are several methods for segmenting images. Relevant methods are discussed in this section. Since this project deals with video as opposed to static images, a single threshold with a fixed threshold value is not useful. The hardware setup uses Rear Diffused Illumination with infrared light sources, and an  infrared filter on a web camera. This should create an ideal image for segmentation using an automatic global thresholding method. This method makes use of the histogram of an image to identify the most optimal threshold value\citep{Moeslund2012c4}. In an ideal image, the histogram will have two distinct 'mountains' of pixel values, that is to say, there will be two groups of pixels that, within each group, have a similar brightness while at the same time the groups themselves are isolated from each other. In the case of this project, the image produced is expected to have bright spots where the board is touched, on a dark plane which is to be considered the background. The software then needs to identify an optimal threshold value between these two groups. One such method, is to evaluate the Figure~\ref{eq:otsu} for each brightness value in the histogram. The result with the lowest value is then selected.
 \begin{figure}[h]
-	\begin{align}
+	\begin{align*}
 	C(T)&=M_1(T)\cdot\sigma_1^2(T)+M_2(T)\cdot\sigma_2^2(T)
-	\end{align}
-	\caption{$M_1(T)$ is is the number of pixels left of $T$ and $M_2(T)$ is the number of pixels to the right. $\sigma_1^2(T)$ and $\sigma_2^2(T)$ is the variance of the pixels to the left and right repsectively \label{eq:otsu} \citep[p. 61]{moeslund_introduction_2012_chapter_5}}
+	\end{align*}
+	\caption{$M_1(T)$ is the number of pixels left of $T$ and $M_2(T)$ is the number of pixels to the right. $\sigma_1^2(T)$ and $\sigma_2^2(T)$ is the variance of the pixels to the left and right repsectively \label{eq:otsu} \citep[p. 61]{moeslund_introduction_2012_chapter_5}}
 \end{figure}
 
