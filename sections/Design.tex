@@ -5,7 +5,7 @@ The following chapter is the designs for Terra Mystica's augmented board's inter
 \section{An interactive board for Terra Mystica}
 This project aims to create an interactive board for Terra Mystica, using computer vision to detect hand contact on the board via a camera below its surface. With the hand contact, the user should be able to change the colour of the hexagon-shaped tiles in the game. The idea is that the board itself is a projection from below, and the board should change according to inputs on the table's surface.
 
-The interactive board will eliminate the need for terrain game pieces, since it will manage terraforming digitally for the player. It may also assist the players in remembering the Power mechanic, as well as streamline other elements of the game.
+The interactive board will eliminate the need for terrain game pieces, since it will manage terraforming digitally for the player. It may also streamline other elements of the game.
 
 A possible expansion of the project would be detection of game pieces, which can be used to measure amount of power to be offered after game piece placement.
 
@@ -16,12 +16,18 @@ A possible expansion of the project would be detection of game pieces, which can
 \caption{The Lo-Fi board}
 \end{figure}
 
-After defining the initial design, a lo-fi test was conducted to test whether the areas of interest were large enough, the defined gestures were easy to perform, and if the increased size had any effect on the gameplay. We also wanted a first outside opinion of the game without the terraforming pieces. 
+After defining the initial design, a lo-fi test was conducted to test whether the areas of interest were large enough, the defined gestures were easy to perform, and if the increased size had any effect on the gameplay. We also wanted a first outside opinion of the game without the terraforming pieces.
 
+\subsection{Procedure}
 For the lo-fi we had three participants: Two female participants and one male, aged 20-25. 
 They were all familiar with the game Terra Mystica, so they did not need to learn the game first. They only played two rounds, since one of the key points of the test was to learn if the gestures and the areas were appropriate. 
 
-They all had a little bit of trouble remembering to do the terraforming gesture in the beginning, but they were all pretty sure that with a little more playing it would come naturally/it would be fine. They also mentioned that it might be easier to remember to do the start of turn gesture if the non-interactive areas of the board lit up in the colour of the currently selected player. 
+The participants were introduced to the Lo-Fi board, by the primary interviewer who also acted as the "programme", about how the gestures worked and where they worked. They then played two rounds of the game, with some functions removed since they had no effect when only playing two rounds. During the game they commented out loud, which was noted down by the secondary interviewer who also noted down their reactions and behaviour. 
+After the game they were asked some questions in a loosely structured group interview. 
+The whole test was filmed.
+
+\subsection{Results} 
+The participants all had a little bit of trouble remembering to do the terraforming gesture in the beginning, but they were all pretty sure that with a little more playing it would come naturally/it would be fine. They also mentioned that it might be easier to remember to do the start of turn gesture if the non-interactive areas of the board lit up in the colour of the currently selected player. 
 
 They generally liked the bigger board, since this made the hexes and other touch areas bigger, but they did also mention that for short people, it might be a problem to reach the other end of the board. 
 
@@ -31,14 +37,9 @@ The personal player input area could be utilised better. Maybe it could indicate
 
 The conclusions of the lo-fi test are that they gestures are easy to do and the areas of interest are large enough. The increased size of the board did make it harder for smaller players. The next step is then to discern if the programme will be able to recognise the gestures. 
 
-\subsection{Procedure}
-First participants were chosen from those who already knew the game.
-Then they were introduced to the Lo-Fi board, by the primary interviewer who also acted as the "programme", about how the gestures worked and where they worked. They then played two rounds of the game, with some functions removed since they had no effect when only playing two rounds. During the game they commented out loud, which was noted down by the secondary interviewer who also noted down their reactions and behaviour. 
-After the game they were asked some questions in a loosely structured group interview. 
-The whole test was filmed.
-
 \section{Board interface}
 \begin{figure}
+\label{fig:sketchGUI}
 \centering
 \includegraphics[width=0.9\textwidth]{sketchGUI}
 \caption{Sketch illustrating the interface}
@@ -64,30 +65,30 @@ The following are not required for the minimum implementation, but can be added 
 \end{itemize}
 
 \section{Requirement specifications}
-The following is the specifications of the usability- and software-based requirements needed in order to to design, build and program the interactive board for Terra Mystica.
+The following is the specifications of the usability- and software-based requirements needed in order to to design, build and program the interactive board for Terra Mystica. \todo{In the first three points, the functions should be briefly explained in the same style as point 4}
 
 \begin{enumerate}
-\item Must be able to read whether one, two, three, or four fingers have been placed on one of the player selection areas.
+\item The program must be able to read whether one, two, three, or four fingers have been placed on one of the player selection areas.
 	\begin{enumerate}
 	\item Each of these four players must have a corresponding terrain type, represented by a colour.
-	\item This must be successful 90\% of the time (note - type of tile placement depends of player selected, which makes its success significant).
+	\item This must be successful 90\% of the time, as the type of tile placement depends on the player selected.
 	\end{enumerate}
-\item Once the player is selected, the program must be able to detect when a tile is selected for terraforming - that is, when a player places three fingers on the hexagon in question. This tile must then change to the terrain type, that is, the colour, of the last player who was selected.
+\item Once the player is selected, the program must be able to detect when a tile is selected for terraforming - that is, when a player places three fingers on the hexagonal tile in question. This tile must then change to the terrain type of the last player who was selected.
 	\begin{enumerate}
-	\item This must be successful 75\% of the time. It is crucial that program can tell the difference placing a game piece on the board, and having the player select a tile via the three finger input. Depending on the efficiency of the program’s BLOB extraction, this might cause misunderstandings form the program, which is why the success rate required is reduced, compared to the success rate of the player selection.
+	\item This must be successful 75\% of the time. It is crucial that the program can tell the difference between placing a game piece on the board, and having the player select a tile via the three finger input. Depending on the efficiency of the program’s BLOB extraction, this might cause misunderstandings from the program, which is why the success rate required is reduced, compared to the success rate of the player selection.
 	\end{enumerate}
-\item In case of misplacement of terraforming, the program must be able to detect the use of an undo-button, which should be done with the same input as with the terraforming, but in a different area of interest.
+\item In case of misplacement of terraforming, the program must be able to detect the use of an undo-button, which should be done with the same gesture as with the terraforming, but in a different area of interest.
 	\begin{enumerate}
 	\item This must be successful 50\% of the time, since its function is not the most crucial for the program’s presupposed run of a game.
 	\item The undo-buttons area of interest needs to be secluded from the other areas of interest, so it can not accidentally be interacted with. 
 	\end{enumerate}
-\item In the game, there are actions which all players can take, but they can only be taken once per round. In the analogue game, a token is placed on the icon for the action when this happens. For the minimum implementation, this does not need to be managed digitally. However, there should be spaces on the board showing the different actions, on which the players can place tokens in order to remember which actions are already taken. There are six of these actions in total. All of these actions should be represented on the board twice; once on each side of the board, so that they are reachable by all players. This is shown in figure 5.2, where the actions are the blue areas. 
+\item In the game, there are actions which all players can take, but they can only be taken once per round. In the analogue game, a token is placed on the icon for the action when this happens. For the minimum implementation, this does not need to be managed digitally. However, there should be spaces on the board showing the different actions, on which the players can place tokens in order to remember which actions are already taken. There are six of these actions in total. All of these actions should be represented on the board twice; once on each side of the board, so that they are reachable by all players. This is shown in Figure \ref{fig:sketchGUI}\todo{fix this figure ??}, where the actions are the blue areas. 
 	\begin{enumerate}
-	\item A further implementation which is nice to have is to make the actions managed digitally. When an action is used, the player must select the action they wish to use by placing three fingers on it, in the same manner as when terraforming. Doing this should toggle the action on and off. When the action is turned off, a cross should appear on the action area, showing the players that the action can now not be used.
+	\item A further implementation which is optional is to make the actions managed digitally. When an action is used, the player must select the action they wish to use by doing the same gesture as when terraforming. Doing this should toggle the action on and off. When the action is turned off, a cross should appear on the action area, showing the players that the action can now not be used.
 	\end{enumerate}
-\item The digital board should have a point counter. That is, a border around the board consisting of 100 tiles numbered 1-100. The red border on figure 5.2 shows its placement. This border should not be managed digitally, but the players should be able to move a coloured token representing themselves from tile to tile, visualising how many points they have. The program should ignore the tokens placed on this border, by for example having it outside areas of interest.
-\item The board should have a space where the players can place the game pieces that represent the game goals. This space should not be interactive. This space is represented as the red space to the side on figure 5.2. These are goals that either only applies to a single round, or to a whole game. Just as with the point counter, the goals should not be managed digitally, but just be covered with game pieces when they are not important.
+\item The digital board should have a point counter. That is, a border around the board consisting of 100 tiles numbered 1-100. The red border on Figure \ref{fig:sketchGUI} shows its placement. This border should not be managed digitally, but the players should be able to move a coloured token representing themselves from tile to tile, visualising how many points they have. The program should ignore the tokens placed on this border.
+\item The board should have a space where the players can place the game pieces that represent the game goals. This space should not be interactive. This space is represented as the red space to the side on Figure \ref{fig:sketchGUI}. These are goals that either apply to only a single round, or to a whole game. Just as with the point counter, the goals should not be managed digitally, but just be covered with game pieces when they are not important.
 	\begin{enumerate}
-	\item Another 'nice to have' implementation could be to make the goals digitally covered, which could for example be done by interacting with them, in order to hide then, or reveal them if they were hidden by accident.
+	\item Another optional implementation is to make the goals digitally covered. This could be done by allowing the players to hide them by pressing the goals.
 	\end{enumerate}
 \end{enumerate}
