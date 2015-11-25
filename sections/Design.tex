@@ -39,16 +39,16 @@ The conclusions of the lo-fi test are that they gestures are easy to do and the 
 
 \section{Board interface}
 \begin{figure}
-\label{fig:sketchGUI}
 \centering
 \includegraphics[width=0.9\textwidth]{sketchGUI}
 \caption{Sketch illustrating the interface}
+\label{fig:sketchGUI}
 \end{figure}
 
-The board interface itself should resemble the Terra Mystica Board to some extent, as shown on figure 5.2. The following elements should be on the board in the minimum implementation:
+The board interface itself should resemble the Terra Mystica Board to some extent, as shown on Figure~\ref{fig:sketchGUI}. The following elements should be on the board in the minimum implementation:
 \begin{itemize}
 \item A map consisting of hexagonal tiles, varying in colour. By default, they will be arranged like the original game board, but all non-river tiles should be able to change colour.
-\item Four areas (marked by the hand icon on figure 5.2), where the players can indicate through gestures that it is their turn.
+\item Four areas (marked by the hand icon on Figure~\ref{fig:sketchGUI}), where the players can indicate through gestures that it is their turn.
 \item Some undo buttons, marked on the sketch in green. These should be interactive, in case a players makes an incorrect action.
 \item A space showing the global power actions which can only be taken once per round by any player. These are marked on the sketch in blue. In the minimum implementation, these are not interactive. However, as a further iteration, they can be made interactive, so that it is visible whether the action has been used or not without using tokens.
 \item A border surrounding the map, shown as a red border on the sketch. In the minimum implementation, this is not interactive, and the points each player has accumulated must be shown using tokens, as in the original game. A further iteration to this could be to instead manage the points digitally, either by touching the point border itself, or adding add/subtract buttons at the edge of the board.
@@ -65,15 +65,15 @@ The following are not required for the minimum implementation, but can be added 
 \end{itemize}
 
 \section{Requirement specifications}
-The following is the specifications of the usability- and software-based requirements needed in order to to design, build and program the interactive board for Terra Mystica. \todo{In the first three points, the functions should be briefly explained in the same style as point 4}
+The following is the specifications of the usability- and software-based requirements needed in order to to design, build and program the interactive board for Terra Mystica.
 
 \begin{enumerate}
-\item The program must be able to read whether one, two, three, or four fingers have been placed on one of the player selection areas.
+\item On each of the four sides of the board, there needs to be an area where players can place a hand showing 1-4 fingers, indicating which player wishes to take their turn. The program must be able to read whether one, two, three, or four fingers have been placed on one of the player selection areas. The player with the corresponding amount of fingers as their gesture should then be selected.
 	\begin{enumerate}
 	\item Each of these four players must have a corresponding terrain type, represented by a colour.
 	\item This must be successful 90\% of the time, as the type of tile placement depends on the player selected.
 	\end{enumerate}
-\item Once the player is selected, the program must be able to detect when a tile is selected for terraforming - that is, when a player places three fingers on the hexagonal tile in question. This tile must then change to the terrain type of the last player who was selected.
+\item In the middle of the board, there should be a map consisting of 112 hexagonal tiles. On a player's turn, the program must be able to detect when a tile is selected for terraforming - that is, when a player places three fingers on the tile in question. This tile must then change to the terrain type of the last player who was selected.
 	\begin{enumerate}
 	\item This must be successful 75\% of the time. It is crucial that the program can tell the difference between placing a game piece on the board, and having the player select a tile via the three finger input. Depending on the efficiency of the program’s BLOB extraction, this might cause misunderstandings from the program, which is why the success rate required is reduced, compared to the success rate of the player selection.
 	\end{enumerate}
@@ -82,11 +82,11 @@ The following is the specifications of the usability- and software-based require
 	\item This must be successful 50\% of the time, since its function is not the most crucial for the program’s presupposed run of a game.
 	\item The undo-buttons area of interest needs to be secluded from the other areas of interest, so it can not accidentally be interacted with. 
 	\end{enumerate}
-\item In the game, there are actions which all players can take, but they can only be taken once per round. In the analogue game, a token is placed on the icon for the action when this happens. For the minimum implementation, this does not need to be managed digitally. However, there should be spaces on the board showing the different actions, on which the players can place tokens in order to remember which actions are already taken. There are six of these actions in total. All of these actions should be represented on the board twice; once on each side of the board, so that they are reachable by all players. This is shown in Figure \ref{fig:sketchGUI}\todo{fix this figure ??}, where the actions are the blue areas. 
+\item In the game, there are actions which all players can take, but they can only be taken once per round. In the analogue game, a token is placed on the icon for the action when this happens. For the minimum implementation, this does not need to be managed digitally. However, there should be spaces on the board showing the different actions, on which the players can place tokens in order to remember which actions are already taken. There are six of these actions in total. All of these actions should be represented on the board twice; once on each side of the board, so that they are reachable by all players. This is shown in Figure \ref{fig:sketchGUI}, where the actions are the blue areas. 
 	\begin{enumerate}
 	\item A further implementation which is optional is to make the actions managed digitally. When an action is used, the player must select the action they wish to use by doing the same gesture as when terraforming. Doing this should toggle the action on and off. When the action is turned off, a cross should appear on the action area, showing the players that the action can now not be used.
 	\end{enumerate}
-\item The digital board should have a point counter. That is, a border around the board consisting of 100 tiles numbered 1-100. The red border on Figure \ref{fig:sketchGUI} shows its placement. This border should not be managed digitally, but the players should be able to move a coloured token representing themselves from tile to tile, visualising how many points they have. The program should ignore the tokens placed on this border.
+\item The digital board should have a point counter. That is, a border around the board consisting of 100 tiles numbered 1-100. The red border on Figure~\ref{fig:sketchGUI} shows its placement. This border should not be managed digitally, but the players should be able to move a coloured token representing themselves from tile to tile, visualising how many points they have. The program should ignore the tokens placed on this border.
 \item The board should have a space where the players can place the game pieces that represent the game goals. This space should not be interactive. This space is represented as the red space to the side on Figure \ref{fig:sketchGUI}. These are goals that either apply to only a single round, or to a whole game. Just as with the point counter, the goals should not be managed digitally, but just be covered with game pieces when they are not important.
 	\begin{enumerate}
 	\item Another optional implementation is to make the goals digitally covered. This could be done by allowing the players to hide them by pressing the goals.
