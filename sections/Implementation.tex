@@ -50,3 +50,17 @@ There are several methods for segmenting images. Relevant methods are discussed 
 	\caption{$M_1(T)$ is the number of pixels left of $T$ and $M_2(T)$ is the number of pixels to the right. $\sigma_1^2(T)$ and $\sigma_2^2(T)$ is the variance of the pixels to the left and right repsectively \label{eq:otsu} \citep[p. 61]{moeslund_introduction_2012_chapter_5}}
 \end{figure}
 
+\section{Rendering of game board}
+\begin{figure}[h!]
+	\centering \includegraphics[width=0.5\textwidth]{Board}
+	\caption{The game board \label{Fig:Board}}
+\end{figure}
+In order for the program to be able to change the game tiles through terraforming, it must have access to them from the start. This is done, by having the program render out all the tiles. The border around the actual tiles are made from a background image, which is imported as is. This image contains the outline of a player area for each player, the point counter, and the border for each exclusive action. 
+\begin{figure}[h!]
+\centering \includegraphics[width=0.7\textwidth]{HexagonWithMath}
+\caption{Relations between height and points in hexagon \label{Fig:HexWithMath}}
+\end{figure}
+
+On top of this image is the rendering of the tiles themselves. This is done with a function, which takes a two-dimensional coordinate, the height of the hexagon, the image on which to draw on, and a colour as parameters. The function calculates the radius based on the height input, which is then used to calculate the relations between the coordinate input and the remaining coordinates. Then the function fills it with the given colour. The equations used to calculate the points in the hexagon are shown in Figure \ref{Fig:HexWithMath}.
+
+With this method, the program renders out the board row by row, saving the coordinate for the A-point of each tile and the colour in two different arrays. The resulting rendered board is what is shown in Figure \ref{Fig:Board}.
