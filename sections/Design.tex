@@ -49,7 +49,6 @@ The board interface itself should resemble the Terra Mystica Board to some exten
 \begin{itemize}
 \item A map consisting of hexagonal tiles, varying in colour. By default, they will be arranged like the original game board, but all non-river tiles should be able to change colour.
 \item Four areas (marked by the hand icon on Figure~\ref{fig:sketchGUI}), where the players can indicate through gestures that it is their turn.
-\item Some undo buttons, marked on the sketch in green. These should be interactive, in case a players makes an incorrect action.
 \item A space showing the global power actions which can only be taken once per round by any player. These are marked on the sketch in blue. In the minimum implementation, these are not interactive. However, as a further iteration, they can be made interactive, so that it is visible whether the action has been used or not without using tokens.
 \item A border surrounding the map, shown as a red border on the sketch. In the minimum implementation, this is not interactive, and the points each player has accumulated must be shown using tokens, as in the original game. A further iteration to this could be to instead manage the points digitally, either by touching the point border itself, or adding add/subtract buttons at the edge of the board.
 \item A space where the global goals for this round can be placed. These are managed using game pieces.
@@ -57,6 +56,7 @@ The board interface itself should resemble the Terra Mystica Board to some exten
 
 The following are not required for the minimum implementation, but can be added if time allows:
 \begin{itemize}
+\item Some undo buttons, marked on the sketch in green. These should be interactive, in case a players makes an incorrect action.
 \item Detection of building placement, allowing the program to see when power should be offered to another player. The interface could then indicate that power needs to be offered, and in an ideal implementation, how much power. This would require shape recognition of the game pieces.
 \item The empty spaces around the edge of the board could be coloured in the currently selected player's colour. This way, it would be visualised whether a player needs to indicate that it is thair turn or not.
 \item A space showing information about the players, such as race, colour, points, power, etc.
@@ -65,7 +65,7 @@ The following are not required for the minimum implementation, but can be added 
 \end{itemize}
 
 \section{Requirement specifications}\label{sec:ReqSpec}
-The following is the specifications of the usability- and software-based requirements needed in order to to design, build and program the interactive board for Terra Mystica.
+The following is the specifications of the usability- and software-based requirements needed in order to to design, build and program the interactive board for Terra Mystica. Note that not all of these are necessary to implement in the minimum implementation version of the product, as seen in this project. \todo{Add a reference here to the relevant section in final product}
 
 \begin{enumerate}
 \item On each of the four sides of the board, there needs to be an area where players can place a hand showing 1-4 fingers, indicating which player wishes to take their turn. The program must be able to read whether one, two, three, or four fingers have been placed on one of the player selection areas. The player with the corresponding amount of fingers as their gesture should then be selected.
