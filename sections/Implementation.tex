@@ -52,12 +52,12 @@ There are several methods for segmenting images. Relevant methods are discussed 
 \begin{figure}[h!]
 \centering \includegraphics[width=0.5\textwidth]{BoardWithTiles}
 \caption{The game board \label{Fig:Board}}
-\end{figure}
+\end{figure}\todo{Kill these undo buttons, make them die die DIE}
 In order for the program to be able to change the game tiles through terraforming, it must have access to them from the start. This is done, by having the program render out all the tiles. The border around the actual tiles are made from a background image, which is imported as is. This image contains the outline of a player area for each player, the point counter, and the border for each exclusive action. 
 \begin{figure}[h!]
 \centering \includegraphics[width=0.7\textwidth]{HexWithMath}
 \caption{Relations between height and points in hexagon \label{Fig:HexWithMath}}
-\end{figure}
+\end{figure}\todo{}
 
 On top of this image is the rendering of the tiles themselves. This is done with a function, which takes a two-dimensional coordinate, the height of the hexagon, the image on which to draw on, and a colour as parameters. The function calculates the radius based on the height input, which is then used to calculate the relations between the coordinate input and the remaining coordinates. Then the function fills it with the given colour. The equations used to calculate the points in the hexagon are shown in Figure \ref{Fig:HexWithMath}.
 
