@@ -1,2 +1,54 @@
 %!TEX root = ../master.tex
 \chapter{Code Overview}\label{ch:codeover}
+
+\section{Point-processing}
+There are three point-processing algorithms in this software; an RGB-to-Greyscale colour conversion algorithm, a normalization algorithm, and a thresholding algorithm. All of these make use of double-nested \texttt{for}-loops to apply their operations to each pixel as shown in Figure~\ref{fig:pointprocess}.
+\begin{figure}[!h]
+\begin{lstlisting}
+for (int y = 0; y < src.rows; ++y)
+{
+	for (int x = 0; x < src.cols; ++x)
+	{
+		//Code here...
+	}
+}
+\end{lstlisting}
+\caption{Basic point-processing algorithm. \label{fig:pointprocess}}
+\end{figure} 
+
+The RGB-to-Greyscale algorithm creates an 8-bit single-channel image and then maps the mean of the RGB-values of the input image pixels to the output like shown in Figure~\ref{fig:rgb2gray}
+
+\begin{figure}[!h]
+\begin{lstlisting}
+output.at<uchar>(y, x) = (src.at<Vec3b>(y, x)[0] + src.at<Vec3b>(y, x)[1] + src.at<Vec3b>(y, x)[2]) / 3;
+\end{lstlisting}
+\caption{RGB-to-Greyscale operation.\label{fig:rgb2gray}}
+\end{figure}
+
+The normalization algorithm finds the maximum and minimum pixel values of the input image using an OpenCV function. It then processes each pixel to normalize them to a new maximum and minimum using the operation shown in Figure~\ref{fig:normalize}.
+
+\begin{figure}
+\begin{lstlisting}
+output.at<uchar>(y, x) = floor((src.at<uchar>(y, x) - min) * (newMax - newMin) / (max - min) + newMin);
+\end{lstlisting}
+\caption{Normalization of a pixel. \label{fig:normalize}}
+\end{figure} 
+
+Finally, the thresholding algorithm determines whether a given output pixel is white or black based on the if-else statement that is shown in Figure~\ref{fig:threshold}.
+
+\begin{figure}
+\begin{lstlisting}
+if (src.at<uchar>(y, x) >= threshold)
+{
+	src.at<uchar>(y, x) = 255;
+}
+else
+{
+	src.at<uchar>(y, x) = 0;
+}
+\end{lstlisting}
+\caption{Thresholding. If the pixel value is above the threshold, make it white. Else, make it black.\label{fig:threshold}}
+\end{figure}
+
+\section{BLOB extraction}
+After segmentation, a grass-fire implementation scans the image for BLOBs. First, a nested \texttt{for}-loop like the one shown in Figure~\ref{fig:pointprocess} goes through every pixel to check whether any of them is white (i.e. part of the foreground). If this condition is met, the function will call another function, which contains the actual grass-fire algorithm. The grass-fire function is called with the position of the white pixel and the image itself as arguments. 
