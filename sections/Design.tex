@@ -1,6 +1,6 @@
 %!TEX root = ../master.tex
 \chapter{Design}\label{ch:design}
-The following chapter is the designs for Terra Mystica's augmented board's interface and its requirement specification. They are based on the concept idea of the interactive board for Terra Mystica and the lo-fi test of a mock-up version of this concept.
+The following chapter contains the designs for Terra Mystica's augmented board's interface and its requirement specification. They are based on the concept idea of the interactive board for Terra Mystica and the lo-fi test of a mock-up version of this concept.
 
 \section{An interactive board for Terra Mystica}
 This project aims to create an interactive board for Terra Mystica, using computer vision to detect hand contact on the board via a camera below its surface. With the hand contact, the user should be able to change the colour of the hexagon-shaped tiles in the game. The idea is that the board itself is a projection from below, and the board should change according to inputs on the table's surface.
@@ -22,20 +22,20 @@ After defining the initial design, a lo-fi test was conducted to test whether th
 For the lo-fi we had three participants: Two female participants and one male, aged 20-25. 
 They were all familiar with the game Terra Mystica, so they did not need to learn the game first. They only played two rounds, since one of the key points of the test was to learn if the gestures and the areas were appropriate. 
 
-The participants were introduced to the Lo-Fi board, by the primary interviewer who also acted as the "programme", about how the gestures worked and where they worked. They then played two rounds of the game, with some functions removed since they had no effect when only playing two rounds. During the game they commented out loud, which was noted down by the secondary interviewer who also noted down their reactions and behaviour. 
+The participants were introduced to the Lo-Fi board, by the primary interviewer who also acted as the "program", about how the gestures worked and where they worked. They then played two rounds of the game, with some functions removed since they had no effect when only playing two rounds. During the game they commented out loud, which was noted down by the secondary interviewer who also noted down their reactions and behaviour. 
 After the game they were asked some questions in a loosely structured group interview. 
 The whole test was filmed.
 
 \subsection{Results} 
-The participants all had a little bit of trouble remembering to do the terraforming gesture in the beginning, but they were all pretty sure that with a little more playing it would come naturally/it would be fine. They also mentioned that it might be easier to remember to do the start of turn gesture if the non-interactive areas of the board lit up in the colour of the currently selected player. 
+The participants all had a little bit of trouble remembering to do the terraforming gesture in the beginning, but they were all pretty sure that with a little more playing it would come naturally. They also mentioned that it might be easier to remember to do the "start of turn"-gesture if the non-interactive areas of the board lit up in the colour of the currently selected player. 
 
 They generally liked the bigger board, since this made the hexes and other touch areas bigger, but they did also mention that for short people, it might be a problem to reach the other end of the board. 
 
-The mix of tangible and digital elements was confusing for the participants. They felt that it would make more sense to have the buildings digital, but on the other hand, they also felt that that would remove the tangibility that they like about the game. They mentioned that it might help to indicate where or when you want to build/upgrade since only doing a gesture whenever you need to terraform seems a bit odd. 
+The mix of tangible and digital elements was confusing for the participants. They felt that it would make more sense to have the buildings be digital, but on the other hand, they also felt that it would remove the tangibility they like about the game. They mentioned that it might help to indicate where or when you want to build/upgrade since only doing a gesture whenever you need to terraform seems a bit odd. 
 
 The personal player input area could be utilised better. Maybe it could indicate income or victory points or just indicate whenever it is your turn. 
 
-The conclusions of the lo-fi test are that they gestures are easy to do and the areas of interest are large enough. The increased size of the board did make it harder for smaller players. The next step is then to discern if the programme will be able to recognise the gestures. 
+The conclusions of the lo-fi test are that the gestures are easy to do and the areas of interest are large enough. The increased size of the board did make it harder for smaller players. The next step is then to discern if the program will be able to recognise the gestures. 
 
 \section{Board interface}
 \begin{figure}
@@ -50,7 +50,7 @@ The board interface itself should resemble the Terra Mystica Board to some exten
 \item A map consisting of hexagonal tiles, varying in colour. By default, they will be arranged like the original game board, but all non-river tiles should be able to change colour.
 \item Four areas (marked by the hand icon on Figure~\ref{fig:sketchGUI}), where the players can indicate through gestures that it is their turn.
 \item A space showing the global power actions which can only be taken once per round by any player. These are marked on the sketch in blue. In the minimum implementation, these are not interactive. However, as a further iteration, they can be made interactive, so that it is visible whether the action has been used or not without using tokens.
-\item A border surrounding the map, shown as a red border on the sketch. In the minimum implementation, this is not interactive, and the points each player has accumulated must be shown using tokens, as in the original game. A further iteration to this could be to instead manage the points digitally, either by touching the point border itself, or adding add/subtract buttons at the edge of the board.
+\item A victory point counter surrounding the map, shown as a red border on the sketch. In the minimum implementation, this is not interactive, and the points each player has accumulated must be shown using tokens, as in the original game. A further iteration to this could be to instead manage the points digitally, either by touching the point border itself, or adding add/subtract buttons at the edge of the board.
 \item A space where the global goals for this round can be placed. These are managed using game pieces.
 \end{itemize}
 
@@ -58,7 +58,7 @@ The following are not required for the minimum implementation, but can be added 
 \begin{itemize}
 \item Some undo buttons, marked on the sketch in green. These should be interactive, in case a players makes an incorrect action.
 \item Detection of building placement, allowing the program to see when power should be offered to another player. The interface could then indicate that power needs to be offered, and in an ideal implementation, how much power. This would require shape recognition of the game pieces.
-\item The empty spaces around the edge of the board could be coloured in the currently selected player's colour. This way, it would be visualised whether a player needs to indicate that it is thair turn or not.
+\item The empty spaces around the edge of the board could be coloured in the currently selected player's colour. This way, it would be visualised whether a player needs to indicate that it is their turn or not.
 \item A space showing information about the players, such as race, colour, points, power, etc.
 \item An area to place unused building pieces.
 \item A space keeping track of the cult track, showing how many points each player has with the different cults.
