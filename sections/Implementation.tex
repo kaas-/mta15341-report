@@ -1,4 +1,5 @@
 %!TEX root = ../master.tex
+
 \chapter{Implementation}\label{ch:implementation}
 Our development chapter. \todo{Better introduction needed here.}
 
@@ -31,24 +32,62 @@ To facilitate user interaction, a software module is needed to analyse a video i
 \item Recognise when a tile is selected for terraforming.
 \end{itemize}
 
-To do these, BLOBs need to be extracted from the video input through segmentation. Since it is difficult to create a uniform surface of reflected IR-light, it might be necessary to apply background subtraction to the input before segmentation. Furthermore, since this is a video feed rather than a static image, changes in illumination may need to be accounted for as well by looping the background subtraction. This leads to a three-step solution for processing the video input:
+To do these, BLOBs need to be extracted from the video input through segmentation. Since it is difficult to create a uniform surface of reflected IR-light, it might be necessary to apply background subtraction to the input before segmentation. 
+
+Furthermore, since this is a video feed rather than a static image, several of the methods in use will have to be looped. This leads to a three-step solution for processing the video input:
+
 \begin{enumerate}
 \item Prepare video frame for segmentation (Pre-segmentation).
-\item Segment image (Segmentation, includes denoising/smoothing).
+\item Segment image (Segmentation, includes de-noising/smoothing).
 \item Conditionally change data depending on the BLOB analysis
 \end{enumerate}
-Point 2 and 3 of the steps, are in a constant loop. Whenever one or more new BLOB(s) is analysed, the program conditionally changes data depending on that analysis. A new BLOB after that causes other changes and so on. The code should base the background subtraction on frames before the segmentation starts and use these as reference.
 
-\subsection{Segmentation methods}
-There are several methods for segmenting images. Relevant methods are discussed in this section. 
+\subsection{Pre-segmentation}
+To prepare the video feed for segmentation it is necessary to do image subtraction. For this project background subtraction is most useful since the point is to detect static BLOBs and not movement and for that an empty background is needed. 
 
-Since this project deals with video as opposed to static images, a single threshold with a fixed threshold value is not useful. As described in Section~\ref{sec:RDI}, the hardware setup uses RDI with IR light sources, and an  IR filter on a web camera. This should create an ideal image for segmentation using an adaptive global thresholding method. This method makes use of the histogram of an image to identify the most optimal threshold value\citep{moeslund_introduction_2012}. In an ideal image, the histogram will have two distinct 'mountains' of pixel values, that is to say, there will be two groups of pixels that, within each group, have a similar brightness while at the same time the groups themselves are isolated from each other. In the case of this project, the image produced is expected to have bright spots where the board is touched, on a dark plane which is to be considered the background. The software then needs to identify an optimal threshold value between these two groups. One such method, is to evaluate the formula in Figure~\ref{eq:otsu} for each brightness value in the histogram. The result with the lowest value is then selected.\todo {Not sure we should be talking about otsu at all anymore, since we are not really using that.}
-\begin{figure}[h]
-	\begin{align*}
-	C(T)&=M_1(T)\cdot\sigma_1^2(T)+M_2(T)\cdot\sigma_2^2(T)
-	\end{align*}
-	\caption{$M_1(T)$ is the number of pixels left of $T$ and $M_2(T)$ is the number of pixels to the right. $\sigma_1^2(T)$ and $\sigma_2^2(T)$ is the variance of the pixels to the left and right repsectively \label{eq:otsu} \citep[p. 61]{moeslund_introduction_2012}}
-\end{figure}
+
+\begin{figure}
+
+\centering
+	\includegraphics[width=0.3\textwidth]{UnSub}
+		\caption{The input image\label{Fig:UnSub}}
+	\end{figure}
+	
+	\begin{figure}
+	\centering
+	\includegraphics[width=0.3\textwidth]{BackgroundSub}
+		\caption{The background subtracted image\label{Fig:BackgroundSub}}
+	\end{figure}
+
+	
+
+
+Background subtraction works by using the first image in the video as the referencing image r(x,y) and then subtracting that from the current image f(x,y), using this formula: \textit{g(x,y) = f(x,y) - r(x,y)} \citep{moeslund_introduction_2012}. 
+
+\subsection{Segmentation}
+smoothing filters
+- gaussian blur
+
+thresholding - two point
+
+morphology - closing
+
+There are several methods for segmenting images. The relevant methods are discussed in this section. 
+
+
+
+Since this project deals with video as opposed to static images, a single threshold with a fixed threshold value is not useful. As described in Section~\ref{sec:RDI}, the hardware setup uses RDI with IR light sources, and an IR filter on a web camera. 
+ 
+ 
+ 
+ 
+In an ideal image, the histogram will have two distinct 'mountains' of pixel values, that is to say, there will be two groups of pixels that, within each group, have a similar brightness while at the same time the groups themselves are isolated from each other. In the case of this project, the image produced is expected to have bright spots where the board is touched, on a dark plane which is to be considered the background.
+ 
+ 
+ 
+
+\subsection{BLOB analysis}
+convex - check area
 
 \section{Rendering of game board}
 \begin{figure}[h!]
