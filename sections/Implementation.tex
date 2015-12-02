@@ -50,21 +50,20 @@ To prepare the video feed for segmentation it is necessary to do image subtracti
 	\centering
 	\begin{subfigure}[b]{0.3\textwidth}
 	\includegraphics[width=\textwidth]{UnSub}
-		\caption{The background subtracted image}
-		\label{Fig:UnSub}
+		\caption{\label{Fig:UnSub}}
 	\end{subfigure}
 	\begin{subfigure}[b]{0.3\textwidth}
 	\includegraphics[width=\textwidth]{BackgroundSub}
-		\caption{The background subtracted image}
-		\label{Fig:BackgroundSub}
+		\caption{\label{Fig:BackgroundSub}}
 	\end{subfigure}
-	\caption{to see if it fix it}
+	\caption{Picture \textbf{(a)} is the input image and picture \textbf{(b)} is the background subtracted image\label{Fig:Subtract}}
 \end{figure}
 
 	
 
 
 Background subtraction works by using the first image in the video as the referencing image r(x,y) and then subtracting that from the current image f(x,y), using this formula: \textit{g(x,y) = f(x,y) - r(x,y)} \citep{moeslund_introduction_2012}. 
+
 
 \subsection{Segmentation}
 smoothing filters
@@ -90,6 +89,9 @@ In an ideal image, the histogram will have two distinct 'mountains' of pixel val
 
 \subsection{BLOB analysis}
 convex - check area
+
+
+
 
 \section{Rendering of game board}
 \begin{figure}[h!]
