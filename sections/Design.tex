@@ -32,8 +32,7 @@ The participants all had a little bit of trouble remembering to do the terraform
 
 They generally liked the bigger board, since this made the hexes and other touch areas bigger, but they did also mention that for short people, it might be a problem to reach the other end of the board. The male participant said: \textit{"I think it is easier with touch control and such, if it was the normal board it would have been a bit harder for me to place my fingers on it"} while one of the female participants said \textit{"It’s just [that] small people aren’t allowed [to stand] at the ends of the table"}.
 
-
-The mix of tangible and digital elements was confusing for the participants. They felt that it would make more sense to have the buildings be digital, but on the other hand, they also felt that it would remove the tangibility they like about the game. They mentioned that it might help to indicate where or when you want to build/upgrade since only doing a gesture whenever you need to terraform seems a bit odd. 
+The participants were curious to why the buildings, their placements and their upgrades were not digital like the terraforming. They then made the guess themselves that reducing the use and amount of game pieces further would remove some of the tangibility they like about the game. They mentioned that the augmented version made terraforming and building seem like very different actions to execute, and a way to make them seem more alike would be to also make touch interactions with the board when you were about to place building pieces.
 
 The personal player input area could be utilised better. Maybe it could indicate income or victory points or just indicate whenever it is your turn. 
 
@@ -51,14 +50,14 @@ The board interface itself should resemble the Terra Mystica Board to some exten
 \begin{itemize}
 \item A map consisting of hexagonal tiles, varying in colour. By default, they will be arranged like the original game board, but all non-river tiles should be able to change colour.
 \item Four areas (marked by the hand icon on Figure~\ref{fig:sketchGUI}), where the players can indicate through gestures that it is their turn.
-\item A space showing the global power actions which can only be taken once per round by any player. These are marked on the sketch in blue. In the minimum implementation, these are not interactive. However, as a further iteration, they can be made interactive, so that it is visible whether the action has been used or not without using tokens.
-\item A victory point counter surrounding the map, shown as a red border on the sketch. In the minimum implementation, this is not interactive, and the points each player has accumulated must be shown using tokens, as in the original game. A further iteration to this could be to instead manage the points digitally, either by touching the point border itself, or adding add/subtract buttons at the edge of the board.
+\item A space showing the global power actions which can only be taken once per round by any player. These are marked on Figure~\ref{fig:sketchGUI} in blue. In the minimum implementation, these are not interactive. However, as a further iteration, they can be made interactive, so that it is visible whether the action has been used or not without using tokens.
+\item A victory point counter surrounding the map, shown as a red border on Figure~\ref{fig:sketchGUI}. In the minimum implementation, this is not interactive, and the points each player has accumulated must be shown using tokens, as in the original game. A further iteration to this could be to instead manage the points digitally, either by touching the point border itself, or adding add/subtract buttons at the edge of the board.
 \item A space where the global goals for this round can be placed. These are managed using game pieces.
 \end{itemize}
 
 The following are not required for the minimum implementation, but can be added if time allows:
 \begin{itemize}
-\item Some undo buttons, marked on the sketch in green. These should be interactive, in case a players makes an incorrect action.
+\item Some undo buttons, marked on Figure~\ref{fig:sketchGUI} in green. These should be interactive, in case a players makes an incorrect action.
 \item Detection of building placement, allowing the program to see when power should be offered to another player. The interface could then indicate that power needs to be offered, and in an ideal implementation, how much power. This would require shape recognition of the game pieces.
 \item The empty spaces around the edge of the board could be coloured in the currently selected player's colour. This way, it would be visualised whether a player needs to indicate that it is their turn or not.
 \item A space showing information about the players, such as race, colour, points, power, etc.
@@ -77,11 +76,11 @@ The following is the specifications of the usability- and software-based require
 	\end{enumerate}
 \item In the middle of the board, there should be a map consisting of 112 hexagonal tiles. On a player's turn, the program must be able to detect when a tile is selected for terraforming - that is, when a player places three fingers on the tile in question. This tile must then change to the terrain type of the last player who was selected.
 	\begin{enumerate}
-	\item This must be successful 75\% of the time. It is crucial that the program can tell the difference between placing a game piece on the board, and having the player select a tile via the three finger input. Depending on the efficiency of the program’s BLOB extraction, this might cause misunderstandings from the program, which is why the success rate required is reduced, compared to the success rate of the player selection.
+	\item This must be successful 90\% of the time. It is crucial that the program can tell the difference between placing a game piece on the board, and having the player select a tile via the three finger input. Depending on the efficiency of the program’s BLOB extraction, this might cause misunderstandings from the program.
 	\end{enumerate}
-\item In case of misplacement of terraforming, the program must be able to detect the use of an undo-button, which should be done with the same gesture as with the terraforming, but in a different area of interest.
+\item In case of misplacement of terraforming, the program must be able to detect the use of an undo-button, which should be done with the same gesture as with the terraforming, but instead of doing the gesture on the map, the gesture is done on a visible button, which will be placed near the border, separate from the map.
 	\begin{enumerate}
-	\item This must be successful 50\% of the time, since its function is not the most crucial for the program’s presupposed run of a game.
+	\item This must be successful 90\% of the time.
 	\item The undo-buttons area of interest needs to be secluded from the other areas of interest, so it can not accidentally be interacted with. 
 	\end{enumerate}
 \item In the game, there are actions which all players can take, but they can only be taken once per round. In the analogue game, a token is placed on the icon for the action when this happens. For the minimum implementation, this does not need to be managed digitally. However, there should be spaces on the board showing the different actions, on which the players can place tokens in order to remember which actions are already taken. There are six of these actions in total. All of these actions should be represented on the board twice; once on each side of the board, so that they are reachable by all players. This is shown in Figure \ref{fig:sketchGUI}, where the actions are the blue areas. 
