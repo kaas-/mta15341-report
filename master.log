@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.9.11)  2 DEC 2015 14:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.9.11)  3 DEC 2015 10:37
 entering extended mode
 **master.tex
 (master.tex
@@ -1494,7 +1494,14 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[27]
+[27] <./figures/BoardWithTilesNoUndo.png, id=512, 657.657pt x 445.06274pt>
+File: ./figures/BoardWithTilesNoUndo.png Graphic file (type png)
+
+<use ./figures/BoardWithTilesNoUndo.png>
+Package pdftex.def Info: ./figures/BoardWithTilesNoUndo.png used on input line 
+98.
+(pdftex.def)             Requested size: 200.59193pt x 135.74733pt.
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -1502,19 +1509,11 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [28 <./figures/UnSub.png> <./figures/BackgroundSub.png>]
-<./figures/BoardWithTilesNoUndo.png, id=523, 657.657pt x 445.06274pt>
-File: ./figures/BoardWithTilesNoUndo.png Graphic file (type png)
-
-<use ./figures/BoardWithTilesNoUndo.png>
-Package pdftex.def Info: ./figures/BoardWithTilesNoUndo.png used on input line 
-100.
-(pdftex.def)             Requested size: 200.59193pt x 135.74733pt.
-
-<./figures/HexWithMath.png, id=524, 615.4995pt x 384.83775pt>
+<./figures/HexWithMath.png, id=521, 615.4995pt x 384.83775pt>
 File: ./figures/HexWithMath.png Graphic file (type png)
 
 <use ./figures/HexWithMath.png>
-Package pdftex.def Info: ./figures/HexWithMath.png used on input line 105.
+Package pdftex.def Info: ./figures/HexWithMath.png used on input line 103.
 (pdftex.def)             Requested size: 280.82747pt x 175.58884pt.
 
 
@@ -1681,7 +1680,7 @@ Here is how much of TeX's memory you used:
  24815 multiletter control sequences out of 15000+200000
  65374 words of font info for 117 fonts, out of 3000000 for 9000
  1030 hyphenation exceptions out of 8191
- 64i,14n,122p,968b,899s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 64i,14n,122p,978b,899s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Liv\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ec
 tt0900.pk> <C:\Users\Liv\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\d
 pi600\ectt1095.pk>{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}
@@ -1693,9 +1692,9 @@ i10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 am Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
 pe1/urw/palatino/uplri8a.pfb>
-Output written on master.pdf (56 pages, 20238112 bytes).
+Output written on master.pdf (56 pages, 20237592 bytes).
 PDF statistics:
- 813 PDF objects out of 1000 (max. 8388607)
+ 810 PDF objects out of 1000 (max. 8388607)
  198 named destinations out of 1000 (max. 500000)
  507 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -8,7 +8,7 @@ Our development chapter. \todo{Better introduction needed here.}
 \centering	\includegraphics[width=0.5\textwidth]{sketchAugmentedBoard}
  \caption{An sketch of our RDI table.\label{Fig:sketch}}
 \end{figure}
-The interaction on the game board table will be based on rear diffused illumination as described in Multi-Touch Technologies \citep{multiTT}. This means, as shown in Figure \ref{Fig:sketch}, that infrared (IR) lamps will be placed underneath the table's surface, projecting IR light upwards. A webcam below the table will be equipped with an IR filter obtained from a floppy disc, meaning it will primarily detect IR light. Furthermore, the table's surface, made of transparent material, needs a diffuser material just above or beneath it in order to diffuse the light. The purpose of this diffuser is to scatter the IR light and make objects hovering over the surface less visible to the camera. When an object touches the surface, the area of contact reflects more IR light than the untouched areas of the diffuser. This reflected light is captured by the camera, and can then be extracted as a BLOB.
+The interaction on the game board table will be based on rear diffused illumination as described in Multi-Touch Technologies \citep{multiTT}. This means, as shown in Figure \ref{Fig:sketch}, that infrared (IR) lamps will be placed underneath the table's surface, projecting IR light upwards. A webcam below the table will be equipped with a visible light filter obtained from a floppy disc, meaning it will primarily detect IR light. Furthermore, the table's surface, made of transparent material, needs a diffuser material just above or beneath it in order to diffuse the light. The purpose of this diffuser is to scatter the IR light and make objects hovering over the surface less visible to the camera. When an object touches the surface, the area of contact reflects more IR light than the untouched areas of the diffuser. This reflected light is captured by the camera, and can then be extracted as a BLOB.
 
 Choosing such a solution has its advantages and disadvantages. First of all, there is no need for a compliant surface or soldering for an LED frame, since we are using a diffuser in order to reflect the IR-light coming from below. The illuminators for that can be bought ready to go, so there is no need to build them. A disadvantage comes from the RDI having difficulties with getting even illumination, since the IR-lights might not cover the table's surface completely, or they might overlap, causing areas with an excessive amount of reflected IR light. This can result in false BLOBs, as well as BLOBs of lower contrast which are hard to detect. All this can challenge the software's detection of the desired BLOBs.
 
@@ -18,12 +18,12 @@ Choosing such a solution has its advantages and disadvantages. First of all, the
  \caption{The touch table \label{Fig:Table}}
 \end{figure}
 This section will describe the physical aspect of our product.
-The table's surface is made from acrylic glass, and below are four IR lamps, as well as a webcam with an IR filter, and a short-throw projector, which will project images on the table. The webcam and IR lamps are there to facilitate RDI, as explained in Section~\ref{sec:RDI}. All these elements are placed in a manner that spreads the IR light from the lamps as evenly as possible.
+The table's surface is made from acrylic glass, and below are four IR lamps, as well as a webcam with a visible light filter, and a short-throw projector, which will project images on the table. The webcam and IR lamps are there to facilitate RDI, as explained in Section~\ref{sec:RDI}. All these elements are placed in a manner that spreads the IR light from the lamps as evenly as possible.
 
-The outer frame of the table is constructed from 3 different lengths of aluminium rods, giving the table a final size of 120 x 102 x 89 cm.
+The outer frame of the table is constructed from 3 different lengths of aluminium extrusions, giving the table a final size of 120 x 102 x 89 cm.
 In order to keep outside IR light from disturbing the image as much as possible, black cloth covers the table at the sides. The cloth has the additional benefit of making the projection from the short-throw projector clearer. 
 
-As diffuser material, baking paper was chosen, as it is easily available. The paper is placed underneath the glass surface, as tight as possible, as placing it on top results in too much light being reflected by the acrylic glass into the webcam. When applying the diffuser, a problem was encountered: If the diffuser is not attached tight enough to the glass, touching the surface does not result in enough IR light being reflected. This was remedied by tightening the baking paper with duct tape.
+As diffuser material, baking paper was chosen, as it is easily available. The paper is placed underneath the glass surface, as tight as possible, as placing it on top results in too much light being reflected by the acrylic glass into the webcam. If the diffuser is not attached tight enough to the glass, touching the surface does not result in enough IR light being reflected. The diffuser also works as a screen by blocking the light from the projector. 
 
 \section{Image Processing}
 To facilitate user interaction, a software module is needed to analyse a video input and recognize specific features and changes over time. As described in Section~\ref{sec:ReqSpec}, there are two main criteria for this software's minimum implementation. It needs to:
@@ -77,7 +77,7 @@ There are several methods for segmenting images. The relevant methods are discus
 
 
 
-Since this project deals with video as opposed to static images, a single threshold with a fixed threshold value is not useful. As described in Section~\ref{sec:RDI}, the hardware setup uses RDI with IR light sources, and an IR filter on a web camera. 
+Since this project deals with video as opposed to static images, a single threshold with a fixed threshold value is not useful. As described in Section~\ref{sec:RDI}, the hardware setup uses RDI with IR light sources, and a visible light filter on a web camera. 
  
  
  
