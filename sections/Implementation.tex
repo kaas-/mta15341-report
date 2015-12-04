@@ -103,13 +103,14 @@ After smoothing and removal of noise, the video feed needs to be thresholded, so
  
 In an ideal thresholded image, the histogram will have two distinct 'mountains' of pixel values, that is to say, there will be two groups of pixels that, within each group, have a similar brightness while at the same time the groups themselves are isolated from each other. In the case of this project, the image produced is expected to have bright spots where the board is touched, on a dark plane which is to be considered the background.
  
-\todo{morphology - open}
  
 \subsection{BLOB analysis}
+\todo{morphology - open}
+
+To remove the last noise and make the BLOBs more visible, a morphology method is deployed. The chosen method \textit{opening}, consists of two operations: an \textit{erosion} operation and a \textit{dilation} operation \citep{moeslund_introduction_2012}. By first calling the erosion operation, most of the remaining noise BLOBs are removed, but the BLOBs necessary for the detection are also reduced. This is when the dilation operation is called, which then dilate the already eroded BLOBs which affects the BLOBs necessary for the detection but should not affect the noise BLOBs since they are either too small or entirely gone for the dilation operation to catch them. 
+
+
 convex - check area
-
-
-
 
 \section{Rendering of game board}
 \begin{figure}[h!]
