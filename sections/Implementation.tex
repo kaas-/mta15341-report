@@ -105,12 +105,9 @@ In an ideal thresholded image, the histogram will have two distinct 'mountains' 
  
  
 \subsection{BLOB analysis}
-\todo{morphology - open}
-
 To remove the last noise and make the BLOBs more visible, a morphology method is deployed. The chosen method \textit{opening}, consists of two operations: an \textit{erosion} operation and a \textit{dilation} operation \citep{moeslund_introduction_2012}. By first calling the erosion operation, most of the remaining noise BLOBs are removed, but the BLOBs necessary for the detection are also reduced. This is when the dilation operation is called, which then dilate the already eroded BLOBs which affects the BLOBs necessary for the detection but should not affect the noise BLOBs since they are either too small or entirely gone for the dilation operation to catch them. 
 
-
-convex - check area
+Afterwards the remaning BLOBs seen by the computer needs to be identified as the BLOB needed for the project, in contrast to what noise there might be left. This is done, by giving each seen BLOB a convex hull. A convex hull of a BLOB is, as described by Moeslund, "\textit{is the minimum convex polygon which contains the BLOB. It corresponds to placing a rubber band around the BLOB.}" Calculations can then be made on this polygon. In this project, the area of the convex hulls are calculated. By then filtering the convex hulls by size, ignoring those that have a small area, a BLOB from a hand can be detected.
 
 \section{Rendering of game board}
 \begin{figure}[h!]
