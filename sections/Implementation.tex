@@ -83,13 +83,6 @@ To prepare the video feed for segmentation it is necessary to do image subtracti
 Background subtraction works by using the first image in the video as the referencing image r(x,y) and then subtracting that from the current image f(x,y), using this formula: \textit{g(x,y) = f(x,y) - r(x,y)} \citep{moeslund_introduction_2012}. 
 
 \subsection{Segmentation}
-smoothing filters
-- gaussian blur
-
-thresholding - two point
-
-morphology - closing
-
 There are several methods for segmenting images. The relevant methods are discussed in this section. 
 
 As the project deals with video as opposed to static images, there is an issue with image noise. As the input from the camera is constantly updating, the noise is not static, and is not completely removed by teh initial background subtraction. Therefore, a smoothing filter is necessary, so more noise can be negated. In this case, a Gaussian blur was implemented.
@@ -99,24 +92,19 @@ As the project deals with video as opposed to static images, there is an issue w
 \caption{A visualisation of correlation \label{Fig:Correlation}\citep{moeslund_introduction_2012}}
 \end{figure}
 
-A Gaussian blur is a correlation-based image processing operation, making use of a kernel. This works, by having the kernel overlay on top of the pixels of the image that is processed. That way, the kernel cells are each paired with a pixel, which through calculations gives a new pixel value. The Gaussian kernel, displayed in Figure \ref{Fig:Gaussian} 
-\todo{NOT DONE YET!}
+A Gaussian blur is a correlation-based image processing operation, making use of a kernel. This works, by having the kernel overlay on top of the pixels of the image that is processed. That way, the kernel cells are each paired with a pixel, which through calculations gives a new pixel value. This process is illustrated in Figure \ref{Fig:Correlation}. The Gaussian kernel, displayed in Figure \ref{Fig:Gaussian}, is a kernel with a specific pattern. This pattern gives more weight to the pixels paired with the centring kernel values, thereby giving them more influence in the image processing. It is used to remove detail from an image, which as mentioned earlier is useful to remove noise.
 
 \begin{figure}[h!]
 \centering \includegraphics[width=0.3\textwidth]{Gaussian}
-\caption{A visualisation of correlation \label{Fig:Gaussian}\citep{moeslund_introduction_2012}}
+\caption{A 5x5 Gaussian kernel pattern \label{Fig:Gaussian}\citep{moeslund_introduction_2012}}
 \end{figure}
 
-A single threshold with a fixed threshold value is not useful. As described in Section~\ref{sec:RDI}, the hardware setup uses RDI with IR light sources, and a visible light filter on a web camera. 
+After smoothing and removal of noise, the video feed needs to be thresholded, so what the computer needs to detect becomes white, and all that is irrelevant is black. As described in Section~\ref{sec:RDI}, the hardware setup uses RDI with IR light sources, and a visible light filter on a web camera. What is thresholded is therefore the section of the image, which contain the hand that is placed on top of the board.
  
+In an ideal thresholded image, the histogram will have two distinct 'mountains' of pixel values, that is to say, there will be two groups of pixels that, within each group, have a similar brightness while at the same time the groups themselves are isolated from each other. In the case of this project, the image produced is expected to have bright spots where the board is touched, on a dark plane which is to be considered the background.
  
+\todo{morphology - open}
  
- 
-In an ideal image, the histogram will have two distinct 'mountains' of pixel values, that is to say, there will be two groups of pixels that, within each group, have a similar brightness while at the same time the groups themselves are isolated from each other. In the case of this project, the image produced is expected to have bright spots where the board is touched, on a dark plane which is to be considered the background.
- 
- 
- 
-
 \subsection{BLOB analysis}
 convex - check area
 
