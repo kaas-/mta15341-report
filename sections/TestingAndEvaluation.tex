@@ -44,28 +44,35 @@ To evaluate the product, two types tests are conducted. The first one is a techn
 
 \subsection{Technical test}
 \todo{technical test method goes here}
-The purpose of the technical tests were to test the accuracy, effectiveness and overall efficiency of the system. The requirements for the tests were either completely adopted from or related to the test objectives. Specifically, requirements \ref{req:1A}, \ref{req:1B}, \ref{req:1C}, and \ref{req:1D} served as the aforementioned requirement inspiration.
+The purpose of the technical tests is to test the accuracy, effectiveness and overall efficiency of the system. The parameters which are tested are either completely adopted from or related to the following test objectives:. \ref{req:1A}, \ref{req:1B}, \ref{req:1C}, and \ref{req:1D}.
 
-The following requirements were formulated for the technical tests:
+The following parameters are tested in technical tests:
 \begin{enumerate}
 	\item \begin{enumerate}
 		\item Effectiveness of each tile press (related to requirement 			\ref{req:1B})
 			\begin{enumerate}
-				\item This was tested by pressing each of the 112 hexagons on the board by hand, and if hand would fail, then with a hexagonically shaped paper template.
+				\item This is tested by pressing each of the 112 hexagons on the board by hand, and if hand would fail, then with a hexagonically shaped paper template.
 			\end{enumerate}
 		\item Efficiency of colour change (related to requirement \ref{req:1D})
 		\begin{enumerate}
-				\item This was tested by timing the moment of table contact to the tile colour change in seconds.
+				\item This is tested by timing the moment of table contact to the tile colour change in seconds.
 		\end{enumerate}
 		\item Hand or template used (related to requirement \ref{req:1B})
 		\begin{enumerate}
-				\item It was registered whether or not hand gesture would work for changing tiles. The output was used for generating a map of successes and fails to see hard-to-detect areas. Figure \ref{Fig:heatmap} is an example of this.
+				\item It is registered whether or not hand gesture would work for changing tiles. The output is used for generating a map of successes and fails to see hard-to-detect areas. Figure \ref{fig:successfailmap} illustrates this.
 		\end{enumerate}
+		
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{boardSuccessMap}
+	\caption{Map illustrating the tiles which can be terraformed by hand (green), and which ones need a hexagon cover (grey).\label{fig:successfailmap}}
+\end{figure}
+
 	\end{enumerate}
 	\item \begin{enumerate}
 		\item Effectiveness of player change gesture (related to requirement \ref{req:1A})
 		\begin{enumerate}
-				\item This was tested by using paper cut-outs to test successful detection of the respective players.
+				\item This is tested by using paper cut-outs of hands to test successful detection of the respective players.
 		\end{enumerate}
 		\item Efficiency of player change gesture (related to requirement \ref{req:1C})
 		\begin{enumerate}
@@ -86,6 +93,12 @@ The following requirements were formulated for the technical tests:
 		\end{enumerate}
 	\end{enumerate}
 \end{enumerate}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{boardHeatMap}
+	\caption{ }
+\end{figure}
 
 \subsection{Participants for usability tests}
 The chosen test participants are 16 young adult students from the AAU and they are our typical users. They are within the target group, which is defined in Section~\ref{sec:TargetGroup}, meaning that they are experienced with board games. We do not base our test on all participants being familiar with Terra Mystica, and therefore based the test design on participants just being familiar with board games in general. 
