@@ -15,19 +15,26 @@ With these in mind, the test aims to clarify whether the product lives up to its
 \todo{Andreas snakkede om at splitte objektiverne op i tech/usability, men spørgsmålet er om usability er det rigtige at bruge her eller om vi skal holde os til satisfaction}The problem statement is defined in Section~\ref{sec:ProblemStatement}. Based on this problem statement, it is important not only to test how well the program functions on a technical level, but also if the test participants still feel like they are playing the original board game, which will be tested on a level of satisfaction/acceptance.
 The success criteria (Section~\ref{sec:SuccessCriteria}) and the system requirements (Section~\ref{sec:ReqSpec}) each add to the specifications on the technical and satisfaction  objectives of the test.
 
-The technical oriented test objectives are:\todo{Change these to the new technical objectives}
+The technical oriented test objectives are:\todo{Capitalise every item and remove parentheses}
 \begin{enumerate}
-\item Does the player selection task live up to the requirement specification that it should be successful 90\% of the time?
-\item Does the terraforming task live up to the requirement specification that it should be successful 90\% of the time?
-\item What is the average delay time from the moment a gesture is done, to the moment the result can be seen on the interface?
+\setcounter{enumi}{0}
+\item \begin{enumerate}
+\item Does the player selection task live up to the requirement specification that it should be successful 90\% of the time? \label{req:1A}
+\item Does the terraforming task live up to the requirement specification that it should be successful 90\% of the time? \label{req:1B}
+\item The average delay time from the moment a gesture is done, to the moment the result can be seen on the interface should be around 3 seconds? \label{req:1C}
+\item The average delay time from the moment a tile change is gestured, to the moment the result can be seen on the interface should be around 3 seconds? \label{req:1D}
+\end{enumerate}
 \end{enumerate}
 The satisfaction oriented test objectives are:
 \begin{enumerate}
-\item Do the players still feel like they are playing Terra Mystica, when they are playing the augmented version?
-\item Do the players feel like taking turns using the player selection gestures is an easy task, or a hindrance?
-\item Do the players feel like the task of terraforming is easier to carry out than on the original board game?
-\item Do the players feel that the augmented game board can replace the original game board?
-\item How do the gestures for player selection and terraforming affect the pace of the game?
+\setcounter{enumi}{1}
+\item \begin{enumerate}
+\item Do the players still feel like they are playing Terra Mystica, when they are playing the augmented version? \label{req:2A}
+\item Do the players feel like taking turns using the player selection gestures is an easy task, or a hindrance? \label{req:2B}
+\item Do the players feel like the task of terraforming is easier to carry out than on the original board game? \label{req:2C}
+\item Do the players feel that the augmented game board can replace the original game board? \label{req:2D}
+\item How do the gestures for player selection and terraforming affect the pace of the game? \label{req:2E}
+\end{enumerate}
 \end{enumerate}
 
 These objectives set the goals for the test, and help determine whether or not the test is successful. 
@@ -37,6 +44,48 @@ To evaluate the product, two types tests are conducted. The first one is a techn
 
 \subsection{Technical test}
 \todo{technical test method goes here}
+The purpose of the technical tests were to test the accuracy, effectiveness and overall efficiency of the system. The requirements for the tests were either completely adopted from or related to the test objectives. Specifically, requirements \ref{req:1A}, \ref{req:1B}, \ref{req:1C}, and \ref{req:1D} served as the aforementioned requirement inspiration.
+
+The following requirements were formulated for the technical tests:
+\begin{enumerate}
+	\item \begin{enumerate}
+		\item Effectiveness of each tile press (related to requirement 			\ref{req:1B})
+			\begin{enumerate}
+				\item This was tested by pressing each of the 112 hexagons on the board by hand, and if hand would fail, then with a hexagonically shaped paper template.
+			\end{enumerate}
+		\item Efficiency of colour change (related to requirement \ref{req:1D})
+		\begin{enumerate}
+				\item This was tested by timing the moment of table contact to the tile colour change in seconds.
+		\end{enumerate}
+		\item Hand or template used (related to requirement \ref{req:1B})
+		\begin{enumerate}
+				\item It was registered whether or not hand gesture would work for changing tiles. The output was used for generating a map of successes and fails to see hard-to-detect areas. Figure \ref{Fig:heatmap} is an example of this.
+		\end{enumerate}
+	\end{enumerate}
+	\item \begin{enumerate}
+		\item Effectiveness of player change gesture (related to requirement \ref{req:1A})
+		\begin{enumerate}
+				\item This was tested by using paper cut-outs to test successful detection of the respective players.
+		\end{enumerate}
+		\item Efficiency of player change gesture (related to requirement \ref{req:1C})
+		\begin{enumerate}
+				\item The times for each player hand detection were logged.
+		\end{enumerate}
+	\end{enumerate}
+	\item \begin{enumerate}
+		\item Effectiveness for undo action (Unrelated to requirements)
+		\item Efficiency for undo action (Unrelated to requirements)
+	\end{enumerate}
+	\item \begin{enumerate}
+		\item Number of restarts of code during technical tests (Unrelated to requirements, this was included as a way to track how automatic the code could function during the tests.)
+	\end{enumerate}
+	\item \begin{enumerate}
+		\item Accuracy for tile changes made by hand (related to \ref{req:1B})
+		\begin{enumerate}
+				\item This was done by pressing 5 tiles (4 corners and 1 centre tile by hand and see if it was successful.
+		\end{enumerate}
+	\end{enumerate}
+\end{enumerate}
 
 \subsection{Participants for usability tests}
 The chosen test participants are 16 young adult students from the AAU and they are our typical users. They are within the target group, which is defined in Section~\ref{sec:TargetGroup}, meaning that they are experienced with board games. We do not base our test on all participants being familiar with Terra Mystica, and therefore based the test design on participants just being familiar with board games in general. 
