@@ -12,7 +12,7 @@ The purpose of this test is to test usability and functionality of the product. 
 With these in mind, the test aims to clarify whether the product lives up to its test objectives.
 
 \section{Test objectives}\label{sec:TestObjectives}
-\todo{Andreas snakkede om at splitte objektiverne op i tech/usability, men spørgsmålet er om usability er det rigtige at bruge her eller om vi skal holde os til satisfaction}The problem statement is defined in Section~\ref{sec:ProblemStatement}. Based on this problem statement, it is important not only to test how well the program functions on a technical level, but also if the test participants still feel like they are playing the original board game, which will be tested on a level of satisfaction/acceptance.
+The problem statement is defined in Section~\ref{sec:ProblemStatement}. Based on this problem statement, it is important not only to test how well the program functions on a technical level, but also if the test participants still feel like they are playing the original board game, which will be tested on a level of satisfaction/acceptance.
 The success criteria (Section~\ref{sec:SuccessCriteria}) and the system requirements (Section~\ref{sec:ReqSpec}) each add to the specifications on the technical and satisfaction  objectives of the test.
 
 The technical oriented test objectives are:\todo{Capitalise every item and remove parentheses}
@@ -43,24 +43,23 @@ These objectives set the goals for the test, and help determine whether or not t
 To evaluate the product, two types tests are conducted. The first one is a technical tests using only group members, in order to test the technical aspects of the program, as this does not require participants from outside the group. The second type of test is the usability test, of which several will be conducted. These tests will focus on the satisfaction aspect of usability.
 
 \subsection{Technical test}
-\todo{technical test method goes here}
 The purpose of the technical tests is to test the accuracy, effectiveness and overall efficiency of the system. The parameters which are tested are either completely adopted from or related to the following test objectives:. \ref{req:1A}, \ref{req:1B}, \ref{req:1C}, and \ref{req:1D}.
 
 The following parameters are tested in technical tests:
 \begin{enumerate}
-	\item \begin{enumerate}
-		\item Effectiveness of each tile press (related to requirement 			\ref{req:1B})
-			\begin{enumerate}
-				\item This is tested by pressing each of the 112 hexagons on the board by hand, and if hand would fail, then with a hexagonically shaped paper template.
-			\end{enumerate}
-		\item Efficiency of colour change (related to requirement \ref{req:1D})
-		\begin{enumerate}
-				\item This is tested by timing the moment of table contact to the tile colour change in seconds.
-		\end{enumerate}
-		\item Hand or template used (related to requirement \ref{req:1B})
-		\begin{enumerate}
-				\item It is registered whether or not hand gesture would work for changing tiles. The output is used for generating a map of successes and fails to see hard-to-detect areas. Figure \ref{fig:successfailmap} illustrates this.
-		\end{enumerate}
+\item \begin{enumerate}
+\item Effectiveness of each tile press (related to requirement \ref{req:1B})
+
+This is tested by pressing each of the 112 hexagons on the board by hand, and if hand would fail, then with a hexagonal paper template, which covers the tile completely. 
+
+\item Efficiency of colour change (related to requirement \ref{req:1D})
+		
+This is tested by timing the moment of table contact to the tile colour change in seconds.
+		
+\item Hand or template used (related to requirement \ref{req:1B})
+
+It is registered whether or not hand gesture would work for changing tiles. The output is used for generating a map of successes and fails to see hard-to-detect areas. Figure \ref{fig:successfailmap} illustrates this.
+		
 		
 \begin{figure}[h!]
 	\centering
@@ -76,12 +75,8 @@ The following parameters are tested in technical tests:
 		\end{enumerate}
 		\item Efficiency of player change gesture (related to requirement \ref{req:1C})
 		\begin{enumerate}
-				\item The times for each player hand detection were logged.
+				\item The reaction times for each player hand detection were logged.
 		\end{enumerate}
-	\end{enumerate}
-	\item \begin{enumerate}
-		\item Effectiveness for undo action (Unrelated to requirements)
-		\item Efficiency for undo action (Unrelated to requirements)
 	\end{enumerate}
 	\item \begin{enumerate}
 		\item Number of restarts of code during technical tests (Unrelated to requirements, this was included as a way to track how automatic the code could function during the tests.)
