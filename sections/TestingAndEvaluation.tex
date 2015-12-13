@@ -54,12 +54,18 @@ This is tested by pressing each of the 112 hexagons on the board by hand, and if
 
 \item Efficiency of colour change (related to requirement \ref{req:1D})
 		
-This is tested by timing the moment of table contact to the tile colour change in seconds.
+This is tested by noting how much time passes between the moment of contact with the table to the tile colour change in seconds. In Figure~\ref{fig:reactionmap}, it is shown which tiles react the fastest.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{boardHeatMap}
+	\caption{Map illustrating which tiles react fast, and which tiles react slowly. The redder the tile, the faster the reaction time. \label{fig:reactionmap}}
+\end{figure}
 		
 \item Hand or template used (related to requirement \ref{req:1B})
 
 It is registered whether or not hand gesture would work for changing tiles. The output is used for generating a map of successes and fails to see hard-to-detect areas. Figure \ref{fig:successfailmap} illustrates this.
-		
+\end{enumerate}		
 		
 \begin{figure}[h!]
 	\centering
@@ -67,36 +73,28 @@ It is registered whether or not hand gesture would work for changing tiles. The 
 	\caption{Map illustrating the tiles which can be terraformed by hand (green), and which ones need a hexagon cover (grey).\label{fig:successfailmap}}
 \end{figure}
 
-	\end{enumerate}
+	
+\item \begin{enumerate}
+\item Effectiveness of player change gesture (related to requirement \ref{req:1A})
+
+This is tested by using paper cut-outs of hands to test successful detection of the respective players.
+
+\item Efficiency of player change gesture (related to requirement \ref{req:1C})
+
+The reaction time for each player hand detection is logged.
+\end{enumerate}
 	\item \begin{enumerate}
-		\item Effectiveness of player change gesture (related to requirement \ref{req:1A})
-		\begin{enumerate}
-				\item This is tested by using paper cut-outs of hands to test successful detection of the respective players.
-		\end{enumerate}
-		\item Efficiency of player change gesture (related to requirement \ref{req:1C})
-		\begin{enumerate}
-				\item The reaction times for each player hand detection were logged.
-		\end{enumerate}
-	\end{enumerate}
-	\item \begin{enumerate}
-		\item Number of restarts of code during technical tests (Unrelated to requirements, this was included as a way to track how automatic the code could function during the tests.)
+		\item Number of restarts of code during technical tests is logged (Unrelated to requirements. This is included as a way to track how automatic\todo{"how automatic the code could function"? Not sure what is being said here} the code could function during the tests.)
 	\end{enumerate}
 	\item \begin{enumerate}
 		\item Accuracy for tile changes made by hand (related to \ref{req:1B})
-		\begin{enumerate}
-				\item This was done by pressing 5 tiles (4 corners and 1 centre tile by hand and see if it was successful.
-		\end{enumerate}
+		
+		This is done by pressing 5 tiles (4 corners and 1 centre tile) by hand and see if it was successful.\todo{this needs to be clarified. Are they pressed at once? Are we testing whether the right one is terraformed?}
 	\end{enumerate}
 \end{enumerate}
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.5\textwidth]{boardHeatMap}
-	\caption{ }
-\end{figure}
-
 \subsection{Participants for usability tests}
-The chosen test participants are 16 young adult students from the AAU and they are our typical users. They are within the target group, which is defined in Section~\ref{sec:TargetGroup}, meaning that they are experienced with board games. We do not base our test on all participants being familiar with Terra Mystica, and therefore based the test design on participants just being familiar with board games in general. 
+The chosen test participants are 16 young adult students from AAU and they are our typical users. They are within the target group, which is defined in Section~\ref{sec:TargetGroup}, meaning that they are experienced with board games, but not necessarily Terra Mystica specifically. 
 
 \subsection{Usability test set-up}
 \begin{figure}[!h]
@@ -110,7 +108,7 @@ The chosen test participants are 16 young adult students from the AAU and they a
 		\caption{\label{Fig:SetupDigi}}
 	\end{subfigure}
 	\caption{Setup for the usability test, showing participants both the analogue game \textbf{(a)}, and the digital one \textbf{(b)}.\label{Fig:Setup}}
-\end{figure}\todo{I don't know if we want these setup pictures or ones with participants on them. If we want the latter we can grab them from the video.}
+\end{figure}
 The test takes place in the open study area, since the set-up requires a lot of room and the hardware will take up extra time to disassemble and reassemble, and moving it may dama the diffusor. Two tables are used for this test; one is the augmented board built for this project, and one is a table with the analogue game for comparison. The two setups can be seen in Figure \ref{Fig:Setup}. As the test includes people who are not experienced with Terra Mystica, several aspects of the game have been removed for simplicity's sake. These are covered up on each player's information board. Four test participants are placed around the table for each test, one by each information board, as well as four testers: One to operate a camera to record the test, one to take notes, one to explain the rules to the participants, and one to guide the participants and conduct the interview.
 
 \subsection{Procedure for usability test}
@@ -118,7 +116,7 @@ The test which will try to cover the test objectives \ref{req:2A}, \ref{req:2B},
 
 \begin{enumerate}
 \item To begin with, the test guide will introduce the participants to the game and the project product, and then explain the whole test procedure. The guide will have a script to read from, which can be found in Appendix \ref{ch:TestScript}, to make sure all participants are fully informed.
-\item Once all participants understand the procedure, they will play a game of Terra Mystica either using the augmented or original board for 3 rounds. After those 3 rounds are over, the participants will play a game with the board they have not tried yet. \todo{question is if we should add questions in between the games, since not only their comparison, but also initial impression might have significance} During the test introduction, they are encouraged to have dialogues with each other regarding their actions and thoughts as they play. This is inspired by the think aloud method addressed by Larsen \citep{TestingLecture}. The whole test is filmed by the cameraman. It is especially important to get footage of the participants' hands as they attempt to do gestures and as the related actions in the original version. It is likely that all of the typical tasks will be performed during this playthrough, but if not, the test guide will ask the test participants to attempt the ones they forewent.
+\item Once all participants understand the procedure, they will play a game of Terra Mystica either using the augmented or original board for 3 rounds. After those 3 rounds are over, the participants will play a game with the board they have not tried yet. During the test introduction, they are encouraged to have dialogues with each other regarding their actions and thoughts as they play. This is inspired by the think aloud method addressed by Larsen \citep{TestingLecture}. The whole test is filmed by the cameraman. It is especially important to get footage of the participants' hands as they attempt to do gestures and as the related actions in the original version. It is likely that all of the typical tasks will be performed during this playthrough, but if not, the test guide will ask the test participants to attempt the ones they forewent.
 \item Once the practical part of the test is over, the test guide will conduct a semi-structured group interview, which the participants have been informed about during the introduction. The participants will be asked about how they experienced the augmented game, both in its own right, and in comparison to the original game.
 \end{enumerate}
 
