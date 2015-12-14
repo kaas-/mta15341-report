@@ -4,10 +4,26 @@
 \section{Validity and reliability of test}
 dink dink dink\todo{discuss validity and reliability here}
 
-\subsection{On reliability in technical test and product}
-This section will discuss the implications of calibration and bugs in the prototype use and testing.
+\subsection{On reliability in technical test and prototype}
+This section will discuss the implications of calibration and bugs in the prototype use and testing. 
+\subsubsection*{Calibration and reliability}
+In order for the prototype to work, a lot of time has to go into setting it up, also called calibration. The IR lamps have to have the right angle and run for a while. The program has to be restarted at times, which also removes noise \todo{for some reason we don't know o.O}. Despite of all this, a lot of problems still remain as can be read below. This makes for poor reliability, as it is hard to test a prototype with such a fickle nature. The chance that you get the same parameters set up for testing twice are challenged and only overcome by several modifications and nudges.
 
+While performing the technical test the people responsible kept a bug log as a tool to track common errors. The bug log can be seen in \ref{app:techTest} in its entirety.
 
+The most common errors were ordered in tags: Neighbour Change (NBC), ShadoW Threshold failure (SWT), and Area Detection Failure (ADF). 
+\subsubsection*{Bug - NBC} 
+NBC was a common error closely linked SWT, meaning that almost every occurence of NBC had a SWT bug as well. This could indicate that NBC wasn't really to blame, but SWT. Regardless, NBC pertains to the hexagon's centre and the centre of the convex hull (of the fingers trying to change it) are misaligned.
+\subsubsection*{Bug - SWT} 
+SWT was the most common area in the technical tests but also during the user evaluation tests. This bug has specifically to do with more than the fingers or hand being detected, such as parts of an arm. Furthermore, the bug can occur when a hand is hovering close to the board, but not touching it.
+\subsubsection*{Bug - ADF} 
+The ADF bug occurred most commonly when a player change was intended but a small-enough hull was made, resulting in a unintentional tile change.
+\subsubsection*{Bug remedy}
+Certain things could be done to remedy these bugs, such as:
+\begin{itemize}
+	\item Calibrating the threshold to avoid hovering elements, such as arms or close objects are not added as objects.
+	\item Performing intelligent (with a learning rate) background subtraction to cancel out noise and ensure an easier thresholding. This would also reduce the calibration time.
+\end{itemize}
 
 \section{Further Implementation}
 Aside from the product's minimum implementation requirements, it is possible to make further iterations, suggested in this chapter. These are based on the evaluation results from both the user test and the technical test, which is described in Chapter~\ref{ch:testeval}. The implementation suggestions are based in the results that are considered valid and reliable.
