@@ -126,16 +126,16 @@ Once the test is done, the footage and notes from the test will be analysed and 
 These are the results gathered from the test.
 
 \subsection{Technical}
-\todo{Emilie pick up from here when you get home.}The results from the test will be compared to the requirements set in \ref{sec:TestObjectives} and checked if they have been met or not. All test results and data sheets can be seen in \ref{app:techTest}.
+The results from the test will be compared to the requirements set in \ref{sec:TestObjectives} and checked if they have been met or not. All test results and data sheets can be seen in \ref{app:techTest}.\todo{remember to add the appendix}
 
-	\subsubsection*{\ref{req:1A} Does the player selection task live up to the requirement specification that it should be successful 90\% of the time?}
-This was tested on 9-10/12/2015 by 2-3 group members. After a lot of pre-testing it was decided to use paper cut-outs of hands for detection. The overall success rate of player change was 65\%, or 13 successes out of 20. This, however, did not fulfil the requirement of 90\% success, so a recommended action was made and a new test based on that.
-The recommmended action was thus: \textit{Reduce cut-out size as the test logged too big areas in general.}
+	\subsubsection*{\ref{req:1A}: Does the player selection task live up to the requirement specification that it should be successful 90\% of the time?}
+This was tested on 9-10/12/2015 by 2-3 group members. Paper cut-outs of hands were used for detection. The overall success rate of player change was 65\%, or 13 successes out of 20. This does not fulfil the requirement of a 90\% success rate, so a recommended action was made and a new test based on that.
+The recommmended action was this: \textit{Reduce cut-out size as the test logged too big areas in general.}
 
-After the recommended action was implemented the overall success rate rose to 95\% and, thereby, fulfilling the requirement.
+After the recommended action was implemented, the overall success rate rose to 95\%, thereby fulfilling the requirement.
 
-	\subsubsection*{\ref{req:1B} Does the terraforming task live up to the requirement specification that it should be successful 90\% of the time?}
-	This was tested on 9-10/12/2015 by 2-3 group members and designated as paramater 1a. As can be seen in Figure \ref{fig:techHandTemp}, all of the tile presses were successful, but the majority had to use template to facilitate a change. River tiles were purposefully left out of this statistic as they will (rightfully) not show change. They were, however, tested as well if they would change. In conclusion, 100\% of the tiles changed.
+	\subsubsection*{\ref{req:1B}: Does the terraforming task live up to the requirement specification that it should be successful 90\% of the time?}
+	This was tested on 9-10/12/2015 by 2-3 group members and designated as paramater 1a. As can be seen in Figure \ref{fig:techHandTemp}, all of the tile presses were successful, but the majority had to use template to facilitate a change. River tiles were purposefully left out of this statistic as they will (rightfully) not show change. It was, however, tested whether or not they would change. In conclusion, 100\% of the tiles changed.
 	
 \begin{figure}[h!]
 	\centering
@@ -144,9 +144,9 @@ After the recommended action was implemented the overall success rate rose to 95
 	\label{fig:techHandTemp}
 \end{figure}
 	
-	A second test on 10/12/2015 in this requirement was performed, namely test parameter 4a. The test was performed on 10/12/2015 and yielded an overall success rate of 60\%. The important difference between this test and 1a is that only hand was used in 4a. Other changes such as testing tile change from every player position. The recommended action was to \textit{adjust the IR lamps and do several restarts on the code}. Unfortunately, there was no time to do a re-test for this particular action.
+	A second test on 10/12/2015 in this requirement was performed, namely test parameter 4a. The test was performed on 10/12/2015 and yielded an overall success rate of 60\%. The important difference between this test and 1a is that only hand was used in 4a. Other changes such as testing tile change from every player position. The recommended action is to \textit{adjust the IR lamps and do several restarts on the code}. Unfortunately, there is no time to do a re-test for this particular action.
 	
-	\subsubsection*{\ref{req:1C} The average delay time from the moment a gesture is done, to the moment the result can be seen on the interface should be around 3 seconds?}
+	\subsubsection*{\ref{req:1C}: The average delay time from the moment a gesture is done, to the moment the result can be seen on the interface should be around 3 seconds?}
 	This test was performed on 9/10/2015 by 3 group members and has testing parameter 2b. The overall average for gesture change was 4.3 seconds. After the aforementioned recommended action was implemented, it took 3.3 seconds on average. This is not exactly 3 seconds, but the the requirement was phrased as "around 3 seconds", it could still be met. The individual averages for each player did not differ more than ~1 second between the first and second test, despite for player 2. Player 2 improved its average from 8.1 to 2.8 seconds, an improvement of 5.3, or a 289\% increase. This can also be seen in Figure \ref{fig:techGestureTime}
 	
 \begin{figure}[h!]
