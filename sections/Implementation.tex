@@ -55,33 +55,15 @@ To facilitate user interaction, a software module is needed to analyse a video i
 \item Recognise when a tile is selected for terraforming.
 \end{itemize}
 
-To do these, BLOBs need to be extracted from the video input through segmentation. Since it is difficult to create a uniform surface of reflected IR-light, it might be necessary to apply background subtraction to the input before segmentation. 
+To do these, BLOBs need to be extracted from the video input through segmentation.  
 
-Furthermore, since this is a video feed rather than a static image, several of the methods in use will have to be looped. This leads to a three-step solution for processing the video input:
+Furthermore, since this is a video feed rather than a static image, several of the methods in use will have to be looped. This leads to a two-step solution for processing the video input:
 
 \begin{enumerate}
-\item Prepare video frame for segmentation (Pre-segmentation).
 \item Segment image (Segmentation, includes de-noising/smoothing).
 \item Conditionally change data depending on the BLOB analysis
 \end{enumerate}
 
-\subsection{Pre-segmentation}
-To prepare the video feed for segmentation it is necessary to do image subtraction. For this project background subtraction is most useful since the point is to detect static BLOBs and not movement and for that an empty background is needed. 
-
-\begin{figure}
-	\centering
-	\begin{subfigure}[b]{0.3\textwidth}
-	\includegraphics[width=\textwidth]{UnSub}
-		\caption{\label{Fig:UnSub}}
-	\end{subfigure}
-	\begin{subfigure}[b]{0.3\textwidth}
-	\includegraphics[width=\textwidth]{BackgroundSub}
-		\caption{\label{Fig:BackgroundSub}}
-	\end{subfigure}
-	\caption{Picture \textbf{(a)} is the input image and picture \textbf{(b)} is the background subtracted image\label{Fig:Subtract}}
-\end{figure}
-
-Background subtraction works by using the first image in the video as the referencing image r(x,y) and then subtracting that from the current image f(x,y), using this formula: \textit{g(x,y) = f(x,y) - r(x,y)} \citep{moeslund_introduction_2012}. 
 
 \subsection{Segmentation}
 There are several methods for segmenting images. The relevant methods are discussed in this section. 
