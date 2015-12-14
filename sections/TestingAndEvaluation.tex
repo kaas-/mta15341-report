@@ -15,7 +15,7 @@ With these in mind, the test aims to clarify whether the product lives up to its
 The problem statement is defined in Section~\ref{sec:ProblemStatement}. Based on this problem statement, it is important not only to test how well the program functions on a technical level, but also if the test participants still feel like they are playing the original board game, which will be tested on a level of satisfaction/acceptance.
 The success criteria (Section~\ref{sec:SuccessCriteria}) and the system requirements (Section~\ref{sec:ReqSpec}) each add to the specifications on the technical and satisfaction  objectives of the test.
 
-The technical oriented test objectives are:\todo{Capitalise every item and remove parentheses}
+The technical oriented test objectives are:
 \begin{enumerate}
 \setcounter{enumi}{0}
 \item \begin{enumerate}
@@ -84,12 +84,12 @@ This is tested by using paper cut-outs of hands to test successful detection of 
 The reaction time for each player hand detection were logged in the aforementioned time. Reaction defined as the time between cut-out touching table and player change was logged in the console.
 \end{enumerate}
 	\item \begin{enumerate}
-		\item Number of restarts of code during technical tests is logged (Unrelated to requirements. This is included as a way to track how autonomous\todo{"how automatic the code could function"? Not sure what is being said here  // Edit: Changed to "autonomous" MN} the code could be during the tests.)
+		\item Number of restarts of code during technical tests is logged (Unrelated to requirements. This is included as a way to track how autonomously the code could be during the tests.)
 	\end{enumerate}
 	\item \begin{enumerate}
 		\item Accuracy for tile changes made by hand (related to \ref{req:1B})
 		
-		This is done by pressing 5 tiles (4 corners and 1 centre tile) individually by hand and see if it was successful. Successful in this case means that the tile was able to be changed by hand from either side of the table. \todo{this needs to be clarified. Are they pressed at once? Are we testing whether the right one is terraformed? // Elaborated on both gripes MN}
+		This is done by pressing 5 tiles (4 corners and 1 centre tile) individually by hand and see if it was successful. Successful in this case means that the tile was able to be changed by hand from either side of the table. If a tile other than the one indented is terraformed, it is not consideres successful.
 	\end{enumerate}
 \end{enumerate}
 
@@ -126,7 +126,7 @@ Once the test is done, the footage and notes from the test will be analysed and 
 These are the results gathered from the test.
 
 \subsection{Technical}
-The results from the test will be compared to the requirements set in \ref{sec:TestObjectives} and checked if they have been met or not. All test results and data sheets can be seen in \ref{app:techTest}.
+\todo{Emilie pick up from here when you get home.}The results from the test will be compared to the requirements set in \ref{sec:TestObjectives} and checked if they have been met or not. All test results and data sheets can be seen in \ref{app:techTest}.
 
 	\subsubsection*{\ref{req:1A} Does the player selection task live up to the requirement specification that it should be successful 90\% of the time?}
 This was tested on 9-10/12/2015 by 2-3 group members. After a lot of pre-testing it was decided to use paper cut-outs of hands for detection. The overall success rate of player change was 65\%, or 13 successes out of 20. This, however, did not fulfil the requirement of 90\% success, so a recommended action was made and a new test based on that.
