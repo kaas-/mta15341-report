@@ -7,7 +7,7 @@ A lot of different methods exist to make this project possible. This chapter sta
 \section{Rear Diffused Illumination} \label{sec:RDI}
 \begin{figure}[!h]
 \centering	\includegraphics[width=0.5\textwidth]{sketchAugmentedBoard}
- \caption{An sketch of our RDI table.\label{Fig:sketch}}
+ \caption{A sketch of the RDI table.\label{Fig:sketch}}
 \end{figure}
 The interaction on the game board table will be based on rear diffused illumination as described in Multi-Touch Technologies \citep{multiTT}. This means, as shown in Figure \ref{Fig:sketch}, that infrared (IR) lamps will be placed underneath the table's surface, projecting IR light upwards. A webcam below the table will be equipped with a visible light filter obtained from a floppy disc, meaning it will primarily detect IR light. Furthermore, the table's surface, made of transparent material, needs a diffuser material just above or beneath it in order to diffuse the light. The purpose of this diffuser is to scatter the IR light and make objects hovering over the surface less visible to the camera. When an object touches the surface, the area of contact reflects more IR light than the untouched areas of the diffuser. This reflected light is captured by the camera, and can then be extracted as a BLOB. The diffuser has the additional purpose of facilitating a projection of the user interface from below.
 
