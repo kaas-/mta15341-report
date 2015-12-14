@@ -77,19 +77,19 @@ It is registered whether or not hand gesture would work for changing tiles. The 
 \item \begin{enumerate}
 \item Effectiveness of player change gesture (related to requirement \ref{req:1A})
 
-This is tested by using paper cut-outs of hands to test successful detection of the respective players.
+This is tested by using paper cut-outs of hands to test successful detection of the respective players. Furthermore, each 4 player cut outs were tested 5 times.
 
 \item Efficiency of player change gesture (related to requirement \ref{req:1C})
 
-The reaction time for each player hand detection is logged.
+The reaction time for each player hand detection were logged in the aforementioned time. Reaction defined as the time between cut-out touching table and player change was logged in the console.
 \end{enumerate}
 	\item \begin{enumerate}
-		\item Number of restarts of code during technical tests is logged (Unrelated to requirements. This is included as a way to track how automatic\todo{"how automatic the code could function"? Not sure what is being said here} the code could function during the tests.)
+		\item Number of restarts of code during technical tests is logged (Unrelated to requirements. This is included as a way to track how autonomous\todo{"how automatic the code could function"? Not sure what is being said here  // Edit: Changed to "autonomous" MN} the code could be during the tests.)
 	\end{enumerate}
 	\item \begin{enumerate}
 		\item Accuracy for tile changes made by hand (related to \ref{req:1B})
 		
-		This is done by pressing 5 tiles (4 corners and 1 centre tile) by hand and see if it was successful.\todo{this needs to be clarified. Are they pressed at once? Are we testing whether the right one is terraformed?}
+		This is done by pressing 5 tiles (4 corners and 1 centre tile) individually by hand and see if it was successful. Successful in this case means that the tile was able to be changed by hand from either side of the table. \todo{this needs to be clarified. Are they pressed at once? Are we testing whether the right one is terraformed? // Elaborated on both gripes MN}
 	\end{enumerate}
 \end{enumerate}
 
@@ -126,6 +126,55 @@ Once the test is done, the footage and notes from the test will be analysed and 
 These are the results gathered from the test.
 
 \subsection{Technical}
+The results from the test will be compared to the requirements set in \ref{sec:TestObjectives} and checked if they have been met or not. All test results and data sheets can be seen in \ref{app:techTest}.
+
+	\subsubsection*{\ref{req:1A} Does the player selection task live up to the requirement specification that it should be successful 90\% of the time?}
+This was tested on 9-10/12/2015 by 2-3 group members. After a lot of pre-testing it was decided to use paper cut-outs of hands for detection. The overall success rate of player change was 65\%, or 13 successes out of 20. This, however, did not fulfil the requirement of 90\% success, so a recommended action was made and a new test based on that.
+The recommmended action was thus: \textit{Reduce cut-out size as the test logged too big areas in general.}
+
+After the recommended action was implemented the overall success rate rose to 95\% and, thereby, fulfilling the requirement.
+
+	\subsubsection*{\ref{req:1B} Does the terraforming task live up to the requirement specification that it should be successful 90\% of the time?}
+	This was tested on 9-10/12/2015 by 2-3 group members and designated as paramater 1a. As can be seen in Figure \ref{fig:techHandTemp}, all of the tile presses were successful, but the majority had to use template to facilitate a change. River tiles were purposefully left out of this statistic as they will (rightfully) not show change. They were, however, tested as well if they would change. In conclusion, 100\% of the tiles changed.
+	
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.65\textwidth]{HandTemp}
+	\caption{Pie chart illustrating whether template (red) or hand (blue) was used for tile change.} 
+	\label{fig:techHandTemp}
+\end{figure}
+	
+	A second test on 10/12/2015 in this requirement was performed, namely test parameter 4a. The test was performed on 10/12/2015 and yielded an overall success rate of 60\%. The important difference between this test and 1a is that only hand was used in 4a. Other changes such as testing tile change from every player position. The recommended action was to \textit{adjust the IR lamps and do several restarts on the code}. Unfortunately, there was no time to do a re-test for this particular action.
+	
+	\subsubsection*{\ref{req:1C} The average delay time from the moment a gesture is done, to the moment the result can be seen on the interface should be around 3 seconds?}
+	This test was performed on 9/10/2015 by 3 group members and has testing parameter 2b. The overall average for gesture change was 4.3 seconds. After the aforementioned recommended action was implemented, it took 3.3 seconds on average. This is not exactly 3 seconds, but the the requirement was phrased as "around 3 seconds", it could still be met. The individual averages for each player did not differ more than ~1 second between the first and second test, despite for player 2. Player 2 improved its average from 8.1 to 2.8 seconds, an improvement of 5.3, or a 289\% increase. This can also be seen in Figure \ref{fig:techGestureTime}
+	
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\textwidth]{gestureTime}
+	\caption{Averages of each player across the two tests} 
+	\label{fig:techGestureTime}
+\end{figure}
+
+	\subsubsection*{\ref{req:1D} The average delay time from the moment a tile change is gestured, to the moment the result can be seen on the interface should be around 3 seconds?}
+	This was tested on 9/12/2015 through testing parameter 1b by 3 group members. The total average was 2.3 seconds and thus meeting the requirement set. Furthermore, it can be split up in averages of using a hand to change the tile and a template. The average for hand-aided change was 2.9 seconds and the average for using the template was 1.9 seconds. A scatter plot of the value distribution can be seen in Figure \ref{fig:techScatter1}.
+	
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\textwidth]{scatterTempHand}
+	\caption{Scatter plot for hand and template tile change} 
+	\label{fig:techScatter1}
+\end{figure}
+
+When looking at Figure \ref{fig:techHistogram}, a histogram of the tile changes, the scatter plot can be better explained. For example, almost 80\% of the tiles took less than 5 seconds and 97\% of the tile changes happened within the 0-10 second range. It should be mentioned than in all calculations, river tiles are not included since they never (rightfully) changed. 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\textwidth]{histogramTempHand}
+	\caption{Histogram of all tile changes in seconds} 
+	\label{fig:techHistogram}
+\end{figure}
+
 \subsection{Satisfaction}\label{satisfactionResult}
 All the four participant groups felt they were still playing Terra Mystica in both versions of the game. This was definitely due to the game mechanics still being the same in both versions, and to a less extent was it due to them saying that they ‘felt’ it was the same game. However, one group of participants stated that the digital version provided the same sense of ‘togetherness’ as the original version. In one group, it was mentioned that playing the augmented and the original versions each had their unique flair, and added something more to the game, with the examples of the digital version being dramatic/exciting and the original being comfortable/casual. 
 

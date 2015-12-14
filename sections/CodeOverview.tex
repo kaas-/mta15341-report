@@ -191,7 +191,7 @@ HexPoints.push_back(hex);
 Finally the \texttt{Board} class contains a \texttt{changeHex} and \texttt{getHex} method. The former takes an \texttt{int} and a \texttt{Scalar} as arguments which are used to call the \texttt{setColour} method of a desired \texttt{Hex} in the list to set it to a desired colour. The latter method simply returns the \texttt{Hex} object at a desired position in the list of hexagons.
 
 \section{Main function}
-The main function is executed when the software is started. This function initially reads the board image from disk and loads it into a window. Then a \texttt{Board} object is instantiated and its \texttt{buildBoard} method is called. Then an array of \texttt{Player} objects is defined after which the main loop is started. In this loop, an image from the camera is received and processed with OpenCV methods. The image is converted to greyscale, a gaussian blur is applied, and the image is finally segmented using a simple, static threshold.
+The main function is executed when the software is started. This function initially reads the board image from disk and loads it into a window. Then a \texttt{Board} object is instantiated and its \texttt{buildBoard} method is called. Then an array of \texttt{Player} objects is defined after which the main loop is started. In this loop, an image from the camera is received and processed with OpenCV methods. These methods convert the image to greyscale, apply a gaussian blur, and then segment the image using a simple, static threshold. An opening algorithm (erode, then dilate) is finally applied to the thresholded image.
 
 \begin{figure}
 \begin{lstlisting}
