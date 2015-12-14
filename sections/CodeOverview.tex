@@ -191,9 +191,48 @@ HexPoints.push_back(hex);
 Finally the \texttt{Board} class contains a \texttt{changeHex} and \texttt{getHex} method. The former takes an \texttt{int} and a \texttt{Scalar} as arguments which are used to call the \texttt{setColour} method of a desired \texttt{Hex} in the list to set it to a desired colour. The latter method simply returns the \texttt{Hex} object at a desired position in the list of hexagons.
 
 \section{Main function}
-The main function is executed when the software is started. This function initially reads the board image from disk and loads it into a window. Then a \texttt{Board} object is instantiated and its \texttt{buildBoard} method is called. Then an array of \texttt{Player} objects is defined after which the main loop is started. In this loop, an image from the camera is received and processed with OpenCV methods. These methods convert the image to greyscale, apply a gaussian blur, and then segment the image using a simple, static threshold. An opening algorithm (erode, then dilate) is finally applied to the thresholded image.
+The main function is executed when the software is started. This function initially reads the board image from disk and loads it into a window. Then a \texttt{Board} object is instantiated and its \texttt{buildBoard} method is called. Then an array of \texttt{Player} objects is defined after which the main loop is started. In this loop, an image from the camera is received and processed with OpenCV methods. These methods convert the image to greyscale, apply a gaussian blur, and then segment the image using a simple, static threshold. An opening algorithm (erode, then dilate) is finally applied to the thresholded image. Then the \texttt{convexHullFunction} is called. The purpose of this method is multifaceted. At first it creates an array of \texttt{contours} (arrays of \texttt{Points}) in the camera image, which is used for BLOB analysis. For each element in the \texttt{contours} array, the OpenCV \texttt{convexHull} finds a set of \texttt{Points} for the convex of the shape, based on Sklansky's algorithm \citep{Sklansky198279}. Then the area of the convex is found using the OpenCV \texttt{contourArea} method. The size of this area is the parameter used to determine what type of object has been found. This is implemented using a set of \texttt{if}-statements, that use the found \texttt{area} variable as their conditions, which is shown in Figure~\ref{fig:currentPlayerIf}. All \texttt{if}-statements within this method are used to change the current player. After the \texttt{convexHullFunction} has executed, the position of the center of the BLOB is compared against the position of each \texttt{Hex}. This is done using the \texttt{for}-loop shown in Figure~\ref{fig:changeHexForLoop}. The \texttt{if} statement in this loop uses the result of a function call to \texttt{Pointpoly} method as part of its conditions. This method is located in the \texttt{Hex} class and returns a \texttt{boolean} value - \texttt{true} if the center is within the \texttt{Hex}, and \texttt{false} if the center is outside of it. If this method returns \texttt{true}, and the area of the BLOB is within a certain threshold, the \texttt{colour} variable of that \texttt{Hex} is changed to match the faction of the current player. This loop continues until the game is ended.
 
 \begin{figure}
 \begin{lstlisting}
+if (area > 13700)  //P4
+{
+	detectionHits++;
+	if (detectionHits > 10) {
+		currentPlayer = 3;
+		cout << "New Player is " << currentPlayer + 1 << endl;
+		cout << "Area: " << area << "\n";
+		detectionHits = 0;
+	}
+}
 \end{lstlisting}
+\caption{One of four \texttt{if}-statements used to determine the curent player. \label{fig:currentPlayerIf}}
 \end{figure}
+
+\begin{figure}
+\begin{lstlisting}
+for (int i = 0; i < 112; ++i)
+{
+	if (board.getHex(i).Pointpoly(scaledCenter) && board.getHex(i).getColour() != Colour::RIVER)  
+	{
+		lastActionColour = board.getHex(i).getColour();
+		lastActionIndex = i;
+		//cout << "You clicked hex " << i << " and changed from " << lastActionColour << " and will change to " << players[currentPlayer].getFaction() << endl;
+		colourDetection++;
+		if (colourDetection > 3 && area < 5000 && area > 80) 
+		{
+			board.changeHex(i, players[currentPlayer].getFaction());
+			board.drawBoard(image);
+			cout << "Changed " << lastActionColour << " to " << board.getHex(i).getColour() << endl;
+			imshow("Terra Mystica Board", image);
+			scaledCenter = Point(0, 0);
+			colourDetection = 0;
+		}
+	}
+	//circle(image, scaledCenter, 8, Scalar(0), -1);
+}
+\end{lstlisting}
+\caption{The \texttt{for}-loop that checks each the position of a BLOB against each \texttt{Hex}. \label{fig:changeHexForLoop}}
+\end{figure}
+
+
