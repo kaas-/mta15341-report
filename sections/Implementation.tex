@@ -68,24 +68,41 @@ Furthermore, since this is a video feed rather than a static image, several of t
 \subsection{Segmentation}
 There are several methods for segmenting images. The relevant methods are discussed in this section. 
 
-As the project deals with video as opposed to static images, there is an issue with image noise. As the input from the camera is constantly updating, the noise is not static, and is not completely removed by the initial background subtraction. Therefore, a smoothing filter is necessary, so more noise can be negated. In this case, a Gaussian blur was implemented.
+It is simpler, both from a computation and a programming standpoint, to process greyscale images as opposed to colour images. In this project, there is no benefit to using colour images as video input. Therefore, the video input is converted to greyscale. This is done by finding the mean of the RGB values in each pixel of the video input. This is done using the equation shown in Figure~\ref{fig:rgbToGreyEquation}.
 
-\begin{wrapfigure}{r}{0.32\textwidth}
+\begin{figure}[h]
+	\centering
+	\begin{displaymath}
+	I = \frac{R + G + B}{3}
+	\end{displaymath}
+	\caption{The returned intensity value I, is the mean of R, G, and B. \label{fig:rgbToGreyEquation}}
+\end{figure}
+
+As the project deals with video as opposed to static images, there is an issue with image noise. As the input from the camera is constantly updating, the noise is not static. Therefore, a smoothing filter is necessary, so more noise can be negated. In this case, a Gaussian blur was implemented.
+
+\begin{figure}[h]
   \begin{center}
-    \includegraphics[width=0.30\textwidth]{Correlation}
+    \includegraphics[width=0.5\textwidth]{Correlation}
   \end{center}
   \caption{A visualisation of correlation \label{Fig:Correlation}\citep{moeslund_introduction_2012}}
-\end{wrapfigure}
+\end{figure}
 
-A Gaussian blur is a correlation-based image processing operation, which makes use of a kernel. This works by having the kernel overlay on top of the pixels of the image that is processed. The pixel that will be processed for each placement of the kernel is the one that corresponds to the middle pixel of the kernel. This means that the border of the image will be lost when doing this operation, as the kernel cannot be applied to the outermost pixels without going out of bounds. The new pixel value is calculated by multiplying each value in the kernel with the value of its corresponding pixel, and then dividing the sum of these values by the sum of the kernel's values. The resulting number is the new value of the pixel being processed.
-This process is illustrated in Figure \ref{Fig:Correlation}. The Gaussian kernel, displayed in Figure \ref{Fig:Gaussian}, is a kernel with a specific pattern. This pattern gives more weight to the pixels paired with the centring kernel values, thereby giving them more influence in the image processing. It is used to remove detail from an image, which as mentioned earlier is useful to remove noise.
+A Gaussian blur is a correlation-based image processing operation, which makes use of a kernel. This works by having the kernel overlay on top of the pixels of the image that is processed. The pixel that will be processed for each placement of the kernel is the one that corresponds to the middle pixel of the kernel. This means that the border of the image will be lost when doing this operation, as the kernel cannot be applied to the outermost pixels without going out of bounds. The new pixel value is calculated by multiplying each value in the kernel with the value of its corresponding pixel and finding the sum of these values using the equation shown in Figure~\ref{fig:gaussianEquation}. Each of these results are then divided with the sum of the kernels' coefficients to normalize the output image. The resulting number is the new value of the pixel being processed. This process is illustrated in Figure \ref{Fig:Correlation}. The Gaussian kernel, displayed in Figure \ref{Fig:Gaussian}, is a kernel with a specific pattern. This pattern gives more weight to the pixels paired with the centring kernel values, thereby giving them more influence in the image processing. It is used to remove detail from an image, which as mentioned earlier is useful to remove noise.
 
-\begin{wrapfigure}{r}{0.32\textwidth}
+\begin{figure}
+	\centering
+	\begin{displaymath}
+	g(x,y) = \sum^R_{j=-R} \sum^R_{i=-R} h(i, j) \cdot f(x + i, y + j)
+	\end{displaymath}
+	\caption{Equation for applying a gaussian kernel to an image, where g(x, y) returns the value of the output pixel, R is the radius of the kernel, and f(x, y) returns the input pixel \citep{moeslund_introduction_2012}. \label{fig:gaussianEquation}}
+\end{figure}
+
+\begin{figure}[h]
 \begin{center}
  \includegraphics[width=0.3\textwidth]{Gaussian}
   \end{center}
 \caption{A 5x5 Gaussian kernel pattern \label{Fig:Gaussian}\citep{moeslund_introduction_2012}}
-\end{wrapfigure}
+\end{figure}
 
 In order to create a binary image containing BLOBs, the images of the video need to be thresholded. In an ideal image which is to be thresholded, the histogram will have two distinct 'mountains' of pixel values, that is to say, there will be two groups of pixels with similar brightness. Ideally, the groups are isolated from each other in brightness. Achieving such an image is the purpose of the processes that have been described so far. In the case of this project, the image produced is expected to have bright spots where the board is touched, on a dark plane which is to be considered the background.
 
@@ -128,20 +145,25 @@ These morphology algorithms work by applying a \textit{hit} or \textit{fit} oper
 \end{figure}
 
 \subsection{BLOB analysis}
-\begin{wrapfigure}{r}{0.32\textwidth}
+
+The BLOBs created by user input need to be differentiated from any noise that may remain even after opening. To do this, each BLOB is given a convex hull. The convex hull of a BLOB is, as described by Moeslund, "\textit{... the minimum convex polygon which contains the BLOB. It corresponds to placing a rubber band around the BLOB.}" \citep{moeslund_introduction_2012} In this project, the area of the convex hulls are calculated using Sklansky's algorithm \citep{Sklansky198279}. By filtering the convex hulls by size, ignoring those that have a small area, a BLOB from a specific gesture can be detected.
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.3\textwidth]{Convex}
 \end{center}
 \caption{The convex hull of a hand \label{Fig:Convex}}
-\end{wrapfigure}
-The BLOBs created by user input need to be differentiated from any noise that may remain even after opening. To do this, each BLOB is given a convex hull. The convex hull of a BLOB is, as described by Moeslund, "\textit{... the minimum convex polygon which contains the BLOB. It corresponds to placing a rubber band around the BLOB.}" \citep{moeslund_introduction_2012} In this project, the area of the convex hulls are calculated using Sklansky's algorithm \citep{Sklansky198279}. By filtering the convex hulls by size, ignoring those that have a small area, a BLOB from a specific gesture can be detected.
+\end{figure}
 
 \section{Rendering of game board}
+
+
+In order for the program to be able to change the game tiles through terraforming, it must have access to them from the start. This is done by having the program render out all the tiles. The border around the actual tiles are made from a background image, which is imported as is. This image contains the outline of a player area for each player, the point counter, and the border for each exclusive action. 
+
 \begin{figure}[h!]
 \centering \includegraphics[width=0.5\textwidth]{BoardWithTilesNoUndo}
 \caption{The game board \label{Fig:Board}}
 \end{figure}
-In order for the program to be able to change the game tiles through terraforming, it must have access to them from the start. This is done by having the program render out all the tiles. The border around the actual tiles are made from a background image, which is imported as is. This image contains the outline of a player area for each player, the point counter, and the border for each exclusive action. 
+
 \begin{figure}[h!]
 \centering \includegraphics[width=0.7\textwidth]{HexWithMath}
 \caption{Relations between height and points in hexagon \label{Fig:HexWithMath}}
