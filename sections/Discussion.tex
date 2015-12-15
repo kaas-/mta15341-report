@@ -14,7 +14,22 @@ Regarding validity they can be summed up to these points:
 \item Present the negative feedback and the feedback that does not fit with the majority to show that the different perspective have been considered.
 \end{itemize}
 
-As seen in section \ref{satisfactionResult} the results have been described thoroughly and present both the positive feedback that back up our problem formulation and the negative feedback that does not back it up. This is consistent whenever a new theme in the results is established, which adds validity to the result. Generally throughout the test the guides have been encouraged to be as unbiased as possible. However since it is not possible to put all ones own bias entirely away the questions asked and the results and themes reached are of course made on a basis of our bias of the product we have created. We have however as can be seen throughout the entire Chapter \ref{ch:testeval} considered all angles offered to us concerning the test results. This can be argued as giving our results a sufficient degree of validity. In hindsight, more could have been done to raise the degree of validity, as for example bring in test participants who were not fellow students and therefore would not have the bias gained from the same study. 
+As seen in section \ref{satisfactionResult} the results have been described thoroughly and present both the positive feedback that back up our problem formulation and the negative feedback that does not back it up. This is consistent whenever a new theme in the results is established, which adds validity to the result. 
+
+Generally throughout the test the guides have been encouraged to be as unbiased as possible. However since it is not possible to put all ones own bias entirely away the questions asked and the results and themes reached are of course made on a basis of our bias of the product we have created. We have however as can be seen throughout the entire Chapter \ref{ch:testeval} considered all angles offered to us concerning the test results. This can be argued as giving our results a sufficient degree of validity. 
+
+In hindsight, more could have been done to raise the degree of validity, as for example bring in test participants who were not fellow students, which would make for a less narrow set of biases and a broader perspective.
+
+Another thing that might lower the validity, is the fact that for the test we played a simplified version of the game with most of the mechanics removed. This was done since it was easier to explain the rules to non-experienced players and also to make the test shorter. Reducing the game to only the terraforming and building actions gives the participants of the test a wrong representation of how the full game would be played with the augmentations.
+
+The fact that we also do not play a whole game hurts the validity of the test as well, since this eliminates the long-term planning necessary in the game, and could also prevent the participants from being completely immersed in the game. The decision to not play a whole game was made since the test would then have been too long for us to find participants who would have time to test it.
+
+During the test we were also constantly watching them and looking at what they were doing. Some of the participants might have feel pressured because of this constant presence of a person watching their every move. There is a possibility of them have acted differently if this had been done by a camera instead of a person watching them because a camera does not give off the same presence as a person does.   
+
+Because this test was not performed in a closed room, the test results might have been affected by outside events such as noise, people walking by, lights turning off, etc. This might also have affected the participants ability to immerse themselves into the game, and thereby making it less enjoyable for them. 
+
+Furthermore some of the bugs in the augmentation, might have made the problems with immersion and enjoyment worse.
+
 
 
 Reliability deals with the test set-up and procedures. The points Creswell \citep{Creswell} makes on this topic can be summed up as follows:
@@ -48,6 +63,13 @@ Certain things could be done to remedy these bugs, such as:
 	\item Calibrating the threshold to avoid hovering elements, such as arms or close objects are not added as objects.
 	\item Performing intelligent (with a learning rate) background subtraction to cancel out noise and ensure an easier thresholding. This would also reduce the calibration time.
 \end{itemize}
+
+\section{Quality of solution}
+The quality of the solution is damaged by the technical issues, both with the hardware and the software. In an ideal implementation of the design, one would forego RDI altogether, and instead use FTIR, as that solution would remedy several of the problems encountered when using RDI, as is mentioned in Section~\ref{technologiesAlternatives}. The low amount of IR lamps used in this project caused insufficient and uneven illumination on the diffuser, resulting in a board which can only detect contact on a fraction of its area. Furthermore, each time the table is set up, there is a slight difference in the placement of the lamps, resulting in an inconsistency in quality. However, in the best case setups, the program runs autonomously without interruptions. If one is to continue with the RDI solution, additional lamps should be added to the table, and some calculation should be done on optimal placement. 
+
+The fact that users have to stand up by the table while playing is a drawback to this solution. Furthermore, looking at the light coming from the table for too long may be tiresome to the user’s eyes, and several test participants state that the light causes them to experience difficulty in differentiating between the black and the brown tiles and game pieces.
+
+As for the program, adding background subtraction with a learning rate to the segmentation process would improve the quality of the BLOBs. The fact that the camera’s field of view is relatively small compared to the board’s surface makes for areas of the board with unutilised potential, which impairs the quality of the solution. However, the digital game board is larger and more simplistic than the original board, which some test participants stated to be positive qualities. The prototype produced looks like a singular, cohesive item, and it can be modified to remedy its drawbacks.
 
 \section{Further Implementation}
 Aside from the product's minimum implementation requirements, it is possible to make further iterations, suggested in this chapter. These are based on the evaluation results from both the user test and the technical test, which is described in Chapter~\ref{ch:testeval}. The implementation suggestions are based in the results that are considered valid and reliable.
