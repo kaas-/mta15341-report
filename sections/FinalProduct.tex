@@ -5,12 +5,12 @@ The following chapter contains a description of the state of the product, at the
 \section{Physical product}
 The table itself is constructed by aluminium extrusions, measuring 120 x 102 x 89 cm. A shelf is located on the internal side of the top frame, which is used to hold a 3 mm acrylic glass plate. The underside of the glass is covered in a single layer of baking paper. This acts as the diffusion material in the RDI setup, as well as the screen for the short-throw projector.
 
-In the bottom of the table are extrusions, which hold the rest of the RDI setup, and the projector. The camera is placed in the bottom of the table, so that the area of sight is larger. The projector is placed to one side of the table, as this makes the cone of projection land central on the screen. The infra-red lights are placed 30 cm into the air, by mounting them on top of extrusions. This height is optimal, as the camera can detect more, the closer the lamps are to the screen. However, the closer the lamps are to the screen, the smaller are the cones of infra-red light.  Furthermore, if the lamps were placed higher, the extrusions they were mounted on would start blocking the projector, making parts of the screen not viewable by the users. To contain the infra-red light inside the table, a black cloth cover is placed around the sides of the table.
+In the bottom of the table are extrusions, which hold the rest of the RDI setup, and the projector. The camera is placed at the bottom of the table, so that the area of sight is larger. The projector is placed to one side of the table, as this makes the cone of projection land central on the screen. The infra-red lights are placed 30 cm into the air, by mounting them on top of extrusions. This height is optimal, as the camera can detect more, the closer the lamps are to the screen. However, the closer the lamps are to the screen, the smaller are the cones of infra-red light.  Furthermore, if the lamps were placed higher, the extrusions they were mounted on would start blocking the projector, making parts of the screen not viewable by the users. To contain the infra-red light inside the table, a black cloth cover is placed around the sides of the table.
 
 A computer runs the software, and is connected to the camera and the projector. The camera acts as input for the software, and the projector shows the output on the screen.
 
 \section{Digital product}
-The product displays a recreation of the Terra Mystica board and include the following:
+The product displays a recreation of the Terra Mystica board and include the following graphics:
 \begin{itemize}
 	\item The hexagonal tiles in the seven different colours, plus the river tiles
 	\item An inner frame around the board tiles, which is used to track each players' amount of victory points.
@@ -18,7 +18,10 @@ The product displays a recreation of the Terra Mystica board and include the fol
 	\ldots
 \end{itemize}
 
+As the game's primary interaction with the board is through terraforming, the tiles are interactive. Each tile is independently interacted with through hand gestures, and can be changed to the colour of the current player. In the original game, it costs different amounts of resources to change different colours, depending on which colour the player is themselves. The table does not manage this, and relies on the players managing the resources required themselves.
 
+The victory point tracker was not an interactive piece of the board. Instead, it was a static graphic, where each player had a game piece placed on their current number of victory points.
 
-\todo{remember player select area was scrapped because of bad illumination at the edges.}
-\todo{remember the undo bottom was planned, but scrapped because of time}
+When a player starts their turn, they must make a gesture, so the system knows which colour to use, if the player wants to terraform. The original intention was to designate parts of the outer frame as the area to do this. On the graphic, this area is a small box, with each side of the table having one. This was used in the lo-fi test. However, when making use of the RDI setup, this proved very difficult. RDI requires a lot of infra-red illumination to work, which should be spread out largely evenly on the interactive surface. Because of material costs, the project did not have access to sufficient lamps, and it was required to focus much of the infra-red light around the center of the board. This meant that the board was much more responsive around the center, but less responsive at the edges. Because of this, the player select areas were not used, and the players instead had to make their gestures at the center of the board. To make the player selection more reliable, paper hands were given to each player to be used instead. 
+
+The outer frame also included an undo button, which was meant to give the players the ability to revert the last action taken. This could for example be used in situations, where a player accidentally terraformed the wrong tile. However, this was not implemented because of time constraints.
