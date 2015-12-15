@@ -18,10 +18,14 @@ The product displays a recreation of the Terra Mystica board and include the fol
 	\ldots
 \end{itemize}
 
+\subsection{Interactive elements}
 As the game's primary interaction with the board is through terraforming, the tiles are interactive. Each tile is independently interacted with through hand gestures, and can be changed to the colour of the current player. In the original game, it costs different amounts of resources to change different colours, depending on which colour the player is themselves. The table does not manage this, and relies on the players managing the resources required themselves.
-
-The victory point tracker was not an interactive piece of the board. Instead, it was a static graphic, where each player had a game piece placed on their current number of victory points.
 
 When a player starts their turn, they must make a gesture, so the system knows which colour to use, if the player wants to terraform. The original intention was to designate parts of the outer frame as the area to do this. On the graphic, this area is a small box, with each side of the table having one. This was used in the lo-fi test. However, when making use of the RDI setup, this proved very difficult. RDI requires a lot of infra-red illumination to work, which should be spread out largely evenly on the interactive surface. Because of material costs, the project did not have access to sufficient lamps, and it was required to focus much of the infra-red light around the center of the board. This meant that the board was much more responsive around the center, but less responsive at the edges. Because of this, the player select areas were not used, and the players instead had to make their gestures at the center of the board. To make the player selection more reliable, paper hands were given to each player to be used instead. 
 
-The outer frame also included an undo button, which was meant to give the players the ability to revert the last action taken. This could for example be used in situations, where a player accidentally terraformed the wrong tile. However, this was not implemented because of time constraints.
+\subsection{Non-interactive elements}
+The victory point tracker is not an interactive piece of the board. Instead, it was a static graphic, where each player had a game piece placed on their current number of victory points.
+
+The outer frame also includes two undo buttons, placed in opposite corners, which was meant to give the players the ability to revert the last action taken. This could for example be used in situations, where a player accidentally terraformed the wrong tile. However, this was not implemented because of time constraints.
+
+In the two other corners, a graphic for point scoring is placed. This is described with images illustrating what players would get victory points for in each round. Images illustrating what players scored victory points for in the end of the game was also in this table. In the original game, this table can have random objectives for each round, but in the digital version, it was a static graphic used as a place holder.

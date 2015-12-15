@@ -1,7 +1,7 @@
 %!TEX root = ../master.tex
 \chapter{Code Overview}\label{ch:codeover}
-
-The structure of the implemented software can be seen in the class diagram in Figure~\ref{fig:implementedClassDiagram}.
+This chapter provides an overview for the code and structure of the implemented software. The individual modules, their purpose, and design are described in detail. This is then wrapped up in a description of the main function, which makes use of these modules.
+The structure of the implemented software is visualized in the class diagram in Figure~\ref{fig:implementedClassDiagram}.
 
 \begin{figure}
 	\centering
@@ -65,7 +65,7 @@ else
 \end{figure}
 
 \subsection{Neighbourhood processing}
-The neighbourhood processing methods used in this software are \texttt{erode} and \texttt{dilate} These filters apply their kernels to each pixel through the process of convolution. That is to say, for each pixel they calculate a value for each pixel relative to the processed pixel based on the kernel. These results are then used for further calculations depending on the purpose of the filter. \todo{Maybe ref back to implementation where we should talk about it?}	
+The neighbourhood processing methods used in this software are \texttt{erode} and \texttt{dilate} These filters apply their kernels to each pixel through the process of convolution. That is to say, for each pixel they calculate a value for each pixel relative to the processed pixel based on the kernel. These results are then used for further calculations depending on the purpose of the filter. Kernels are discussed in the further details in Chapter~\ref{ch:implementation}.	
 
 The filters make use of a nested \texttt{for}-loop similar to the point-processing algorithms to go through each pixel. This loop can be seen in Figure~\ref{fig:neighbourhoodForLoop}. The main difference in this loop from the point-processing loop is, that this one ignores pixels at the edge of the image. This is to avoid \textit{out of bound} errors, since reading a pixel value outside an image causes OpenCV to throw an exception.
 
