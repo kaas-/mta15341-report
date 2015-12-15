@@ -91,9 +91,42 @@ In order to create a binary image containing BLOBs, the images of the video need
 
 Once this type of image is achieved, it can be thresholded. The program aims to make every pixel that should be considered relevant input white, and to make every other pixel black. The black pixels are considered the background. As described in Section~\ref{sec:RDI}, the hardware setup uses RDI with IR light sources, and a visible light filter on a web camera, meaning that contact with the surface should create BLOBs. The image is made binary by choosing a reasonable threshold representing a certain pixel value, and then for each pixel determining whether its value is above or below this value. If it is equal to or above the given value, the pixel becomes white. If it is below the given value, it becomes black.
  
-\subsection{Morphology}\todo{Should we elaborate on what erosion and dilation is? How it works and such, kernels and stuff?}
-After thresholding the image, small unwanted spots of while pixels appear on the background where no input is given. To negate this, the \textit{opening} process is applied. This consists of two operations: an \textit{erosion} operation followerd by a \textit{dilation} operation \citep{moeslund_introduction_2012}. The erosion operation removes the majority of the white noise on the background, but the large BLOBs that are meant to be detected are also reduced in size. This is when the dilation operation is called, which dilates the already eroded BLOBs. This affects the BLOBs large enough to not be removed by the erosion, but the noise will not be dilated, as they are removed during the erosion process.
- 
+\subsection{Morphology}
+
+\begin{figure}[!h]
+	\centering
+\includegraphics[width=1\textwidth]{StructuringElements}
+\caption{Two types of structuring elements of different sizes \citep{moeslund_introduction_2012}. \label{fig:StructuringElements}}
+\end{figure}
+
+After thresholding the image, small unwanted spots of while pixels appear on the background where no input is given. To negate this, the \textit{opening} process is applied. This consists of two operations: an \textit{erosion} operation followed by a \textit{dilation} operation \citep{moeslund_introduction_2012}. The erosion operation removes the majority of the white noise on the background, but the large BLOBs that are meant to be detected are also reduced in size. This is when the dilation operation is called, which dilates the already eroded BLOBs. This affects the BLOBs large enough to not be removed by the erosion, but the noise will not be dilated, as they are removed during the erosion process.
+
+\begin{figure}[!h]
+	\centering
+	\begin{displaymath}
+	g(x, y) = f(x, y) \oplus SE
+	\end{displaymath}
+	\caption{Mathematical equation for dilation \citep{moeslund_introduction_2012}. \label{fig:dilateEquation}}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\begin{displaymath}
+	g(x, y) = f(x, y) \ominus SE
+	\end{displaymath}
+	\caption{Mathematical equation for erotion \citep{moeslund_introduction_2012}. \label{fig:erodeEquation}}
+\end{figure}
+
+These morphology algorithms work by applying a \textit{hit} or \textit{fit} operation to each pixel making use of a structuring element. The most common types of structuring elements are \textit{box} and \textit{disc} shaped. Expamles of these can be found in Figure\ref{fig:StructuringElements}. These strucuring elements are applied to an image using the appropriate mathematical function. For dilation, the equation shown in Figure~\ref{fig:dilateEquation} is used. For erotion, the equation shown in Figure~\ref{fig:erodeEquation} is used. In an \textit{open} operation, the operations are combined using the equation shown in Figure~\ref{fig:openingEquation}.
+
+\begin{figure}[!h]
+	\centering
+	\begin{displaymath}
+	g(x, y) = (f(x, y) \ominus SE) \oplus SE
+	\end{displaymath}
+	\caption{Opening operation \citep{moeslund_introduction_2012}. \label{fig:openingEquation}}
+\end{figure}
+
 \subsection{BLOB analysis}
 \begin{wrapfigure}{r}{0.32\textwidth}
 \begin{center}
@@ -101,7 +134,7 @@ After thresholding the image, small unwanted spots of while pixels appear on the
 \end{center}
 \caption{The convex hull of a hand \label{Fig:Convex}}
 \end{wrapfigure}
-The BLOBs created by user input need to be differentiated from any noise that may remain even after opening. To do this, each BLOB is given a convex hull. The convex hull of a BLOB is, as described by Moeslund, "\textit{... the minimum convex polygon which contains the BLOB. It corresponds to placing a rubber band around the BLOB.}" \citep{moeslund_introduction_2012} In this project, the area of the convex hulls are calculated. \todo{How is the convex hull calculated? How does it recognise gestures?} By filtering the convex hulls by size, ignoring those that have a small area, a BLOB from a specific gesture can be detected.
+The BLOBs created by user input need to be differentiated from any noise that may remain even after opening. To do this, each BLOB is given a convex hull. The convex hull of a BLOB is, as described by Moeslund, "\textit{... the minimum convex polygon which contains the BLOB. It corresponds to placing a rubber band around the BLOB.}" \citep{moeslund_introduction_2012} In this project, the area of the convex hulls are calculated using Sklansky's algorithm \citep{Sklansky198279}. By filtering the convex hulls by size, ignoring those that have a small area, a BLOB from a specific gesture can be detected.
 
 \section{Rendering of game board}
 \begin{figure}[h!]
