@@ -1,18 +1,21 @@
 %!TEX root = ../master.tex
 \chapter{Discussion}\label{ch:discussion}
 
-\section{Validity and reliability of test}
+\section{Validity and reliability of tests}
+
+\subsection{Validity and reliability of usability test}
 When considering validity and reliability of the tests conducted one need to have some strategies to base it on. The strategies used in this section have been suggested by Creswell \citep{Creswell}.
 
 Regarding validity they can be summed up to these points:
 \begin{itemize}
 \item Triangulate different sources of information and establishing themes.
-\item When describing the findings it needs to be richly detailed, to make the represent the results as realistically as possible.
-\item Clarify that the researcher is biased and self-reflect.
+\item When describing the findings it needs to be richly detailed, to represent the results as realistically as possible.
+\item Clarify that the researcher is biased and self-reflect on the results.
 \item Present the negative feedback and the feedback that does not fit with the majority to show that the different perspective have been considered.
 \end{itemize}
 
-\todo{discuss the validity of the results}
+As seen in section \ref{satisfactionResult} the results have been described thoroughly and present both the positive feedback that back up our problem formulation and the negative feedback that does not back it up. This is consistent whenever a new theme in the results is established. This gives the results some validity. In general throughout the test the testers have been encouraged to be as unbiased as possible but as it is not possible to put all ones own bias away the questions asked and the results ans themes reached are of course made on a basis of our bias of the product we have created. We have however as can be seen throughout the entire Chapter \ref{ch:testeval} considered all angles offered to us concerning the test results. This can be argued as giving our results a sufficient degree of validity. In hindsight, more could have been done to raise the degree of validity, as for example bring in test participants who were not fellow students and therefore wouldn't have the bias gained from the same study. 
+
 
 Reliability deals with the test set-up and procedures. The points Creswell \citep{Creswell} makes on this topic can be summed up as follows:
 
@@ -23,9 +26,7 @@ Reliability deals with the test set-up and procedures. The points Creswell \cite
 \item Compare results reached independently.
 \end{itemize}
 
-By following these procedures we have made our results and project reliable. 
-\todo {elaborate on how}
-
+There were not made transcripts of the final tests, since this would take too much time. Therefore we cannot argue for reliability on that point. However we kept to the same guidelines and script for all the tests which all the group members were aware of since different people conducted the tests. All the results were compared in the analysis in section \ref{subsec:analysis}. This all results in a high degree of reliability of our results. 
 
 \subsection{On reliability in technical test and prototype}
 This section will discuss the implications of calibration and bugs in the prototype use and testing. 
@@ -34,7 +35,7 @@ In order for the prototype to work, a lot of time has to go into setting it up, 
 
 While performing the technical test the people responsible kept a bug log as a tool to track common errors. The bug log can be seen in \ref{app:techTest} \todo{appendix missing} in its entirety.
 
-The most common errors were ordered in tags: Neighbour Change (NBC), ShadoW Threshold failure (SWT), and Area Detection Failure (ADF). 
+The most common errors were ordered in tags: Neighbour Change (NBC), Shadow Threshold failure (SWT), and Area Detection Failure (ADF). 
 \subsubsection*{Bug - NBC} 
 NBC was a common error closely linked SWT, meaning that almost every occurence of NBC had a SWT bug as well. This could indicate that NBC wasn't really to blame, but SWT. Regardless, NBC pertains to the hexagon's centre and the centre of the convex hull (of the fingers trying to change it) are misaligned.
 \subsubsection*{Bug - SWT} 
@@ -62,7 +63,7 @@ Test participants also noted they would like to have a visible indication of who
 Regarding the turn overview, a solution to that could be an overview implemented as part of the board's GUI. Its placement could either be as a part of the board's global information, just like the game objectives, in which case it would have to be large enough for each player to observe it clearly, or in front of every player, giving them each a equal personal overview of the turn order. In addition, one could design the overview so each overview graphic had focus on the player's placement in the turn order. The latter solution's advantage is an easier overview for all players, since none would have to look at the turn order from an odd angle. However, the first solution's advantage is that it might take up less space than having an overview for each player.
 
 \subsection{Digital race/faction card}\label{sec:DigiRaceFact}
-As one test participant mentioned a fully digital version of the board game, ideas for how to implement parts of the game in a full digital design comes to mind, with for example a graphical representation of the faction and the information that normally follows with the faction card in the original version of the game. While it becomes a pat of the GUI, it might also undergo changes to another comment from a participant, stating that some of the rule information on the card were not clear enough. This could lead to a change in the digital race card's look, with more text explaining the elements of the cards, like tool tips. If that text would take up too much space, making the cards too large on the board, a design idea could be to make up a tool tip box, specifically for text, which would change depending on which part of the race card graphics were interacted with. Another thing in this implementation that needs to be included would be that the race card has some upgrades that normally are marked with game pieces when the upgrades are bought. Instead of marking the upgrades, the card could be designed so it would change an upgradeable part when interacted with, for example by pressing the boat part of the card, which would upgrade it and change its graphic representation.
+As one test participant mentioned a fully digital version of the board game, ideas for how to implement parts of the game in a full digital design comes to mind, with for example a graphical representation of the faction and the information that normally follows with the faction card in the original version of the game. While it becomes a part of the GUI, it might also undergo changes to another comment from a participant, stating that some of the rule information on the card were not clear enough. This could lead to a change in the digital race card's look, with more text explaining the elements of the cards, like tool tips. If that text would take up too much space, making the cards too large on the board, a design idea could be to make up a tool tip box, specifically for text, which would change depending on which part of the race card graphics were interacted with. Another thing in this implementation that needs to be included would be that the race card has some upgrades that normally are marked with game pieces when the upgrades are bought. Instead of marking the upgrades, the card could be designed so it would change an upgradeable part when interacted with, for example by pressing the boat part of the card, which would upgrade it and change its graphic representation.
 
 \subsection{Management of resources}
 Further working with ideas based on a more digital version of the augmented board game, another idea from test participants with having the program managing the resources\todo{maybe the notes in the satisfaction test results needs to be expanded in order to back this part up}(power, gold, builders and priests) in the game comes to mind. This idea came since some of the participants found the purpose, use and gaining of resource hard to grasp, which calls for a better explanation of them, besides the management, which another participants also asked for to be automatic. A solution to that could be a personal explanatory and interactive part of a player's personal space on a board, somewhat like in Section~\ref{DigiRaceFact} with tool-tips explaining the resources in detail and interactive representations of them or their use that lets one change their amount. This and the other solution could even be the same solution together, making up an implementation helping the player managing their faction and their resources. \todo{automatic resource gain, power gain, cult gain}
