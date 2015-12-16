@@ -1,30 +1,30 @@
 %!TEX root = ../master.tex
-\chapter{Final Product}\label{ch:finproduct}
-The following chapter contains a description of the state of the product, at the end of the project period.
+\chapter{Final Prototype}\label{ch:finproduct}
+The following chapter contains a description of the state of the prototype, at the end of the project period.
 
-\section{Physical product}
-The table itself is constructed by aluminium extrusions, measuring 120 x 102 x 89 cm. A shelf is located on the internal side of the top frame, which is used to hold a 3 mm acrylic glass plate. The underside of the glass is covered in a single layer of baking paper. This acts as the diffusion material in the RDI setup, as well as the screen for the short-throw projector.
+\section{Physical prototype}
+The table is constructed by aluminium extrusions, measuring 120 x 102 x 89 cm. A shelf is located on the internal side of the top frame, which is used to hold a 3 mm acrylic glass plate. The underside of the glass is covered in a single layer of baking paper. This acts as the diffusion material in the RDI setup, as well as the screen for the short-throw projector.
 
-In the bottom of the table are extrusions, which hold the rest of the RDI setup, and the projector. The camera is placed at the bottom of the table, so that the area of sight is larger. The projector is placed to one side of the table, as this makes the cone of projection land central on the screen. The infra-red lights are placed 30 cm into the air, by mounting them on top of extrusions. This height is optimal, as the camera can detect more, the closer the lamps are to the screen. However, the closer the lamps are to the screen, the smaller are the cones of infra-red light.  Furthermore, if the lamps were placed higher, the extrusions they were mounted on would start blocking the projector, making parts of the screen not viewable by the users. To contain the infra-red light inside the table, a black cloth cover is placed around the sides of the table.
+In the bottom of the table are extrusions, which hold the rest of the RDI setup and the projector. The camera is placed at the bottom of the table, so that the area of sight is larger. The projector is placed to one side of the table, as this makes the cone of projection land centrally on the screen. The IR lights are placed 30 cm into the air, by mounting them on top of extrusions. This height is optimal, as the camera can detect more, the closer the lamps are to the screen. However, the closer the lamps are to the screen, the smaller the cones are of infra-red light.  Furthermore, if the lamps were to be placed higher, the extrusions they were mounted on would then start blocking the projector, making parts of the screen not viewable by the users. In order to contain the IR light inside the table, a black cloth baffle is placed around the sides of the table.
 
-A computer runs the software, and is connected to the camera and the projector. The camera acts as input for the software, and the projector shows the output on the screen.
+A computer runs the software and is connected to the camera and projector. The camera acts as input for the software, and the projector shows the output on the screen.
 
-\section{Digital product}
-The product displays a recreation of the Terra Mystica board and include the following graphics:
+\section{Digital prototype}
+The prototype displays a recreation of the Terra Mystica board and includes the following graphics:
 \begin{itemize}
 	\item The hexagonal tiles in the seven different colours, plus the river tiles
-	\item An inner frame around the board tiles, which is used to track each players' amount of victory points.
-	\item An outer frame, which contain a table for how to score victory points at the end of each round, and at the end of the game. It also contains an undo button, and button for actions that can be taken by only one player each round.
+	\item An inner frame around the board tiles, which is used to track each player's amount of victory points.
+	\item An outer frame, which contains a table with instructions on how to score victory points at the end of each round and at the end of the game. It also contains an undo button and buttons for actions that can be taken by only one player each round.
 \end{itemize}
 
 \subsection{Interactive elements}
-As the game's primary interaction with the board is through terraforming, the tiles are interactive. Each tile is independently interacted with through hand gestures, and can be changed to the colour of the current player. In the original game, it costs different amounts of resources to change different colours, depending on which colour the player is themselves. The table does not manage this, and relies on the players managing the resources required themselves.
+The tiles are interactive, as the game's primary interaction with the board is terraforming. Each tile is independently interacted with, and can be changed to the colour of the current player, using hand gestures. In the original game, it costs different amounts of resources to change different colours, depending on the colour of the player. The table does not manage this, and relies on the players managing the resources required themselves.
 
-When a player starts their turn, they must make a gesture, so the system knows which colour to use, if the player wants to terraform. The original intention was to designate parts of the outer frame as the area to do this. On the graphic, this area is a small box, with each side of the table having one. This was used in the lo-fi test. However, when making use of the RDI setup, this proved very difficult. RDI requires a lot of infra-red illumination to work, which should be spread out evenly on the interactive surface. Because of material costs, the project did not have access to sufficient lamps, and it was required to focus much of the infra-red light around the center of the board. This meant that the board is much more responsive around the center, but less responsive at the edges. Because of this, the player selection areas are not used, and the players instead have to make their gestures at the center of the board. To make the player selection more reliable, paper hands are given to each player to be used instead. 
+When a player starts their turn, they must make a gesture, so the system knows which colour to use if the player wants to terraform. Since the low amount of lamps used cause the middle area of the board to be more illuminated, and thus more responsive, than the outer edges, these gestures are done in the middle, as opposed to in the designated areas, as per the original design. In order to make the player selection more reliable, paper hands are given to each player to be used instead of their actual hands.
 
 \subsection{Non-interactive elements}
-The victory point tracker is not an interactive piece of the board. Instead, it was a static graphic, where each player had a game piece placed on their current number of victory points.
+The victory point tracker is not an interactive piece of the board. Instead, it is a static graphic, where each player has a game piece placed on their current number of victory points.
 
-The outer frame also includes two undo buttons, placed in opposite corners, which was meant to give the players the ability to revert the last action taken. This could for example be used in situations, where a player accidentally terraformed the wrong tile. However, this was not implemented because of time constraints.
+The outer frame also includes two undo buttons, placed in opposite corners, which was meant to give the players the ability to revert the last action taken. However, this is not implemented because of time constraints.
 
-In the two other corners, a graphic for point scoring is placed. This is described with images illustrating what players would get victory points for in each round. Images illustrating what players scored victory points for in the end of the game was also in this table. In the original game, this table can have random objectives for each round, but in the digital version, it was a static graphic used as a place holder.
+In the two other corners, an area displaying  the goals is placed. This is described with images illustrating what players will get victory points for in each round. Images illustrating what players score victory points for in the end of the game are also in this area. In the original game, this table can have random objectives for each round, but in the digital version, it is a static image used as a place holder.
