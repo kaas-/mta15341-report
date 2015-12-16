@@ -1,7 +1,7 @@
 %!TEX root = ../master.tex
 \chapter{Code Overview}\label{ch:codeover}
 This chapter provides an overview for the code and structure of the implemented software. The individual modules, their purpose, and design are described in detail. This is then wrapped up in a description of the main function, which makes use of these modules.
-The structure of the implemented software is visualized in the class diagram in Figure~\ref{fig:implementedClassDiagram}.
+The structure of the implemented software is visualised in the class diagram in Figure~\ref{fig:implementedClassDiagram}.
 
 \begin{figure}
 	\centering
@@ -12,11 +12,10 @@ The structure of the implemented software is visualized in the class diagram in 
 
 
 \section{Segment namespace}
-\texttt{Segment} is a namespace which includes all image processing algorithms that have been implemented in this software. These methods are never called in the software due to poor CPU efficiency. They are included in this chapter to explain the principles of the used image processing method, and could easily be used in the main software instead of the OpenCV methods, if CPU power was not limited.
+\texttt{Segment} is a namespace which includes all image processing algorithms that have been developed for this software. These methods are never called in the software due to poor CPU efficiency. They are included in this chapter to explain the principles of the used image processing methods, and could easily be used in the main software instead of the OpenCV methods, if CPU power was not limited.
 
 \subsection{Point-processing}
-There are three point-processing algorithms in this software; an RGB-to-Greyscale colour conversion algorithm, a normalization algorithm, and a thresholding algorithm. All of these make use of double-nested \texttt{for}-loops to apply their operations to each pixel as shown in Figure~\ref{fig:pointprocess}.
-\todo {Move the figure so it isn't below another figure (Move the class diagram)}
+There are three point-processing algorithms in this software; an RGB-to-Greyscale colour conversion algorithm, a normalisation algorithm, and a thresholding algorithm. All of these make use of double-nested \texttt{for}-loops to apply their operations to each row and column as shown in Figure~\ref{fig:pointprocess}.
 \begin{figure}[!h]
 \begin{lstlisting}
 for (int y = 0; y < src.rows; ++y)
@@ -30,7 +29,7 @@ for (int y = 0; y < src.rows; ++y)
 \caption{Basic point-processing algorithm. \label{fig:pointprocess}}
 \end{figure} 
 
-The RGB-to-Greyscale algorithm creates an 8-bit single-channel image and then maps the mean of the RGB-values of the input image pixels to the output like shown in Figure~\ref{fig:rgb2gray}
+The RGB-to-Greyscale algorithm creates an 8-bit single-channel image and then maps the mean of the RGB-values of the input image pixels to the output like shown in Figure~\ref{fig:rgb2gray}.
 
 \begin{figure}[!h]
 \begin{lstlisting}
@@ -39,18 +38,17 @@ output.at<uchar>(y, x) = (src.at<Vec3b>(y, x)[0] + src.at<Vec3b>(y, x)[1] + src.
 \caption{RGB-to-Greyscale operation.\label{fig:rgb2gray}}
 \end{figure}
 
-The normalization algorithm finds the maximum and minimum pixel values of the input image using an OpenCV function. It then processes each pixel to normalize them to a new maximum and minimum using the operation shown in Figure~\ref{fig:normalize}.
+The normalisation algorithm finds the maximum and minimum pixel values of the input image using an OpenCV function. It then processes each pixel to normalise them to a new maximum and minimum using the operation shown in Figure~\ref{fig:normalize}.
 
-\begin{figure}
+\begin{figure}[!h]
 \begin{lstlisting}
 output.at<uchar>(y, x) = floor((src.at<uchar>(y, x) - min) * (newMax - newMin) / (max - min) + newMin);
 \end{lstlisting}
-\caption{Normalization of a pixel. \label{fig:normalize}}
+\caption{Normalisation of a pixel. \label{fig:normalize}}
 \end{figure} 
 
 Finally, the thresholding algorithm determines whether a given output pixel is white or black based on the if-else statement that is shown in Figure~\ref{fig:threshold}.
-
-\begin{figure}
+\begin{figure}[!h]
 \begin{lstlisting}
 if (src.at<uchar>(y, x) >= threshold)
 {
@@ -65,11 +63,11 @@ else
 \end{figure}
 
 \subsection{Neighbourhood processing}
-The neighbourhood processing methods used in this software are \texttt{erode} and \texttt{dilate} These filters apply their kernels to each pixel through the process of convolution. That is to say, for each pixel they calculate a value for each pixel relative to the processed pixel based on the kernel. These results are then used for further calculations depending on the purpose of the filter. Kernels are discussed in the further details in Chapter~\ref{ch:implementation}.	
+The neighbourhood processing methods used in this software are \texttt{erode} and \texttt{dilate} These filters apply their structuring elements to each pixel. That is to say, for each pixel, they calculate a value relative to the processed pixel based on the structuring element. These results are then used for further calculations depending on the purpose of the filter. Kernels and structuring elements are discussed in further detail in Chapter~\ref{ch:implementation}.	
 
 The filters make use of a nested \texttt{for}-loop similar to the point-processing algorithms to go through each pixel. This loop can be seen in Figure~\ref{fig:neighbourhoodForLoop}. The main difference in this loop from the point-processing loop is, that this one ignores pixels at the edge of the image. This is to avoid \textit{out of bound} errors, since reading a pixel value outside an image causes OpenCV to throw an exception.
 
-\begin{figure}
+\begin{figure}[!h]
 \begin{lstlisting}
 for (int y = 0 + kernRad; y < src.rows - kernRad; ++y)
 {
@@ -82,9 +80,9 @@ for (int y = 0 + kernRad; y < src.rows - kernRad; ++y)
 \caption{Neighbourhood processing loop that reads each pixel in an image except those at the edge. \label{fig:neighbourhoodForLoop}}
 \end{figure}
 
-\texttt{erode} and \texttt{dilate} are essentially inversions of each other. They take binary images as arguments. \texttt{dilate} is what is known as a \texttt{hit} algorithm. It checks whether any pixel within the kernel is white (has a value of 255). If that is the case, the processed pixel is made white, otherwise it is made black. This can be seen in Figure~\ref{fig:dilateAlgorith}. \texttt{erode} \todo{Capital E?}, by contrast is a \textit{fit} algorithm. Like \texttt{dilate} it checks whether any pixel within the kernel is white. If any of the pixels in the kernel are not white, the pixel is made black. Only if all of the pixels are white will the processed pixel be white. This can be seen in Figure~\ref{fig:erodeAlgorithm}.
+The \texttt{erode} and \texttt{dilate} methods are essentially inversions of each other. They take binary images as arguments. \texttt{dilate} is what is known as a \textit{hit} algorithm. It checks whether any pixel within the kernel is white (has a value of 255). If that is the case, the processed pixel is made white, otherwise it is made black. This can be seen in Figure~\ref{fig:dilateAlgorith}. In contrast, \texttt{erode} is a \textit{fit} algorithm. Like \texttt{dilate}, it checks whether any pixel within the kernel is white. If any of the pixels in the kernel are not white, the pixel is made black. Only if all of the pixels are white will the processed pixel be white. This can be seen in Figure~\ref{fig:erodeAlgorithm}.
 
-\begin{figure}
+\begin{figure}[!h]
 \begin{lstlisting}
 for (int ky = y - kernRad; ky <= y + kernRad; ++ky)
 {
@@ -129,13 +127,13 @@ else {
 }
 Temp = 0;
 \end{lstlisting}
-\caption{The erotion algorithm.\label{fig:erodeAlgorithm}}
+\caption{The erosion algorithm.\label{fig:erodeAlgorithm}}
 \end{figure}
 
 \subsection{BLOB extraction}
-For BLOB-extraction, two methods are used; \texttt{burn} and \texttt{grassFireImage}. \texttt{burn} performs two tasks; it calls \texttt{grassFireImage} when it finds a white pixel, and it builds an image from the list of pixels that are returned as a result. To find white pixels, a \texttt{for}-loop such as the one shown in Figure~\ref{fig:pointprocess} is used. When a white pixel is found, \texttt{grassFireImage} is called. This method implements a sequential grass-fire algorithm to create a list of pixels from which a BLOB can be built. The method makes use of a linked list stack to keep track of the pixels that are currently being processed. As soon as a pixel is added to the stack, the pixel value is set to a non-white value to prevent pixels from being processed redundantly. This also ensures that \texttt{burn} does not call \texttt{grassFireImage} multiple times for the same blob. The algorithm is implemented for 4-neighbours connectivity. The code for this can be seen in Figure~\ref{fig:grassFireIf}. This code is contained within a \texttt{while}-loop, which runs for as long as elements are still present within the stack list. The nature of the if-else statements means that if any of the conditions are true, a new iteration of the loop will be started. If none of the pixels are white, the final block of code will be executed. Here the pixel is added to the \texttt{blopPoints} list and removed from the stack list. The next pixel in the stack list will then be processed. When the final pixel in the stack list has been removed, the \texttt{blobPoints} list is returned to the \texttt{burn} function, which contains the algorithm that builds an image from these points.
+For BLOB-extraction, two methods are used; \texttt{burn} and \texttt{grassFireImage}. \texttt{burn} performs two tasks; it calls \texttt{grassFireImage} when it finds a white pixel, and it builds an image from the list of pixels that is returned as a result. In order to find white pixels, a \texttt{for}-loop such as the one shown in Figure~\ref{fig:pointprocess} is used. When a white pixel is found, \texttt{grassFireImage} is called. This method implements a sequential grass-fire algorithm to create a list of pixels from which a BLOB can be built. The method makes use of a linked list stack to keep track of the pixels that are currently being processed. As soon as a pixel is added to the stack, the pixel value is set to a non-white value to prevent pixels from being processed redundantly. This also ensures that \texttt{burn} does not call \texttt{grassFireImage} multiple times for the same BLOB. The algorithm is implemented for 4-neighbours connectivity. The code for this can be seen in Figure~\ref{fig:grassFireIf}. This code is contained within a \texttt{while}-loop, which runs for as long as elements are still present within the stack list. The nature of the if-else statements means that if any of the conditions are true, a new iteration of the loop will be started. If none of the pixels are white, the final block of code will be executed. Here the pixel is added to the \texttt{blobPoints} list and removed from the stack list. The next pixel in the stack list will then be processed. When the final pixel in the stack list has been removed, the \texttt{blobPoints} list is returned to the \texttt{burn} function, which contains the algorithm that builds an image from these points.
 
-The dimensions of the BLOB image is determined by calculating the difference between the maximum and minimum x- and y-values in the returned list. Then the program iterates through the list to determine the position of each white pixel in the image. This image, as well as its maximum and minimum values are then added to a \texttt{Blob} object which is pushed to a list of BLOBs, that the rest of the software can use.  
+The dimensions of the BLOB image are determined by calculating the differences between the maximum and minimum x- and y-values in the returned list. Then the program iterates through the list to determine the position of each white pixel in the image. This image, as well as its maximum and minimum values, are then added to a \texttt{Blob} object which is pushed to a list of BLOBs, which the rest of the software can use.  
 
 \begin{figure}
 \begin{lstlisting}
@@ -153,13 +151,15 @@ else if (
 \end{figure}
 
 \section{Stack list}
-The stack list implementation makes use of a singly linked of a \texttt{Node} struct which contains a point, and a memory pointer to the next entry in the list, as well as a counter which records the amount of entries in the list. This class has four public methods. \texttt{push} adds a new \texttt{Node} to the top of the list, \texttt{pop} destroys the top-most \texttt{Node} in the list and returns its data, \texttt{getTop} simply returns the top-most \texttt{Node}, and \texttt{getCount} returns the \texttt{count} value.
+The stack list implementation makes use of a singly linked list of \texttt{Node} structs which contain a \texttt{Point}, and a memory pointer to the next entry in the list, as well as a \texttt{count} variable which records the amount of entries in the list. This class has four public methods. \texttt{push} adds a new \texttt{Node} to the top of the list, \texttt{pop} destroys the top-most \texttt{Node} in the list and returns its data, \texttt{getTop} simply returns the top-most \texttt{Node}, and \texttt{getCount} returns the \texttt{count} value.
 
 
 \section{Board class}
 The \texttt{Board} class is responsible for determining the position of each hexagon on the board, handling the colour of each hexagon, and rendering the image. 
 
-\begin{figure}
+The rendered board consists of a hexagonal grid placed on top of a pre-made image. Each hexagon is labeled from 0 to 111. Two methods are used to build these hexes. In the \texttt{buildBoard} method, the values defined in the \texttt{Colour} class are assigned to a \texttt{Scalar} array which is used to define the colour of each hexagon. A set of \texttt{for}-loops - one of which can be seen in Figure~\ref{fig:buildHexForLoop} - goes through each desired position of the hexagons. For each of these positions, the \texttt{buildHex} method is called. The hexagons are built as instantiated \texttt{Hex} objects which take a list of six \texttt{Point} objects and a \texttt{Scalar} as arguments in their constructor. Finally, the method pushes the \texttt{Hex} object to a list. The code for this can be seen in Figure~\ref{fig:buildHexMethod}. Each \texttt{Point} in the \texttt{Hex} represents a corner in a hexagon, which is drawn with the OpenCV \texttt{fillConvexPoly} method. This method is called in the \texttt{drawHex} method which is contained in the \texttt{Hex} class. After each hexagon has been built, the \texttt{drawBoard} method can be called continuously. This method simply calls the \texttt{drawHex} method for each \texttt{Hex}.
+
+\begin{figure}[!h]
 \begin{lstlisting}
 for (int i = 0; i < 12; i++){
 	x1 += 2 * h;
@@ -169,9 +169,7 @@ for (int i = 0; i < 12; i++){
 \caption{One of the \texttt{for}-loops used in the \texttt{buildHex} method. A loop has been implemented for each row on the board. \label{fig:buildHexForLoop}}
 \end{figure}
 
-The rendered board consists of a hexagonal grid placed on top of a pre-made image. Each hexagon is labeled from 0 to 111. Two methods are used to build these hexes. In the \texttt{buildBoard} method, the values defined in the \texttt{Colour} class are assigned to a Scalar array which are used to define the colour of each hexagon. A set of \texttt{for}-loops - one of which can be seen in Figure~\ref{fig:buildHexForLoop} - goes through each desired center position of the hexagons. For each of these positions, the \texttt{buildHex} method is called. The hexagons are built as instantiated \texttt{Hex} objects which take a list of six Points and a Scalar as arguments in their constructor. Finally, the method pushes the \texttt{Hex} object to a list. The code for this can be seen in Figure~\ref{fig:buildHexMethod}. Each Point in the \texttt{Hex} represents a corner in a hexagon which is drawn with the OpenCV \texttt{fillConvexPoly} method. This method is called in the \texttt{drawHex} method which is contained in the \texttt{Hex} class. After each hexagon has been built, the \texttt{drawBoard} method can be called continuously. This method simply calls the \texttt{drawHex} method for each \texttt{Hex}.
-
-\begin{figure}
+\begin{figure}[!h]
 \begin{lstlisting}
 float r = (2.0 / 3.0) * (sqrt(3.0) * h);
 
@@ -189,12 +187,12 @@ HexPoints.push_back(hex);
 \caption{The contents of the \texttt{buildHex} method. \label{fig:buildHexMethod}}
 \end{figure}
 
-Finally the \texttt{Board} class contains a \texttt{changeHex} and \texttt{getHex} method. The former takes an \texttt{int} and a \texttt{Scalar} as arguments which are used to call the \texttt{setColour} method of a desired \texttt{Hex} in the list to set it to a desired colour. The latter method simply returns the \texttt{Hex} object at a desired position in the list of hexagons.
+Finally the \texttt{Board} class contains a \texttt{changeHex} and \texttt{getHex} method. The former takes an \texttt{int} and a \texttt{Scalar} as arguments which are used to call the \texttt{setColour} method of a desired \texttt{Hex} in the list to set it to a desired colour. The latter method simply returns the \texttt{Hex} object at a desired position in the list of \texttt{Hex} objects.
 
 \section{Main function}
-The main function is executed when the software is started. This function initially reads the board image from disk and loads it into a window. Then a \texttt{Board} object is instantiated and its \texttt{buildBoard} method is called. Then an array of \texttt{Player} objects is defined after which the main loop is started. In this loop, an image from the camera is received and processed with OpenCV methods. These methods convert the image to greyscale, apply a gaussian blur, and then segment the image using a simple, static threshold. An opening algorithm (erode, then dilate) is finally applied to the thresholded image. Then the \texttt{convexHullFunction} is called. The purpose of this method is multifaceted. At first it creates an array of \texttt{contours} (arrays of \texttt{Points}) in the camera image, which is used for BLOB analysis. For each element in the \texttt{contours} array, the OpenCV \texttt{convexHull} finds a set of \texttt{Points} for the convex of the shape, based on Sklansky's algorithm \citep{Sklansky198279}. Then the area of the convex is found using the OpenCV \texttt{contourArea} method. The size of this area is the parameter used to determine what type of object has been found. This is implemented using a set of \texttt{if}-statements, that use the found \texttt{area} variable as their conditions, which is shown in Figure~\ref{fig:currentPlayerIf}. All \texttt{if}-statements within this method are used to change the current player. After the \texttt{convexHullFunction} has executed, the position of the center of the BLOB is compared against the position of each \texttt{Hex}. This is done using the \texttt{for}-loop shown in Figure~\ref{fig:changeHexForLoop}. The \texttt{if} statement in this loop uses the result of a function call to \texttt{Pointpoly} method as part of its conditions. This method is located in the \texttt{Hex} class and returns a \texttt{boolean} value - \texttt{true} if the center is within the \texttt{Hex}, and \texttt{false} if the center is outside of it. If this method returns \texttt{true}, and the area of the BLOB is within a certain threshold, the \texttt{colour} variable of that \texttt{Hex} is changed to match the faction of the current player. This loop continues until the game is ended.
+The main function is executed when the software is started. This function initially reads the board image from disk and loads it into a window. Then a \texttt{Board} object is instantiated and its \texttt{buildBoard} method is called. Then an array of \texttt{Player} objects is defined after which the main loop is started. In this loop, an image from the camera is received and processed with OpenCV methods. These methods convert the image to greyscale, apply a gaussian blur, and then segment the image using a simple, static threshold. An opening algorithm (erode, then dilate) is finally applied to the thresholded image. Then the \texttt{convexHullFunction} is called. The purpose of this method is multifaceted. At first it creates an array of \texttt{contours} (arrays of \texttt{Points}) in the camera image, which is used for BLOB analysis. For each element in the \texttt{contours} array, the OpenCV method \texttt{convexHull} finds a set of \texttt{Points} for the convex hull of the shape, based on Sklansky's algorithm \citep{Sklansky198279}. Then the area of the convex is found using the OpenCV method \texttt{contourArea}. The size of this area is the parameter used to determine what type of object has been found. This is implemented using a set of \texttt{if}-statements, that use the found \texttt{area} variable as their conditions, which is shown in Figure~\ref{fig:currentPlayerIf}.
 
-\begin{figure}
+\begin{figure}[!h]
 \begin{lstlisting}
 if (area > 13700)  //P4
 {
@@ -207,10 +205,12 @@ if (area > 13700)  //P4
 	}
 }
 \end{lstlisting}
-\caption{One of four \texttt{if}-statements used to determine the curent player. \label{fig:currentPlayerIf}}
+\caption{One of four \texttt{if}-statements used to determine the current player. \label{fig:currentPlayerIf}}
 \end{figure}
 
-\begin{figure}
+All \texttt{if}-statements within this method are used to change the current player. After the \texttt{convexHullFunction} has executed, the position of the center of the BLOB is compared against the position of each \texttt{Hex}. This is done using the \texttt{for}-loop shown in Figure~\ref{fig:changeHexForLoop}. The \texttt{if} statement in this loop uses the result of a function call to the \texttt{Pointpoly} method as part of its conditions. This method is located in the \texttt{Hex} class and returns a \texttt{boolean} value - \texttt{true} if the center is within the \texttt{Hex}, and \texttt{false} if the center is outside of it. If this method returns \texttt{true}, and the area of the BLOB is within a certain threshold, the \texttt{colour} variable of that \texttt{Hex} is changed to match the faction of the current player. This loop continues until the game ends.
+
+\begin{figure}[!h]
 \begin{lstlisting}
 for (int i = 0; i < 112; ++i)
 {

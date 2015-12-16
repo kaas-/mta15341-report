@@ -1,18 +1,18 @@
 %!TEX root = ../master.tex
 \chapter{Testing and Evaluation}\label{ch:testeval}
-In order to evaluate the product and see to what extent it can be considered successful, a usability test will be conducted.
+In order to evaluate the prototype and see to what extent it can be considered successful, a usability test and a technical test are conducted.
 
 \section{Purpose of test}
-The purpose of this test is to test usability and functionality of the product. The ISO 9241 \citep{ISO} standard defines usability as effectiveness, efficiency, and satisfaction of the user. Put more precisely, this means:
+The purpose of this test is to test usability and functionality of the prototype. The ISO 9241 \citep{ISO} standard defines usability as effectiveness, efficiency, and satisfaction of the user. Put more precisely, this means:
 \begin{itemize}
-\item Effectiveness: To what extent are the goals of the product achieved?
+\item Effectiveness: To what extent are the goals of the prototype achieved?
 \item Efficiency: What resources (including time) are expended to achieve the goals?
 \item Satisfaction: To what extent does the user find the system acceptable?
 \end{itemize}
-With these in mind, the test aims to clarify whether the product lives up to its test objectives.
+With these in mind, the test aims to clarify whether the prototype lives up to its test objectives.
 
 \section{Test objectives}\label{sec:TestObjectives}
-The problem statement is defined in Section~\ref{sec:ProblemStatement}. Based on this problem statement, it is important not only to test how well the program functions on a technical level, but also if the test participants still feel like they are playing the original board game, which will be tested on a level of satisfaction/acceptance.
+The problem statement is defined in Section~\ref{sec:ProblemStatement}. Based on this problem statement, it is important not only to test how well the program functions on a technical level, but also if the test participants still feel like they are playing the original board game, which is tested on a level of satisfaction/acceptance.
 
 The success criteria (Section~\ref{sec:SuccessCriteria}) and the system requirements (Section~\ref{sec:ReqSpec}) each add to the specifications on the technical and satisfaction  objectives of the test.
 
@@ -22,8 +22,8 @@ The technical oriented test objectives are:
 \item \begin{enumerate}
 \item Does the player selection task live up to the requirement specification that it should be successful 90\% of the time? \label{req:1A}
 \item Does the terraforming task live up to the requirement specification that it should be successful 90\% of the time? \label{req:1B}
-\item The average delay time from the moment a gesture is done, to the moment the result can be seen on the interface should be around 3 seconds? \label{req:1C}
-\item The average delay time from the moment a tile change is gestured, to the moment the result can be seen on the interface should be around 3 seconds? \label{req:1D}
+\item The average delay time from the moment a gesture is done, to the moment the result can be seen on the interface should be around 3 seconds. \label{req:1C}
+\item The average delay time from the moment a tile change is gestured, to the moment the result can be seen on the interface should be around 3 seconds. \label{req:1D}
 \end{enumerate}
 \end{enumerate}
 The satisfaction oriented test objectives are:
@@ -38,24 +38,24 @@ The satisfaction oriented test objectives are:
 \end{enumerate}
 \end{enumerate}
 
-These objectives set the goals for the test, and help determine whether or not the test is successful. 
+These objectives set the goals for the tests and help determine whether or not the tests are successful. 
 
 \section{Test methods}
-To evaluate the product, two types  of tests are conducted. The first one is a technical tests using only group members, in order to test the technical aspects of the program, as this does not require participants from outside the group. The second type of test is the usability test, of which several will be conducted. These tests will focus on the satisfaction aspect of usability.
+In order to evaluate the prototype, two types  of tests are conducted. The first one is a technical tests using only group members, in order to test the technical aspects of the program, as this does not require participants from outside the group. The second type of test is the usability test, of which several are conducted. These tests focus on the satisfaction aspect of usability.
 
 \subsection{Technical test}\label{subsec:techtest}
-The purpose of the technical tests is to test the accuracy, effectiveness and overall efficiency of the system. The parameters which are tested are either completely adopted from or related to the following test objectives:. \ref{req:1A}, \ref{req:1B}, \ref{req:1C}, and \ref{req:1D}.
+The purpose of the technical tests is to test the accuracy, effectiveness, and overall efficiency of the system. The parameters which are tested are either completely adopted from or related to the test objectives 1a-d.
 
 The following parameters are tested in technical tests:
 \begin{enumerate}
 \item \begin{enumerate}
-\item Effectiveness of each tile press (related to requirement \ref{req:1B})
+\item Effectiveness of each tile press (related to objective \ref{req:1B})
 
 This is tested by pressing each of the 112 hexagons on the board by hand, and if hand would fail, then with a hexagonal paper template, which covers the tile completely. 
 
-\item Efficiency of colour change (related to requirement \ref{req:1D})
+\item Efficiency of colour change (related to objective \ref{req:1D})
 		
-This is tested by noting how much time passes between the moment of contact with the table to the tile colour change in seconds. In Figure~\ref{fig:reactionmap}, it is shown which tiles react the fastest.
+This is tested by noting how much time passes between the moment of contact with the table to the tile colour change, measured in seconds. In Figure~\ref{fig:reactionmap}, it is shown which tiles react the fastest.
 
 \begin{figure}[h!]
 	\centering
@@ -63,41 +63,40 @@ This is tested by noting how much time passes between the moment of contact with
 	\caption{Map illustrating which tiles react fast, and which tiles react slowly. The redder the tile, the faster the reaction time. \label{fig:reactionmap}}
 \end{figure}
 		
-\item Hand or template used (related to requirement \ref{req:1B})
+\item Hand or template used (related to objective \ref{req:1B})
 
-It is registered whether or not hand gesture would work for changing tiles. The output is used for generating a map of successes and fails to see hard-to-detect areas. Figure \ref{fig:successfailmap} illustrates this.
+It is registered whether or not hand gesture works for changing tiles. The output is used for generating a map of successes and failures to see hard-to-detect areas. Figure \ref{fig:successfailmap} illustrates this.
 \end{enumerate}		
 		
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.5\textwidth]{boardSuccessMap}
-	\caption{Map illustrating the tiles which can be terraformed by hand (green), and which ones need a hexagon cover (grey).\label{fig:successfailmap}}
+	\caption{Map illustrating the tiles which can be terraformed by hand (green), and which ones need a hexagon template (grey).\label{fig:successfailmap}}
 \end{figure}
 
 	
 \item \begin{enumerate}
-\item Effectiveness of player change gesture (related to requirement \ref{req:1A})
+\item Effectiveness of player change gesture (related to objective \ref{req:1A})
 
-This is tested by using paper cut-outs of hands to test successful detection of the respective players. Furthermore, each 4 player cut outs were tested 5 times.
+This is tested by using paper cut-outs of hands to test successful detection of the respective players. Furthermore, each of the four player cut-outs are tested five times.
 
-\item Efficiency of player change gesture (related to requirement \ref{req:1C})
+\item Efficiency of player change gesture (related to objective \ref{req:1C})
 
-The reaction time for each player hand detection were logged in the aforementioned time. Reaction defined as the time between cut-out touching table and player change was logged in the console.
+The reaction time for each player hand detection are logged. Reaction time is defined as the time between a cut-out touching the table and the moment player change is logged in the console.
 \end{enumerate}
 	\item \begin{enumerate}
-		\item Number of restarts of code during technical tests is logged (Unrelated to requirements. This is included as a way to track how autonomously the code could be during the tests.)
+		\item Number of restarts of code during technical tests is logged (Unrelated to objectives. This is included as a way to track how autonomously the code functions during the tests.)
 	\end{enumerate}
 	\item \begin{enumerate}
-		\item Accuracy for tile changes made by hand (related to \ref{req:1B})
+		\item Accuracy for tile changes made by hand (related to objective \ref{req:1B})
 		
-		This is done by pressing 5 tiles (4 corners and 1 centre tile) individually by hand and see if it was successful. Successful in this case means that the tile was able to be changed by hand from either side of the table. If a tile other than the one indented is terraformed, it is not consideres successful.
+		This is done by pressing 5 tiles (4 corners and 1 centre tile) individually by hand and logging whether or not it is successful. Successful in this case means that the tile is able to be changed by hand from either side of the table. If a tile other than the one intended is terraformed, it is not considered successful.
 	\end{enumerate}
 \end{enumerate}
-
-\subsection{Participants for usability tests}
-The chosen test participants are 16 young adult students from AAU and they are our typical users. They are within the target group, which is defined in Section~\ref{sec:TargetGroup}, meaning that they are experienced with board games, but not necessarily Terra Mystica specifically. 
 
 \subsection{Usability test set-up}
+The test takes place in the open study area, since the set-up requires a lot of room and the hardware will take up extra time to disassemble and reassemble, and moving it may damage the diffuser. Two tables are used for this test; one is the augmented board built for this project, and one is a table with the analogue game for comparison. The two setups can be seen in Figure \ref{Fig:Setup}. As the test includes people who are not experienced with Terra Mystica, several aspects of the game, which are not relevant to the test objectives, have been removed for simplicity's sake. These are covered up on each player's information board. Four test participants are placed around the table for each test, one by each information board, as well as four testers: One to operate a camera to record the test, one to take notes, one to explain the rules to the participants, and one to guide the participants and conduct the interview.
+
 \begin{figure}[!h]
 	\centering
 	\begin{subfigure}[b]{0.4\textwidth}
@@ -110,24 +109,26 @@ The chosen test participants are 16 young adult students from AAU and they are o
 	\end{subfigure}
 	\caption{Setup for the usability test, showing participants both the analogue game \textbf{(a)}, and the digital one \textbf{(b)}.\label{Fig:Setup}}
 \end{figure}
-The test takes place in the open study area, since the set-up requires a lot of room and the hardware will take up extra time to disassemble and reassemble, and moving it may damage the diffuser. Two tables are used for this test; one is the augmented board built for this project, and one is a table with the analogue game for comparison. The two setups can be seen in Figure \ref{Fig:Setup}. As the test includes people who are not experienced with Terra Mystica, several aspects of the game have been removed for simplicity's sake. These are covered up on each player's information board. Four test participants are placed around the table for each test, one by each information board, as well as four testers: One to operate a camera to record the test, one to take notes, one to explain the rules to the participants, and one to guide the participants and conduct the interview.
 
 \subsection{Procedure for usability test}
-The test which will try to cover the test objectives \ref{req:2A}, \ref{req:2B}, \ref{req:2C}, \ref{req:2D} and \ref{req:2E}, when set up, will follow this procedure:
+The test which will try to cover the test objective set 2a-e, when set up, will follows procedure:
 
 \begin{enumerate}
-\item To begin with, the test guide will introduce the participants to the game and the project product, and then explain the whole test procedure. The guide will have a script to read from, which can be found in Appendix \ref{ch:TestScript}, to make sure all participants are fully informed.
-\item Once all participants understand the procedure, they will play a game of Terra Mystica either using the augmented or original board for 3 rounds. After those 3 rounds are over, the participants will play a game with the board they have not tried yet. During the test introduction, they are encouraged to have dialogues with each other regarding their actions and thoughts as they play. This is inspired by the think aloud method addressed by Larsen \citep{TestingLecture}. The whole test is filmed by the cameraman. It is especially important to get footage of the participants' hands as they attempt to do gestures and as the related actions in the original version. It is likely that all of the typical tasks will be performed during this playthrough, but if not, the test guide will ask the test participants to attempt the ones they forewent.
-\item Once the practical part of the test is over, the test guide will conduct a semi-structured group interview, which the participants have been informed about during the introduction. The participants will be asked about how they experienced the augmented game, both in its own right, and in comparison to the original game.
+\item To begin with, the test guide introduces the participants to the game and the prototype, and then explains the test procedure. The guide has a script to read from, which can be found in Appendix \ref{ch:TestScript}, to make sure all participants are fully informed.
+\item Once all participants understand the procedure, they play a game of Terra Mystica either using the augmented or original board for 3 rounds. After those 3 rounds are over, the participants play a game with the board they have not yet tried. During the test introduction, they are encouraged to have dialogues with each other regarding their actions and thoughts as they play. This is inspired by the think-aloud method addressed by Larsen \citep{TestingLecture}. The whole test is filmed by the cameraman. It is especially important to get footage of the participants' hands as they attempt to do gestures, and of the related actions in the original version. It is likely that all of the typical tasks will be performed during this playthrough, but if not, the test guide asks the test participants to attempt the ones they forewent.
+\item Once the practical part of the test is over, the test guide conducts a semi-structured group interview, which the participants have been informed about during the introduction. The participants are asked about how they experienced the augmented game, both in its own right, and in comparison to the original game.
 \end{enumerate}
 
-Once the test is done, the footage and notes from the test will be analysed and compared to the test objectives.
+Once the test is done, the footage and notes from the test are analysed and compared to the test objectives.
+
+\section{Participants for usability tests}
+The chosen test participants are 16 young adult students from AAU and they are our typical users. They are within the target group, which is defined in Section~\ref{sec:TargetGroup}, meaning that they are experienced with board games, but not necessarily Terra Mystica. 
 
 \section{Results}
-These are the results gathered from the test.
+These are the results gathered from the tests.
 
 \subsection{Technical}
-The results from the test will be compared to the requirements set in \ref{sec:TestObjectives} and checked if they have been met or not. All test results and data sheets can be seen in Appendix \ref{app:techTest}.\todo{remember to add the appendix}
+The results from the test are compared to the requirements set in Section \ref{sec:TestObjectives} and checked if they have been met or not. All test results and data sheets can be seen in Appendix \ref{app:techTest}.
 
 	\subsubsection*{\ref{req:1A}: Does the player selection task live up to the requirement specification that it should be successful 90\% of the time?}
 This was tested on 9-10/12/2015 by 2-3 group members. Paper cut-outs of hands were used for detection. The overall success rate of player change was 65\%, or 13 successes out of 20. This does not fulfil the requirement of a 90\% success rate, so a recommended action was made and a new test based on that.
@@ -136,7 +137,7 @@ The recommmended action was this: \textit{Reduce cut-out size as the test logged
 After the recommended action was implemented, the overall success rate rose to 95\%, thereby fulfilling the requirement.
 
 	\subsubsection*{\ref{req:1B}: Does the terraforming task live up to the requirement specification that it should be successful 90\% of the time?}
-	This was tested on 9-10/12/2015 by 2-3 group members and designated as paramater 1a. As can be seen in Figure \ref{fig:techHandTemp}, all of the tile presses were successful, but the majority had to use template to facilitate a change. River tiles were purposefully left out of this statistic as they will (rightfully) not show change. It was, however, tested whether or not they would change. In conclusion, 100\% of the tiles changed.
+	This was tested on 9-10/12/2015 by 2-3 group members and designated as paramater 1a. As can be seen in Figure \ref{fig:techHandTemp}, all of the tile presses were successful, but the majority had to use the template to facilitate a change. River tiles were purposefully left out of this statistic as they will (rightfully) not show change. It was, however, tested whether or not they would change. In conclusion, 100\% of the tiles changed.
 	
 \begin{figure}[h!]
 	\centering
@@ -145,10 +146,10 @@ After the recommended action was implemented, the overall success rate rose to 9
 	\label{fig:techHandTemp}
 \end{figure}
 	
-	A second test on 10/12/2015 in this requirement was performed, namely test parameter 4a. The test was performed on 10/12/2015 and yielded an overall success rate of 60\%. The important difference between this test and 1a is that only hand was used in 4a. Other changes such as testing tile change from every player position. The recommended action is to \textit{adjust the IR lamps and do several restarts on the code}. Unfortunately, there is no time to do a re-test for this particular action.
+	A second test on 10/12/2015 in this requirement was performed, namely test parameter 4a. The test yielded an overall success rate of 60\%. The important difference between this test and 1a is that only hand was used in 4a. There are also other changes, such as testing tile change from every player position. The recommended action is to \textit{adjust the IR lamps and do several restarts on the code}. Unfortunately, there was no time to do a re-test for this particular action.
 	
-	\subsubsection*{\ref{req:1C}: The average delay time from the moment a gesture is done, to the moment the result can be seen on the interface should be around 3 seconds?}
-	This test was performed on 9/10/2015 by 3 group members and has testing parameter 2b. The overall average for gesture change was 4.3 seconds. After the aforementioned recommended action was implemented on the cut-outs, it took 3.3 seconds on average. This is not exactly 3 seconds, but the requirement was phrased as "around 3 seconds", it could still be met. The individual averages for each player did not differ more than ~1 second between the first and second test, despite for player 2. Player 2 improved its average from 8.1 to 2.8 seconds, an improvement of 5.3, or a 289\% increase. This can also be seen in Figure \ref{fig:techGestureTime}
+	\subsubsection*{\ref{req:1C}: The average delay time from the moment a gesture is done, to the moment the result can be seen on the interface should be around 3 seconds.}
+	This test was performed on 9/10/2015 by 3 group members and has testing parameter 2b. The overall average for gesture change was 4.3 seconds. After the aforementioned recommended action was implemented on the cut-outs, it took 3.3 seconds on average. This is not exactly 3 seconds, but it meets the requirement within a reasonable requirement. The individual averages for each player did not differ more than \~1 second between the first and second test, except for player 2. Player 2 improved its average from 8.1 to 2.8 seconds, an improvement of 5.3, or a 65\% decrease in reaction time. This can also be seen in Figure \ref{fig:techGestureTime}.
 	
 \begin{figure}[h!]
 	\centering
@@ -157,8 +158,8 @@ After the recommended action was implemented, the overall success rate rose to 9
 	\label{fig:techGestureTime}
 \end{figure}
 
-	\subsubsection*{\ref{req:1D}: The average delay time from the moment a tile change is gestured, to the moment the result can be seen on the interface should be around 3 seconds?}
-	This was tested on 9/12/2015 through testing parameter 1b by 3 group members. The total average was 2.3 seconds and thus meeting the requirement set. Furthermore, it can be split up in averages of using a hand to change the tile and a template. The average for hand-aided change was 2.9 seconds and the average for using the template was 1.9 seconds. A scatter plot of the value distribution can be seen in Figure \ref{fig:techScatter1}.
+	\subsubsection*{\ref{req:1D}: The average delay time from the moment a tile change is gestured, to the moment the result can be seen on the interface should be around 3 seconds.}
+	This was tested on 9/12/2015 through testing parameter 1b by 3 group members. The total average was 2.3 seconds and thus meeting the requirement set. Furthermore, he objective can be split between using a hand to change the tiles, and using the template. The average for hand-aided change was 2.9 seconds, and the average for using the template was 1.9 seconds. A scatter plot of the value distribution can be seen in Figure \ref{fig:techScatter1}.
 	
 \begin{figure}[h!]
 	\centering
@@ -167,7 +168,7 @@ After the recommended action was implemented, the overall success rate rose to 9
 	\label{fig:techScatter1}
 \end{figure}
 
-When looking at Figure \ref{fig:techHistogram}, a histogram of the tile changes, the scatter plot can be better explained. For example, almost 80\% of the tiles took less than 5 seconds and 97\% of the tile changes happened within the 0-10 second range. It should be mentioned than in all calculations, river tiles are not included since they never (rightfully) changed. 
+When looking at Figure \ref{fig:techHistogram}, a histogram of the tile changes, the scatter plot can be better explained. For example, almost 80\% of the tiles took less than 5 seconds and 97\% of the tile changes happened within the 0-10 second range. It should be mentioned that in all calculations, river tiles are not included since they never changed, as is intended. 
 
 \begin{figure}[h!]
 	\centering
@@ -177,37 +178,37 @@ When looking at Figure \ref{fig:techHistogram}, a histogram of the tile changes,
 \end{figure}
 
 \subsection{Satisfaction}\label{sec:satisfactionResult}
-All the four participant groups felt they were still playing Terra Mystica in both versions of the game. This was definitely due to the game mechanics still being the same in both versions, and to a less extent was it due to them saying that they ‘felt’ it was the same game. However, one group of participants stated that the digital version provided the same sense of ‘togetherness’ as the original version. In one group, it was mentioned that playing the augmented and the original versions each had their unique flair, and added something more to the game, with the examples of the digital version being dramatic/exciting and the original being comfortable/casual. 
+All the four participant groups felt they were still playing Terra Mystica in both versions of the game. This was definitely due to the game mechanics still being the same in both versions, and to a lesser extent due to them saying that they "felt" it was the same game. However, one group of participants stated that the digital version provided the same sense of "togetherness" as the original version. In one group, it was mentioned that playing the augmented and the original versions each had their unique flair, and added something more to the game, with the examples of the digital version being dramatic/exciting and the original being comfortable/casual. 
 
-All groups found the turn taking complicated in the digital version. One reason for this is that they had to place a paper hand in the middle of the board, which conflicted with already placed game pieces that it could accidentally displace. Additionally, some players forgot to switch turns on the digital board, as well as how they were supposed to do it, which they also stated as a problem with the design. Throughout the groups, a wish for some feedback regarding turn switching was expressed. It was suggested to either display the colour of the currently selected player, or to highlight their player area, in order to emphasize whose turn it is at the moment. On that matter, some participants also asked for a digital overview of the turn order, possibly with one close to each player’s area, so everyone has an easily available overview. 
+All groups found the turn taking complicated in the digital version. One reason for this is that they had to place a paper hand in the middle of the board, which conflicted with already placed game pieces that it could accidentally displace. Additionally, some players forgot to switch turns on the digital board, as well as how they were supposed to do it, which they also stated as a problem with the design. Throughout the groups, a wish for some feedback regarding turn switching was expressed. It was suggested to either display the colour of the currently selected player, or to highlight their player area, in order to emphasise whose turn it is at the moment. On that matter, some participants also asked for a digital overview of the turn order, possibly with one close to each player’s area, so everyone has an easily available overview. 
 
 While nobody directly said the task of terraforming was not easier to carry out in the augmented version, it was mentioned that the technical difficulties made the task take a long time, slowing down the augmented game. Several participants provided suggestions for improvements or alternatives to the terraforming feature. Examples of these suggestions are:
 \begin{itemize}
 \item An undo/reset-button for misplaced terraformings. Pressing this button would revert the latest action taken.
-\item Multiple-choice terraforming instead of terraforming based on turn selection
+\item Multiple-choice terraforming instead of terraforming based on turn selection.
 \item A tool specifically for terraforming instead of using fingers, which mostly was advised, due to the participants experiencing the template hex taking over terraforming when the fingers did not suffice. An important note here is that in one of the groups all the participants saw the tool use as redundant, since they saw a tool for terraforming equal to using game pieces.
 \end{itemize}
 Besides that, participants mentioned that they expected the terraforming to be quite easy, if the system worked properly. 
 
 The participants had very mixed opinions on which version they would prefer to play, and whether the augmented game board can replace the original one.
 
-One participant stated that they would prefer not a mixture of digital and tactile elements, but a complete digital replacement of the board game, without any game pieces, since they found them frustrating. However, many enjoyed the tactile elements of the augmented game. While no test participants thought the augmented version can replace the original game in its current state, several participants showed interest in the augmented design, and thought it can potentially replace the original game, assuming that all mechanics will be properly implemented, and the major technical problems are removed. The augmented version would also need to have less similar colours in order to replace the original, according to several participants.
+One participant stated that they would prefer not a mixture of digital and tactile elements, but a complete digital replacement of the board game, without any game pieces, since they found them frustrating. However, many enjoyed the tactile elements of the augmented game. While no test participants thought the augmented version can replace the original game in its current state, several participants showed interest in the augmented version, and thought it can potentially replace the original game, assuming that all mechanics will be properly implemented, and the major technical problems are removed. The augmented version would also need to have less similar colours in order to replace the original, according to several participants.
 
-One participant, who was already experienced with Terra Mystica, noted that because of the augmented version’s simplistic design, they saw potential in it introducing new players to the game. It was also mentioned that the simplistic design provides a clearer overview over the map for players who are not familiar with the different terrain types. However, several other participants prefer the textures of the original game, as they help differentiate between the different types of terrain. One participant noted that some of the elements of the game are insufficiently explained in the original version, and that the augmented version could compensate for that by having clearer explanations on its interface. Regarding the insufficient explanation, some of the participants sometimes found it difficult to keep track of how much of their resources they had compared to how much they needed to spend, due to the game's cards not being explicit enough about what you need specific resources for and how one gets them. Furthermore, some saw the resources as a nuisance and would like to see it become automatic, while others liked the tactile feel the resource pieces gave.
+One participant, who was already experienced with Terra Mystica, noted that because of the augmented version’s simplistic design, they saw potential in it being used to introduce new players to the game. It was also mentioned that the simplistic design provides a clearer overview of the map for players who are not familiar with the different terrain types. However, several other participants prefer the textures of the original game, as they help differentiate between the different types of terrain. Especially the brown and the black tiles were difficult to tell the difference between in the digital version. One participant noted that some of the elements of the game are insufficiently explained in the original version, and that the augmented version could compensate for that by having clearer explanations on its interface. Regarding the insufficient explanation, some of the participants occasionally found it difficult to keep track of how much of their resources they had, compared to how much they needed to spend, due to the game's cards not being explicit enough about what you need specific resources for and how one gets them. Furthermore, some saw the resources as a nuisance and would like to see it become automatic, while others liked the tactile feel the resource pieces gave.
 
-Some participants stated that the digital version of the game provided a different atmosphere, and mentioned that the augmented and original version game each served their purposes, implying that the augmented version would replace the original one in the right circumstances. To describe the augmented version, some participants used the words ‘dramatic’ and ‘intense’, stating that they felt they had more influence in the game, due to the direct interaction with the board’s surface.
+Some participants stated that the digital version of the game provided a different atmosphere, and mentioned that the augmented and original versions of the game each served their purposes, implying that the augmented version would replace the original one in the right circumstances. To describe the augmented version, some participants used the words "dramatic" and "intense", stating that they felt they had more influence in the game, due to the direct interaction with the board’s surface.
 
-All the groups felt that the original version of Terra Mystica went faster than the augmented version, due to the technical delays and difficulties. These groups also mentioned that they would expect the final version of the augmented version to be as fast - if not faster, than the original version. The reasons why it would be faster, as mentioned by participants, is all the points and currency management the augmented version could take care of. This could mean the current gestures for player selection and terraforming do affect the pace of the game negatively, slowing it down, but when improved, it might not affect the game pace differently than in the original version.
+All the groups felt that the original version of Terra Mystica went faster than the augmented version, due to the technical delays and difficulties. These groups also mentioned that they would expect the final iteration of the augmented version to be as fast - if not faster, than the original version. The reasons why it would be faster, as mentioned by participants, are all the points and currency management the augmented version could take care of. This could mean the current gestures for player selection and terraforming do affect the pace of the game negatively, slowing it down, but when improved, it might not affect the game pace differently than in the original version.
 
-\subsection{Analysis}\label{subsec:analysis}\todo{ADD SOMEWHERE THAT BROWN AND BLACK TILES/PIECES LOOK ALIKE!}
-In this section, it is decribed how the results from the usability test answer the satisfaction based objectives in Section~\ref{sec:TestObjectives}.
+\subsection{Analysis}\label{subsec:analysis}
+This section describes how the results from the usability test answer the satisfaction based objectives in Section~\ref{sec:TestObjectives}.
 
-\textbf{Test objective~\ref{req:2A}:} The product succeeded in making the players in the tests feel like they were playing Terra Mystica when they were using the augmented version of it. This was mostly due to the augmented version keeping the same game mechanics as the original version, and to a lesser extent also due to the game keeping the sense of 'togetherness' also apparent in the original version.
+\textbf{Test objective~\ref{req:2A}:} The protoype succeeded in making the players in the tests feel like they were playing Terra Mystica when they were using the augmented version of it. This was mostly due to the augmented version keeping the same game mechanics as the original version, and to a lesser extent also due to the game keeping the sense of 'togetherness' also apparent in the original version.
 
-\textbf{Test objective~\ref{req:2B}:} In the current version of the product, the players consider the task of indicating that it is their turn more a hindrance than an easy task. The hindering elements are the need to place the hand in the middle of the table where the map is, causing physical conflicts between the hand and game pieces, the fact that players forgot to switch turns and did not remember how to do it, and the lack of feedback regarding whose turn it is and when a turn has been successfully switched. 
+\textbf{Test objective~\ref{req:2B}:} In the current version of the prototype, the players consider the task of indicating that it is their turn more a hindrance than an easy task. The hindering elements are the following: a) The need to place the hand in the middle of the table where the map is, causing physical conflicts between the hand and game pieces. b) The fact that players forgot to switch turns and did not remember how to do it. c) The lack of feedback regarding whose turn it is and when a turn has been successfully switched. 
 
 \textbf{Test objective~\ref{req:2C}:} In the augmentation's current state, the players do not feel like the task of terraforming is easier to carry out than on the original board game. Their reasons for that were the board's lack of an option to undo, reset, or have multiple choice terraforming, as well as the technical difficulties experienced with terraforming. 
 
-\textbf{Test objective~\ref{req:2D}:} None of the participants feel that the augmented game board, in its current state, can replace the original game board, but most of the them do feel that a completely finished version could replace it - given what they have seen in the test. Some of the participants also mentioned that the augmented board could fulfil a different purpose than the original board. This could either come from making the augmented version a more simplistic looking and more explanatory version of Terra Mystica - aimed at newer players, or it could come form the augmented board giving Terra Mystica a more dramatic atmosphere than the original version provided.
+\textbf{Test objective~\ref{req:2D}:} None of the participants feel that the augmented game board, in its current state, can replace the original game board, but most of the them do feel that a completely finished version could replace it - given what they have seen in the test. Some of the participants also mentioned that the augmented board could fulfil a different purpose than the original board. This could either come from making the augmented version a more simplistic looking and more explanatory version of Terra Mystica aimed at newer players, or it could come from the augmented board giving Terra Mystica a more dramatic atmosphere than the original version provided.
 
-\textbf{Test objective~\ref{req:2E}:} In its current state, the augmented version of the game's pace was slowed down by the gestures for player selection and terraforming, in comparison to the original version. Some of the participants mentioned that they assumed the pace of the two versions might be the same, if the gestures for player selection and terraforming worked flawlessly. 
+\textbf{Test objective~\ref{req:2E}:} In its current state, the pace of the augmented version was slowed down by the gestures for player selection and terraforming, in comparison to the original version. Some of the participants mentioned that they assumed the pace of the two versions might be the same, if gestures for player selection and terraforming worked flawlessly. 
